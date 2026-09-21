@@ -2,7 +2,7 @@ const { Client } = require('pg');
 
 async function migrate() {
   if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL nije postavljen');
-  const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
+  const client = new Client({ connectionString: process.env.DATABASE_URL });
   await client.connect();
   await client.query(`
     CREATE TABLE IF NOT EXISTS club_members (
