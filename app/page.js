@@ -41,7 +41,7 @@ export default function Home() {
     </header>
 
     <section id="pocetna" className="hero">
-      <Image src="/images/hero.png" alt="Žena u elegantnoj crnoj abaji među kamenim stubovima" fill priority sizes="100vw" />
+      <Image src="/images/hero-wide.png" alt="Žena u elegantnoj crnoj abaji među kamenim stubovima" fill priority sizes="100vw" />
       <div className="shade" />
       <div className="heroCopy">
         <p className="eyebrow">MADE BY ALY</p><h1>Elegancija<br/>koja ostaje.</h1><i className="goldLine" />
