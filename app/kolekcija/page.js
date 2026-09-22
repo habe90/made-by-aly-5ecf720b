@@ -62,7 +62,7 @@ export default function Kolekcija() {
 
       <div className="catalogGrid">
         {shown.map(p=><article className="catalogProduct" key={p.name}>
-          <button className="catalogPhoto" onClick={()=>setBag(bag+1)} aria-label={`Dodaj ${p.name} u korpu`}><span style={{backgroundImage:`url(/images/${p.sheet})`,backgroundPosition:`${p.slot*50}% center`}}/></button>
+          <a className="catalogPhoto" href={p.name === 'Amara Haljina' ? '/proizvod/luna-haljina' : '/proizvod/luna-haljina'} aria-label={`Pogledaj ${p.name}`}><span style={{backgroundImage:`url(/images/${p.sheet})`,backgroundPosition:`${p.slot*50}% center`}}/></a>
           <h2>{p.name}</h2><p>{p.price},00 KM</p><div className="swatches">{p.swatches.map((s,i)=><i key={i} style={{background:s}}/>)}</div>
         </article>)}
       </div>
