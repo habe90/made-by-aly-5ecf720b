@@ -40,7 +40,7 @@ export default function ClubPage() {
       <div className="clubHeroCopy">
         <p className="clubKicker">MADE BY ALY</p><h1>ALY CLUB</h1><h2>Tvoj krug. Tvoja elegancija.</h2>
         <p>ALY CLUB je naš način da ti budemo bliže.<br/>Mjesto za žene koje cijene smisao, ljepotu i posebno iskustvo.<br/>Jer neke priče su ljepše kada ih dijelimo.</p>
-        <div className="clubActions"><button className="clubGoldBtn" onClick={() => setModal('join')}>Postani članica　⟶</button><button className="clubOutlineBtn" onClick={() => setModal('login')}>Već si članica? Prijavi se</button></div>
+        <div className="clubActions"><a className="clubGoldBtn" href="/club/prijava">Postani članica　⟶</a><button className="clubOutlineBtn" onClick={() => setModal('login')}>Već si članica? Prijavi se</button></div>
       </div>
       <aside className="clubMonogram"><span>A<small>LY</small></span><p>ISTE<br/>VRIJEDNOSTI<br/>LJEPŠE<br/>PRIČE</p></aside>
     </section>
