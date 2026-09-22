@@ -35,7 +35,7 @@ export default function Home() {
       <button className="menuBtn" onClick={() => setMenu(!menu)} aria-label="Otvori navigaciju">{menu ? '×' : '☰'}</button>
       <nav className={menu ? 'nav open' : 'nav'}>
         <a href="#pocetna">Početna</a><a href="/kolekcija">Kolekcija</a><a href="/kolekcija">Haljine</a>
-        <a href="#khimari">Khimari</a><button onClick={() => setClubOpen(true)}>ALY CLUB</button><a href="#onama">O nama</a><a href="#kontakt">Kontakt</a>
+        <a href="#khimari">Khimari</a><a href="/club">ALY CLUB</a><a href="#onama">O nama</a><a href="#kontakt">Kontakt</a>
       </nav>
       <div className="headerIcons"><button aria-label="Profil">♙</button><button aria-label="Korpa">♧ <b>{bag}</b></button></div>
     </header>
