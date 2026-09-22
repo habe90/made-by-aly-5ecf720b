@@ -3,9 +3,9 @@
 import { useMemo, useState } from 'react';
 
 const products = [
-  { name: 'Amara Haljina', price: 159, type: 'Haljine', color: 'Crna', sheet: 'collection-dresses.png', slot: 0, swatches: ['#070707','#e9e0d2'] },
-  { name: 'Serena Haljina', price: 149, type: 'Haljine', color: 'Taupe', sheet: 'collection-dresses.png', slot: 1, swatches: ['#8d8177','#eee5d7'] },
-  { name: 'Noor Haljina', price: 159, type: 'Haljine', color: 'Krem', sheet: 'collection-dresses.png', slot: 2, swatches: ['#e9dfd0','#69625c'] },
+  { name: 'Amara Haljina', price: 159, type: 'Haljine', color: 'Crna', image: 'collection-amara-dress.png', swatches: ['#070707','#e9e0d2'] },
+  { name: 'Serena Haljina', price: 149, type: 'Haljine', color: 'Taupe', image: 'collection-serena-dress.png', swatches: ['#8d8177','#eee5d7'] },
+  { name: 'Noor Haljina', price: 159, type: 'Haljine', color: 'Krem', image: 'collection-noor-dress.png', swatches: ['#e9dfd0','#69625c'] },
   { name: 'Zahra Khimar', price: 109, type: 'Khimari', color: 'Crna', sheet: 'collection-khimars.png', slot: 0, swatches: ['#070707','#e8ded1'] },
   { name: 'Leila Khimar', price: 99, type: 'Khimari', color: 'Taupe', sheet: 'collection-khimars.png', slot: 1, swatches: ['#8c8078','#594b45','#080808'] },
   { name: 'Alya Khimar', price: 109, type: 'Khimari', color: 'Crna', sheet: 'collection-khimars.png', slot: 2, swatches: ['#050505','#80766e','#e9e1d6'] }
@@ -62,7 +62,7 @@ export default function Kolekcija() {
 
       <div className="catalogGrid">
         {shown.map(p=><article className="catalogProduct" key={p.name}>
-          <a className="catalogPhoto" href={p.name === 'Amara Haljina' ? '/proizvod/luna-haljina' : '/proizvod/luna-haljina'} aria-label={`Pogledaj ${p.name}`}><span style={{backgroundImage:`url(/images/${p.sheet})`,backgroundPosition:`${p.slot*50}% center`}}/></a>
+          <a className="catalogPhoto" href="/proizvod/luna-haljina" aria-label={`Pogledaj ${p.name}`}><span className={p.image ? 'singleProductImage' : ''} style={p.image ? {backgroundImage:`url(/images/${p.image})`} : {backgroundImage:`url(/images/${p.sheet})`,backgroundPosition:`${p.slot*50}% center`}}/></a>
           <h2>{p.name}</h2><p>{p.price},00 KM</p><div className="swatches">{p.swatches.map((s,i)=><i key={i} style={{background:s}}/>)}</div>
         </article>)}
       </div>
