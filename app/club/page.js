@@ -28,7 +28,7 @@ export default function ClubPage() {
   return <main className="clubPage">
     <header className="clubHeader">
       <a className="brand" href="/">MADE BY ALY</a>
-      <button className="menuBtn" onClick={() => setMenu(!menu)} aria-label="Otvori meni">{menu ? '×' : '☰'}</button>
+      <button className="menuBtn" onClick={() => setMenu(!menu)} aria-label={menu ? 'Zatvori meni' : 'Otvori meni'} aria-expanded={menu}>{menu ? '×' : '☰'}</button>
       <nav className={menu ? 'nav open' : 'nav'}>{nav.map(([label, href]) => <a key={label} className={label === 'ALY CLUB' ? 'active' : ''} href={href}>{label}</a>)}</nav>
       <div className="clubHeaderIcons"><button aria-label="Korisnički profil">♙</button><button aria-label="Korpa">♧</button></div>
     </header>
