@@ -10,7 +10,15 @@ async function migrate(){
     ALTER TABLE club_members ADD COLUMN IF NOT EXISTS country VARCHAR(120);
     ALTER TABLE club_members ADD COLUMN IF NOT EXISTS password_hash TEXT;
     ALTER TABLE club_members ADD COLUMN IF NOT EXISTS newsletter BOOLEAN NOT NULL DEFAULT FALSE;
-    ALTER TABLE club_members ADD COLUMN IF NOT EXISTS terms_accepted_at TIMESTAMPTZ;`);
+    ALTER TABLE club_members ADD COLUMN IF NOT EXISTS terms_accepted_at TIMESTAMPTZ;
+    CREATE TABLE IF NOT EXISTS club_sessions (
+      id BIGSERIAL PRIMARY KEY,
+      token VARCHAR(128) UNIQUE NOT NULL,
+      member_id BIGINT NOT NULL REFERENCES club_members(id) ON DELETE CASCADE,
+      expires_at TIMESTAMPTZ NOT NULL,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+    CREATE INDEX IF NOT EXISTS club_sessions_token_idx ON club_sessions(token);`);
   await client.end(); console.log('Migracije završene.');
 }
 migrate().catch(error=>{console.error(error);process.exit(1)});
