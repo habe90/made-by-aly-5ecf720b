@@ -1,0 +1,1 @@
+import {cookies} from 'next/headers';import {db,tokenHash} from '@/lib/adminAuth';export const runtime='nodejs';export async function POST(){const t=cookies().get('aly_staff_session')?.value;if(t)await db.query('DELETE FROM staff_sessions WHERE token_hash=$1',[tokenHash(t)]);cookies().delete('aly_staff_session');return Response.json({ok:true})}
