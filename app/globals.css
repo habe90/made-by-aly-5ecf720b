@@ -11,3 +11,23 @@
 body{font-size:16px;line-height:1.55}
 .nav a,.nav button{font-size:15px}.eyebrow{font-size:13px}.sideText{font-size:12px}.heroWords{font-size:11px}.clubBar p{font-size:13px}.sectionHead h2{font-size:13px}.seeAll{font-size:14px}.productInfo p{font-size:14px}.instaGrid p{font-size:11px}.footerTop nav{font-size:12px}.footerBottom{font-size:11px}.collectionIntro aside{font-size:10px}.tabs button{font-size:16px}.filters{font-size:11px}.filters select{font-size:11px}.clubCard button{font-size:11px}.collectionFooter .footerTop>div>p,.collectionFooter .footerTop em{font-size:11px}.productMaker{font-size:12px}.priceRow small{font-size:12px}.productLead{font-size:14px}.productForm>label{font-size:13px}.sizeRow a{font-size:12px}.cartNotice{font-size:13px}.accordions details p{font-size:13px}.pairCopy span{font-size:13px}.productFooterTop nav a,.newsletter b{font-size:12px}.newsletter p,.productFooterBottom{font-size:11px}.clubKicker{font-size:11px}.clubHeroCopy>p:not(.clubKicker){font-size:15px}.clubBenefits p,.clubCardCopy>p:last-child{font-size:14px}.clubCardWords p,.clubCardWords b,.clubTeaser aside p{font-size:10px}.clubTeaser div>p:last-child{font-size:13px}.clubFooterTop>div:first-child p,.clubFooterTop nav a,.clubSocial small,.clubFooterBottom{font-size:11px}
 @media(max-width:600px){body{font-size:15px}.productHeader{padding:0 5%}.productMain{padding:20px 5% 45px;gap:27px}.productGallery{height:630px;display:flex;flex-direction:column-reverse}.productBig{flex:1}.thumbs{height:78px;display:grid;grid-template-columns:repeat(3,68px);flex-direction:row}.thumbs button{height:78px}.thumbs>span{display:none}.productForm h1{font-size:44px}.priceRow{flex-wrap:wrap}.priceRow strong{flex-basis:100%}.productLead br{display:none}.sizeRow{flex-wrap:wrap}.sizeRow a{width:100%;margin:4px 0}.productForm select{width:100%}.productPair{grid-template-columns:1fr;margin:20px 5%}.productPair figure{min-height:430px}.productFooterTop{grid-template-columns:1fr}.productFooterBottom{gap:10px}.header.header{padding:0 5%}.brand{font-size:19px;letter-spacing:6px}.hero{height:700px}.hero>img{object-position:center}.shade{background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.25))}.heroCopy{top:145px}.heroCopy h1{font-size:48px}.heroWords{left:7%;font-size:7px;letter-spacing:2px}.clubBar{margin:18px 5%;padding:25px}.clubBar strong{font-size:23px;letter-spacing:7px}.clubBar div{flex-basis:100%}.productGrid{grid-template-columns:1fr}.productImage{height:auto;aspect-ratio:2/3}.collection{margin-inline:5%}.seeAll{margin:10px 0}.storyCopy{padding:35px 8%}.storyCopy h2{font-size:40px}.instaGrid{grid-template-columns:1fr}.instaGrid>div{height:330px}.instagram>b{float:none;display:block;text-align:right;margin:4px}.footerBottom{flex-direction:column}.modalCard{padding:38px 20px}.modalCard form{flex-direction:column;gap:10px}.modalCard .goldBtn{width:100%}}
+
+/* Compact mobile navigation */
+@media(max-width:900px){
+  .header .nav.open,.collectionHeader .nav.open,.productHeader .nav.open,.clubHeader .nav.open{
+    display:flex;position:absolute;z-index:100;top:74px;left:0;right:0;width:100%;
+    max-height:calc(100dvh - 74px);overflow-y:auto;background:rgba(9,10,10,.98);
+    border:0;border-top:1px solid #66583f;border-bottom:1px solid #66583f;
+    padding:8px 5% 12px;gap:0;align-items:stretch;
+  }
+  .header .nav.open a,.header .nav.open button,
+  .collectionHeader .nav.open a,.collectionHeader .nav.open button,
+  .productHeader .nav.open a,.productHeader .nav.open button,
+  .clubHeader .nav.open a,.clubHeader .nav.open button{
+    width:100%;height:auto;min-height:0;padding:14px 4px;display:block;text-align:left;
+    font-size:15px;line-height:1.25;border-bottom:1px solid rgba(198,162,99,.18);
+  }
+  .header .nav.open a:last-child,.collectionHeader .nav.open a:last-child,
+  .productHeader .nav.open a:last-child,.clubHeader .nav.open a:last-child{border-bottom:0}
+  .clubHeader .nav.open a.active:after{left:4px;right:auto;bottom:8px;width:38px}
+}
