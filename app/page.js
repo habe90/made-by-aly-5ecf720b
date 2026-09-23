@@ -32,7 +32,7 @@ export default function Home() {
   return <main>
     <header className="header">
       <a className="brand" href="#pocetna">MADE BY ALY</a>
-      <button className="menuBtn" onClick={() => setMenu(!menu)} aria-label="Otvori navigaciju">{menu ? '×' : '☰'}</button>
+      <button className="menuBtn" onClick={() => setMenu(!menu)} aria-label={menu ? 'Zatvori navigaciju' : 'Otvori navigaciju'} aria-expanded={menu}>{menu ? '×' : '☰'}</button>
       <nav className={menu ? 'nav open' : 'nav'}>
         <a href="#pocetna">Početna</a><a href="/kolekcija">Kolekcija</a><a href="/kolekcija">Haljine</a>
         <a href="#khimari">Khimari</a><a href="/club">ALY CLUB</a><a href="#onama">O nama</a><a href="#kontakt">Kontakt</a>
