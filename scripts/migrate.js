@@ -18,7 +18,23 @@ async function migrate(){
       expires_at TIMESTAMPTZ NOT NULL,
       created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     );
-    CREATE INDEX IF NOT EXISTS club_sessions_token_idx ON club_sessions(token);`);
+    CREATE INDEX IF NOT EXISTS club_sessions_token_idx ON club_sessions(token);
+    ALTER TABLE club_members ADD COLUMN IF NOT EXISTS active BOOLEAN NOT NULL DEFAULT TRUE;
+    ALTER TABLE club_members ADD COLUMN IF NOT EXISTS note TEXT;
+    CREATE TABLE IF NOT EXISTS products (
+      id BIGSERIAL PRIMARY KEY,
+      slug VARCHAR(180) UNIQUE NOT NULL,
+      name VARCHAR(180) NOT NULL,
+      price NUMERIC(10,2) NOT NULL DEFAULT 0,
+      category VARCHAR(100), material VARCHAR(180), length VARCHAR(60),
+      description TEXT, care TEXT, club_only BOOLEAN NOT NULL DEFAULT FALSE,
+      early_access BOOLEAN NOT NULL DEFAULT FALSE, early_start DATE, early_end DATE,
+      personalization BOOLEAN NOT NULL DEFAULT FALSE, status VARCHAR(40) NOT NULL DEFAULT 'Aktivan',
+      stock JSONB NOT NULL DEFAULT '{}', colors JSONB NOT NULL DEFAULT '[]',
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(), updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+    INSERT INTO products(slug,name,price,category,material,length,description,care,club_only,early_access,early_start,early_end,personalization,status,stock,colors)
+    VALUES ('luna-haljina','Luna haljina',229,'Haljine','Mekani premium saten','145 cm','Luna haljina spaja eleganciju i skromnost u savršenoj ravnoteži.','Prati ručno ili na programu za osjetljive tkanine.',TRUE,TRUE,'2026-03-01','2026-03-15',TRUE,'Aktivan','{"XS":5,"S":8,"M":12,"L":9,"XL":4}','["Crna","Krem","Taupe"]') ON CONFLICT(slug) DO NOTHING;`);
   await client.end(); console.log('Migracije završene.');
 }
 migrate().catch(error=>{console.error(error);process.exit(1)});
