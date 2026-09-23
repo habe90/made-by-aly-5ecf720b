@@ -1,0 +1,5 @@
+import {Pool} from 'pg';
+export const runtime='nodejs';export const dynamic='force-dynamic';
+const pool=new Pool({connectionString:process.env.DATABASE_URL});
+export async function GET(){try{const {rows}=await pool.query(`SELECT id,name,email,phone,instagram,city,newsletter,created_at,active,note,'ALY '||LPAD(id::text,6,'0') membership_no FROM club_members ORDER BY created_at DESC`);return Response.json(rows)}catch(e){console.error(e);return Response.json({message:'Greška pri učitavanju članica.'},{status:500})}}
+export async function PATCH(req){try{const b=await req.json();const {rows}=await pool.query(`UPDATE club_members SET name=$1,phone=$2,instagram=$3,city=$4,newsletter=$5,active=$6,note=$7 WHERE id=$8 RETURNING id,name,email,phone,instagram,city,newsletter,created_at,active,note,'ALY '||LPAD(id::text,6,'0') membership_no`,[b.name,b.phone||null,b.instagram||null,b.city||null,!!b.newsletter,b.active!==false,b.note||null,b.id]);if(!rows[0])return Response.json({message:'Članica nije pronađena.'},{status:404});return Response.json(rows[0])}catch(e){console.error(e);return Response.json({message:'Izmjene nisu sačuvane.'},{status:500})}}
