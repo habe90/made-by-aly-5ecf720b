@@ -1,0 +1,1 @@
+import {currentStaff} from '@/lib/adminAuth';export const runtime='nodejs';export async function GET(){const u=await currentStaff();return u?Response.json(u):Response.json({message:'Niste prijavljeni.'},{status:401})}
