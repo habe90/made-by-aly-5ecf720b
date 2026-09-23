@@ -33,6 +33,11 @@ async function migrate(){
       stock JSONB NOT NULL DEFAULT '{}', colors JSONB NOT NULL DEFAULT '[]',
       created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(), updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     );
+    CREATE TABLE IF NOT EXISTS admin_settings (
+      id INTEGER PRIMARY KEY,
+      data JSONB NOT NULL DEFAULT '{}',
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
     INSERT INTO products(slug,name,price,category,material,length,description,care,club_only,early_access,early_start,early_end,personalization,status,stock,colors)
     VALUES ('luna-haljina','Luna haljina',229,'Haljine','Mekani premium saten','145 cm','Luna haljina spaja eleganciju i skromnost u savršenoj ravnoteži.','Prati ručno ili na programu za osjetljive tkanine.',TRUE,TRUE,'2026-03-01','2026-03-15',TRUE,'Aktivan','{"XS":5,"S":8,"M":12,"L":9,"XL":4}','["Crna","Krem","Taupe"]') ON CONFLICT(slug) DO NOTHING;`);
   await client.end(); console.log('Migracije završene.');
