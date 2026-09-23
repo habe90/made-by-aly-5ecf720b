@@ -1,3 +1,1 @@
-import AdminShell from './AdminShell';
-export const metadata={title:'Administracija — MADE BY ALY'};
-export default function AdminLayout({children}){return <AdminShell>{children}</AdminShell>}
+import {redirect} from 'next/navigation';import {currentStaff} from '@/lib/adminAuth';import AdminShell from './AdminShell';export const metadata={title:'Administracija — MADE BY ALY'};export const dynamic='force-dynamic';export default async function AdminLayout({children}){const user=await currentStaff();if(!user)redirect('/staff-login');return <AdminShell user={user}>{children}</AdminShell>}
