@@ -37,7 +37,7 @@ export default function Kolekcija() {
   return <main className="collectionPage">
     <header className="collectionHeader">
       <a className="brand" href="/">MADE BY ALY</a>
-      <button className="menuBtn" onClick={()=>setMenu(!menu)}>{menu?'×':'☰'}</button>
+      <button className="menuBtn" onClick={()=>setMenu(!menu)} aria-label={menu?'Zatvori meni':'Otvori meni'} aria-expanded={menu}>{menu?'×':'☰'}</button>
       <nav className={menu?'nav open':'nav'}>
         <a href="/">Početna</a><a href="/kolekcija">Kolekcija</a><button onClick={()=>setCategory('Haljine')}>Haljine</button><button onClick={()=>setCategory('Khimari')}>Khimari</button><a href="/club">ALY CLUB</a><a href="/#onama">O nama</a><a href="#kontakt">Kontakt</a>
       </nav>
