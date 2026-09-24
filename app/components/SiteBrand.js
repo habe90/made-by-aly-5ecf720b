@@ -1,0 +1,3 @@
+'use client';
+import {useEffect,useState} from 'react';
+export default function SiteBrand(){const [settings,setSettings]=useState(null);useEffect(()=>{fetch('/api/site-settings',{cache:'no-store'}).then(r=>r.json()).then(s=>{setSettings(s);if(s.favicon){let icon=document.querySelector("link[rel~='icon']");if(!icon){icon=document.createElement('link');icon.rel='icon';document.head.appendChild(icon)}icon.href=s.favicon}}).catch(()=>{})},[]);useEffect(()=>{if(!settings?.logo)return;document.querySelectorAll('.brand').forEach(el=>{el.classList.add('brandHasLogo');el.style.setProperty('--site-logo',`url("${settings.logo}")`)})},[settings]);return null}
