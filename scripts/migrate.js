@@ -21,6 +21,9 @@ async function migrate(){
     CREATE INDEX IF NOT EXISTS club_sessions_token_idx ON club_sessions(token);
     ALTER TABLE club_members ADD COLUMN IF NOT EXISTS active BOOLEAN NOT NULL DEFAULT TRUE;
     ALTER TABLE club_members ADD COLUMN IF NOT EXISTS note TEXT;
+    ALTER TABLE club_members ADD COLUMN IF NOT EXISTS username VARCHAR(100);
+    ALTER TABLE club_members ADD COLUMN IF NOT EXISTS birth_date DATE;
+    CREATE UNIQUE INDEX IF NOT EXISTS club_members_username_unique ON club_members(LOWER(username)) WHERE username IS NOT NULL;
     CREATE TABLE IF NOT EXISTS products (
       id BIGSERIAL PRIMARY KEY,
       slug VARCHAR(180) UNIQUE NOT NULL,
