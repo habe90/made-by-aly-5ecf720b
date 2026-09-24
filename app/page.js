@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { CartIcon } from './components/Icons';
 
 const products = [
   { name: 'Amina haljina', price: '139,00 KM', image: '/images/product-amina.png' },
@@ -37,7 +38,7 @@ export default function Home() {
         <a href="#pocetna">Početna</a><a href="/kolekcija">Kolekcija</a><a href="/kolekcija">Haljine</a>
         <a href="#khimari">Khimari</a><a href="/club">ALY CLUB</a><a href="#onama">O nama</a><a href="#kontakt">Kontakt</a>
       </nav>
-      <div className="headerIcons"><button aria-label="Profil">♙</button><button aria-label="Korpa">♧ <b>{bag}</b></button></div>
+      <div className="headerIcons"><button aria-label="Profil">♙</button><button aria-label="Korpa"><CartIcon/> <b>{bag}</b></button></div>
     </header>
 
     <section id="pocetna" className="hero">
