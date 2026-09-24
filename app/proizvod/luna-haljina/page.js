@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { CartIcon } from '../../components/Icons';
 
 const nav=[['Početna','/'],['Kolekcija','/kolekcija'],['Haljine','/kolekcija'],['Khimari','/kolekcija'],['ALY CLUB','/club'],['O nama','/#onama'],['Kontakt','#kontakt']];
 
@@ -10,7 +11,7 @@ export default function LunaHaljina(){
  const photos={main:'/images/luna-main.png',detail:'/images/luna-detail.png',back:'/images/luna-back.png'};
  function add(){setBag(bag+qty);setNotice(`${qty} × Luna haljina dodano u korpu.`);setTimeout(()=>setNotice(''),3000)}
  return <main className="productPage">
-  <header className="productHeader"><a className="brand" href="/">MADE BY ALY</a><button className="menuBtn" onClick={()=>setMenu(!menu)}>{menu?'×':'☰'}</button><nav className={menu?'nav open':'nav'}>{nav.map(([x,h])=><a key={x} href={h}>{x}</a>)}</nav><div className="productHeadIcons"><button aria-label="Pretraga">⌕</button><button aria-label="Profil">♙</button><button aria-label="Korpa">♧{bag>0&&<b>{bag}</b>}</button><span>KM⌄</span></div></header>
+  <header className="productHeader"><a className="brand" href="/">MADE BY ALY</a><button className="menuBtn" onClick={()=>setMenu(!menu)}>{menu?'×':'☰'}</button><nav className={menu?'nav open':'nav'}>{nav.map(([x,h])=><a key={x} href={h}>{x}</a>)}</nav><div className="productHeadIcons"><button aria-label="Pretraga">⌕</button><button aria-label="Profil">♙</button><button aria-label="Korpa"><CartIcon/>{bag>0&&<b>{bag}</b>}</button><span>KM⌄</span></div></header>
 
   <section className="productMain">
    <div className="productGallery"><div className="thumbs">{Object.entries(photos).map(([key,src])=><button key={key} className={photo===key?'active':''} onClick={()=>setPhoto(key)}><Image src={src} alt="Luna haljina prikaz" fill sizes="100px"/></button>)}<span>⌄</span></div><div className="productBig"><Image src={photos[photo]} alt="Luna crna haljina" fill priority sizes="52vw"/><p>SKROMNOST<br/>U SVAKOM<br/>KORAKU<i/></p></div></div>
@@ -20,7 +21,7 @@ export default function LunaHaljina(){
     <label>Veličina:</label><div className="sizeRow">{['XS','S','M','L','XL'].map(s=><button key={s} className={size===s?'active':''} onClick={()=>setSize(s)}>{s}</button>)}<a href="#guide">Vodič za veličine　→</a></div>
     <label>Dužina:</label><select value={length} onChange={e=>setLength(e.target.value)}><option>140 cm (standard)</option><option>145 cm</option><option>150 cm</option><option>155 cm</option></select>
     <label>Količina:</label><div className="quantity"><button onClick={()=>setQty(Math.max(1,qty-1))}>−</button><span>{qty}</span><button onClick={()=>setQty(qty+1)}>＋</button></div>
-    <div className="buyRow"><button className="addBag" onClick={add}>♧　Dodaj u korpu</button><button className={favorite?'heart active':'heart'} onClick={()=>setFavorite(!favorite)}>♡</button></div>{notice&&<p className="cartNotice">{notice}</p>}
+    <div className="buyRow"><button className="addBag" onClick={add}><CartIcon size={20}/> Dodaj u korpu</button><button className={favorite?'heart active':'heart'} onClick={()=>setFavorite(!favorite)}>♡</button></div>{notice&&<p className="cartNotice">{notice}</p>}
     <label>Napomena za izradu (opcionalno):</label><textarea maxLength="200" value={note} onChange={e=>setNote(e.target.value)} placeholder="Npr. posebne mjere, dužina rukava..."/><small className="count">{note.length}/200</small>
     <div className="accordions">{[['Opis','Elegantna haljina fluidnog pada i potpune pokrivenosti.'],['Materijal','Premium mat tkanina, lagana i prijatna za nošenje.'],['Dužina i kroj','Dostupna u više dužina, širokog i profinjenog kroja.'],['Održavanje','Nježno pranje na 30°C. Ne sušiti u mašini.']].map(([t,c])=><details key={t}><summary>{t}<span>⌄</span></summary><p>{c}</p></details>)}</div>
    </div>
