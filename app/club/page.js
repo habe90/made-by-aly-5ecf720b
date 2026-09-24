@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { CartIcon, ClockIcon } from '../components/Icons';
 
 const nav = [
   ['Početna', '/'], ['Kolekcija', '/kolekcija'], ['Haljine', '/kolekcija'],
@@ -46,7 +47,7 @@ export default function ClubPage() {
     </section>
 
     <section className="clubBenefits">
-      <article><span className="benefitIcon">♧</span><h3>Raniji pristup</h3><p>Prva saznaj za nove kolekcije,<br/>posebna izdanja i važne najave.</p></article>
+      <article><span className="benefitIcon"><ClockIcon/></span><h3>Raniji pristup</h3><p>Prva saznaj za nove kolekcije,<br/>posebna izdanja i važne najave.</p></article>
       <article><span className="benefitIcon">❀</span><h3>Limitirane kolekcije</h3><p>Ekskluzivan pristup pažljivo<br/>odabranim, limitiranim komadima.</p></article>
       <article><span className="benefitIcon">♡</span><h3>Posebne pogodnosti</h3><p>Uživaj u pažljivo biranim<br/>iznenađenjima i posebnim iskustvima.</p></article>
     </section>
