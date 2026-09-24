@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import { CartIcon, LockIcon } from '../components/Icons';
 
 const products = [
   { name: 'Amara Haljina', price: 159, type: 'Haljine', color: 'Crna', image: 'collection-amara-dress.png', swatches: ['#070707','#e9e0d2'] },
@@ -68,7 +69,7 @@ export default function Kolekcija() {
       </div>
 
       <div className="clubCards">
-        {['black','brown'].map(t=><article className="clubCard" key={t} style={{backgroundImage:`url(/images/club-${t}.png)`}}><span className="lock">♧</span><h2>ALY CLUB ONLY</h2><i/><p>Posebni komadi za članice.<br/>Prijavi se za pristup.</p><button onClick={()=>setClubOpen(true)}>PRIJAVI SE ZA PRISTUP</button></article>)}
+        {['black','brown'].map(t=><article className="clubCard" key={t} style={{backgroundImage:`url(/images/club-${t}.png)`}}><span className="lock"><LockIcon/></span><h2>ALY CLUB ONLY</h2><i/><p>Posebni komadi za članice.<br/>Prijavi se za pristup.</p><button onClick={()=>setClubOpen(true)}>PRIJAVI SE ZA PRISTUP</button></article>)}
       </div>
     </section>
 
