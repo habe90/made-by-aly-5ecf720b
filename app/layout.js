@@ -1,4 +1,5 @@
 import './globals.css';
+import SiteBrand from './components/SiteBrand';
 
 export const metadata = {
   title: 'MADE BY ALY — Skromnost u svakom koraku',
@@ -6,5 +7,5 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  return <html lang="bs"><body>{children}</body></html>;
+  return <html lang="bs"><body><SiteBrand/>{children}</body></html>;
 }
