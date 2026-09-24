@@ -1,0 +1,3 @@
+'use client';
+import {useEffect,useState} from 'react';import Link from 'next/link';
+export default function ComingSoon(){const [s,setS]=useState({shop_name:'MADE BY ALY',logo:''});useEffect(()=>{fetch('/api/site-settings',{cache:'no-store'}).then(r=>r.json()).then(setS).catch(()=>{})},[]);return <main className="comingSoon"><div className="comingGlow"/><section>{s.logo?<img src={s.logo} alt={s.shop_name}/>:<h2>{s.shop_name}</h2>}<span/><p>USKORO</p><h1>Nešto posebno<br/>je u pripremi.</h1><i>Naša nova online priča uskoro otvara svoja vrata.</i><div className="comingLine"/><small>Ljepota u skromnosti.</small></section><Link href="/staff-login">Administracija</Link></main>}
