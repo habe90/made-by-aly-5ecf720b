@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import './style.css';
+import { CartIcon } from '../../components/Icons';
 
 const nav = [['Početna','/'],['Kolekcija','/kolekcija'],['Haljine','/kolekcija'],['Khimari','/kolekcija'],['ALY CLUB','/club'],['O nama','/#onama'],['Kontakt','#kontakt']];
 const initial = { name:'', email:'', phone:'', instagram:'', city:'', country:'', password:'', confirmPassword:'', newsletter:false, terms:false };
@@ -18,7 +19,7 @@ export default function ClubRegistrationPage(){
     try{const res=await fetch('/api/club',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(form)});const data=await res.json();if(!res.ok) setMessage(data.message);else{setSuccess(true);setForm(initial);}}catch{setMessage('Veza trenutno nije dostupna. Pokušajte ponovo.');}finally{setSending(false);}
   }
   return <main className="clubRegisterPage">
-    <header className="clubHeader registerHeader"><a className="brand" href="/">MADE BY ALY</a><button className="menuBtn" onClick={()=>setMenu(!menu)} aria-label={menu?'Zatvori meni':'Otvori meni'} aria-expanded={menu}>{menu?'×':'☰'}</button><nav className={menu?'nav open':'nav'}>{nav.map(([l,h])=><a key={l} className={l==='ALY CLUB'?'active':''} href={h}>{l}</a>)}</nav><div className="clubHeaderIcons"><span>♙</span><span>♧</span></div></header>
+    <header className="clubHeader registerHeader"><a className="brand" href="/">MADE BY ALY</a><button className="menuBtn" onClick={()=>setMenu(!menu)} aria-label={menu?'Zatvori meni':'Otvori meni'} aria-expanded={menu}>{menu?'×':'☰'}</button><nav className={menu?'nav open':'nav'}>{nav.map(([l,h])=><a key={l} className={l==='ALY CLUB'?'active':''} href={h}>{l}</a>)}</nav><div className="clubHeaderIcons"><span>♙</span><span><CartIcon/></span></div></header>
     <section className="registerLayout">
       <aside className="registerVisual"><Image src="/images/club-registration-aside.png" alt="Žena u crnoj abaji među kamenim lukovima" fill priority sizes="38vw"/><div className="registerVisualShade"/><div className="registerVisualCopy"><p>VIŠE OD MODE.</p><h2>ZA ŽENE<br/>S VRIJEDNOSTIMA.</h2><i/><blockquote>“Zajednica koja<br/>inspiriše, podržava<br/>i raste zajedno.”</blockquote></div><p className="registerValues">SKROMNOST<br/>STIL<br/>SISTERSTVO<br/>UVIJEK</p></aside>
       <div className="registerContent">
