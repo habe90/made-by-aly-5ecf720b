@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import './style.css';
+import { CartIcon } from '../../components/Icons';
 
 const nav = [['Početna','/'],['Kolekcija','/kolekcija'],['Haljine','/kolekcija'],['Khimari','/kolekcija'],['ALY CLUB','/club'],['O nama','/#onama'],['Kontakt','#kontakt']];
 
@@ -11,7 +12,7 @@ export default function ClubLoginPage(){
   const update=e=>setForm(v=>({...v,[e.target.name]:e.target.type==='checkbox'?e.target.checked:e.target.value}));
   async function submit(e){e.preventDefault();setMessage('');setSending(true);try{const res=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(form)});const data=await res.json();if(!res.ok)setMessage(data.message);else{setSuccess(true);setMessage(data.message);}}catch{setMessage('Veza trenutno nije dostupna. Pokušajte ponovo.');}finally{setSending(false);}}
   return <main className="loginPage">
-    <header className="clubHeader loginHeader"><a className="brand" href="/">MADE BY ALY</a><button className="menuBtn" onClick={()=>setMenu(!menu)} aria-label={menu?'Zatvori meni':'Otvori meni'} aria-expanded={menu}>{menu?'×':'☰'}</button><nav className={menu?'nav open':'nav'}>{nav.map(([l,h])=><a key={l} className={l==='ALY CLUB'?'active':''} href={h}>{l}</a>)}</nav><div className="loginHeaderIcons"><a href="/club/login" aria-label="Korisnički račun">♙</a><span aria-hidden="true">♧</span><small>0 KM</small></div></header>
+    <header className="clubHeader loginHeader"><a className="brand" href="/">MADE BY ALY</a><button className="menuBtn" onClick={()=>setMenu(!menu)} aria-label={menu?'Zatvori meni':'Otvori meni'} aria-expanded={menu}>{menu?'×':'☰'}</button><nav className={menu?'nav open':'nav'}>{nav.map(([l,h])=><a key={l} className={l==='ALY CLUB'?'active':''} href={h}>{l}</a>)}</nav><div className="loginHeaderIcons"><a href="/club/login" aria-label="Korisnički račun">♙</a><span aria-hidden="true"><CartIcon/></span><small>0 KM</small></div></header>
     <section className="loginLayout">
       <aside className="loginVisual"><Image src="/images/club-login-aside.png" alt="Žena u taupe khimaru u kamenoj arhitekturi" fill priority sizes="50vw"/><div className="loginVisualShade"/><div className="loginVisualClaim">VIŠE<br/>OD ODJEĆE.<br/>NAČIN ŽIVOTA.<i/></div><div className="loginVisualBrand"><b>MADE BY ALY</b><small>MODEST FASHION<br/>FOR A BRIGHTER TOMORROW</small></div></aside>
       <div className="loginPanel">
