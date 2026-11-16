@@ -1,0 +1,47 @@
+/* Stranica modela s paletom boja (Zafira, Rose…) */
+.mdBig{position:relative;background:#fff}
+.mdBig img{object-fit:contain!important;object-position:center!important;animation:mdFade .35s ease}
+@keyframes mdFade{from{opacity:.3}to{opacity:1}}
+.mdTag{position:absolute;left:16px;bottom:16px;display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.92);border-radius:30px;padding:7px 16px 7px 7px;font-size:13px;font-weight:500;color:var(--hm-ink);box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.mdTag i{width:26px;height:26px;border-radius:50%;background-size:cover}
+.pdThumbs .mdThumbColor{background:#fff}
+.pdThumbs .mdThumbColor img{object-fit:contain}
+.pdThumbs button img{background:#fff}
+
+.mdPalette{padding:18px 0 20px;border-top:1px solid var(--hm-line)}
+.mdPalette p{display:flex;align-items:baseline;gap:8px;margin:0 0 14px;font-size:14px}
+.mdPalette p b{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--hm-ink);font-weight:600}
+.mdPalette p span{margin-left:auto;font-size:12px;color:var(--hm-muted);letter-spacing:1px}
+.mdPalette>div{display:grid;grid-template-columns:repeat(auto-fill,minmax(46px,1fr));gap:12px}
+.mdPalette button{position:relative;aspect-ratio:1;border-radius:50%;border:1px solid rgba(0,0,0,.12);background-size:cover;background-position:center;cursor:pointer;padding:0;transition:transform .2s,box-shadow .2s}
+.mdPalette button:hover{transform:scale(1.08)}
+.mdPalette button.on{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--hm-gold)}
+.mdPalette button small{position:absolute;right:-4px;bottom:-4px;min-width:18px;height:18px;border-radius:9px;background:var(--hm-dark);color:#f0dcae;font-size:10px;line-height:18px;text-align:center}
+
+.mdFeatures{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mdFeatures li{font-size:13px;color:var(--hm-ink);padding:10px 12px 10px 30px;border-radius:8px;background:#f6f2eb;position:relative}
+.mdFeatures li:before{content:'';position:absolute;left:12px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:var(--hm-gold)}
+
+.mdAll{text-align:center}
+.mdAllHead{display:flex;align-items:center;justify-content:center;gap:18px}
+.mdAllHead span{width:60px;height:1px;background:var(--hm-ink)}
+.mdAll h2{font-size:52px;margin:6px 0 28px;color:#14213d!important}
+.mdGrid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.mdGrid.n10{grid-template-columns:repeat(5,1fr)}
+.mdGrid button{display:flex;flex-direction:column;background:#fff;border:1px solid var(--hm-line);border-radius:14px;padding:0;overflow:hidden;cursor:pointer;font:inherit;color:inherit;transition:transform .2s,box-shadow .2s,border-color .2s}
+.mdGrid button:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(40,32,20,.12)}
+.mdGrid button.on{border-color:var(--hm-gold);box-shadow:0 0 0 2px var(--hm-gold)}
+.mdGridPhoto{display:block;aspect-ratio:5/8;background:#fff}
+.mdGridPhoto img{width:100%;height:100%;object-fit:contain;display:block}
+.mdGridName{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 8px 12px;font-size:13px;font-weight:500;color:var(--hm-ink);border-top:1px solid #f0ebe2;background:#fbfaf7}
+.mdGridName i{width:18px;height:18px;border-radius:50%;background-size:cover;border:1px solid rgba(0,0,0,.12);flex:none}
+
+@media(max-width:1024px){
+  .mdGrid,.mdGrid.n10{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:760px){
+  .mdAll h2{font-size:38px}
+  .mdGrid,.mdGrid.n10{grid-template-columns:repeat(2,1fr);gap:10px}
+  .mdFeatures{grid-template-columns:1fr}
+  .mdPalette>div{grid-template-columns:repeat(6,1fr);gap:10px}
+}

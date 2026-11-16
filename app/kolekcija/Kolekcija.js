@@ -45,14 +45,19 @@ export default function Kolekcija({initial = 'sve'}) {
       </div>
 
       <section className="kolGrid" aria-live="polite">
-        {shown.map(m => <button key={m.id} className="kolCard" onClick={() => setOpen(m)} aria-label={`Pogledaj ${m.name}`}>
-          <span className="kolPhoto"><img src={m.image} alt={m.name} loading="lazy"/></span>
-          <span className="kolInfo">
-            <small>{CAT_LABEL[m.cat]}</small>
-            <strong>{m.name}</strong>
-            <span className="kolSwatches">{m.colors.map(([n, c]) => <i key={n} title={n} style={{background: c}}/>)}</span>
-          </span>
-        </button>)}
+        {shown.map(m => {
+          const inner = <>
+            <span className={m.page ? 'kolPhoto light' : 'kolPhoto'}><img src={m.image} alt={m.name} loading="lazy"/>{m.isNew && <em className="kolBadge">Novo</em>}</span>
+            <span className="kolInfo">
+              <small>{CAT_LABEL[m.cat]}{m.colors.length > 3 && ` · ${m.colors.length} boja`}</small>
+              <strong>{m.name}</strong>
+              <span className="kolSwatches">{m.colors.slice(0, 8).map(([n, c]) => <i key={n} title={n} style={{background: c}}/>)}{m.colors.length > 8 && <b>+{m.colors.length - 8}</b>}</span>
+            </span>
+          </>;
+          return m.page
+            ? <a key={m.id} className="kolCard" href={m.page} aria-label={`Pogledaj ${m.name}`}>{inner}</a>
+            : <button key={m.id} className="kolCard" onClick={() => setOpen(m)} aria-label={`Pogledaj ${m.name}`}>{inner}</button>;
+        })}
       </section>
 
       <section className="kolClub">

@@ -1,4 +1,6 @@
 // Modeli za prezentaciju (bez cijena i kupovine). Nazive, slike i opise slobodno mijenjati.
+import {MODELI} from '../proizvod/modeli';
+
 export const CATEGORIES = [
   ['sve', 'Sve'],
   ['abaye', 'Abaye'],
@@ -6,7 +8,14 @@ export const CATEGORIES = [
   ['khimari', 'Khimari']
 ];
 
+// Pravi modeli (s paletom boja i vlastitom stranicom) idu prvi.
+const REAL = MODELI.map(m => ({
+  id: m.slug, name: `${m.name} ${m.type.toLowerCase()}`, cat: m.cat, image: m.photos[0][0],
+  colors: m.colors.map(c => [c.name, c.hex]), page: `/proizvod/${m.slug}`, isNew: true
+}));
+
 export const MODELS = [
+  ...REAL,
   {id: 'luna-haljina', name: 'Luna haljina', cat: 'haljine', image: '/images/luna-main.png', colors: [['Crna', '#0b0b0b'], ['Taupe', '#9e968a'], ['Krem', '#ece6da']],
     text: 'Fluidan pad i profinjen kroj za potpunu pokrivenost i bezvremensku eleganciju.', href: '/proizvod/luna-haljina'},
   {id: 'amara-haljina', name: 'Amara haljina', cat: 'haljine', image: '/images/collection-amara-dress.png', colors: [['Crna', '#0b0b0b'], ['Krem', '#e9e0d2']],
