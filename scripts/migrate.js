@@ -72,10 +72,24 @@ async function migrate(){
     VALUES ('luna-haljina','Luna haljina',229,'Haljine','Mekani premium saten','145 cm','Luna haljina spaja eleganciju i skromnost u savršenoj ravnoteži.','Prati ručno ili na programu za osjetljive tkanine.',TRUE,TRUE,'2026-03-01','2026-03-15',TRUE,'Aktivan','{"XS":5,"S":8,"M":12,"L":9,"XL":4}','["Crna","Krem","Taupe"]') ON CONFLICT(slug) DO NOTHING;`);
   const crypto=require('crypto');
   const existing=await client.query('SELECT id FROM staff_users WHERE role=\'admin\' LIMIT 1');
-  if(!existing.rows.length){const password=process.env.INITIAL_ADMIN_PASSWORD||crypto.randomBytes(12).toString('base64url');const salt=crypto.randomBytes(16).toString('hex');const key=await new Promise((resolve,reject)=>crypto.scrypt(password,salt,64,(e,k)=>e?reject(e):resolve(k)));await client.query(`INSERT INTO staff_users(name,email,password_hash,role) VALUES($1,$2,$3,'admin')`,[process.env.INITIAL_ADMIN_NAME||'Amina Admin',(process.env.INITIAL_ADMIN_EMAIL||'admin@madebyaly.com').toLowerCase(),`${salt}:${key.toString('hex')}`]);console.log(`Kreiran početni admin: ${process.env.INITIAL_ADMIN_EMAIL||'admin@madebyaly.com'}; lozinka: ${password}`)}
+  if(!existing.rows.length){const password=process.env.INITIAL_ADMIN_PASSWORD||crypto.randomBytes(12).toString('base64url');const salt=crypto.randomBytes(16).toString('hex');const key=await new Promise((resolve,reject)=>crypto.scrypt(password,salt,64,(e,k)=>e?reject(e):resolve(k)));await client.query(`INSERT INTO staff_users(name,email,password_hash,role) VALUES($1,$2,$3,'admin')`,[process.env.INITIAL_ADMIN_NAME||'Amina Admin',(process.env.INITIAL_ADMIN_EMAIL||'admin@madebyaly.com').toLowerCase(),`${salt}:${key.toString('hex')}`]);const adminEmail=process.env.INITIAL_ADMIN_EMAIL||'admin@madebyaly.com';
+    // Lozinka iz env varijable se nikad ne ispisuje. Nasumična se ispisuje samo jednom jer inače nema načina da se sazna.
+    if(process.env.INITIAL_ADMIN_PASSWORD)console.log(`Kreiran početni admin: ${adminEmail} (lozinka iz INITIAL_ADMIN_PASSWORD).`);
+    else console.log(`Kreiran početni admin: ${adminEmail}; privremena lozinka: ${password} — ODMAH je promijenite (BOOTSTRAP_ADMIN_PASSWORD).`)}
   await client.query(`CREATE TABLE IF NOT EXISTS app_meta (key VARCHAR(100) PRIMARY KEY, value TEXT, created_at TIMESTAMPTZ DEFAULT NOW())`);
   if(process.env.BOOTSTRAP_ADMIN_PASSWORD){const done=await client.query(`SELECT 1 FROM app_meta WHERE key='admin_password_bootstrapped_v2'`);if(!done.rows.length){const salt=crypto.randomBytes(16).toString('hex');const key=await new Promise((resolve,reject)=>crypto.scrypt(process.env.BOOTSTRAP_ADMIN_PASSWORD,salt,64,(e,k)=>e?reject(e):resolve(k)));await client.query(`UPDATE staff_users SET password_hash=$1,active=TRUE,role='admin',updated_at=NOW() WHERE LOWER(email)=LOWER($2)`,[`${salt}:${key.toString('hex')}`,(process.env.INITIAL_ADMIN_EMAIL||'admin@madebyaly.com').toLowerCase()]);await client.query(`DELETE FROM staff_sessions WHERE staff_id IN (SELECT id FROM staff_users WHERE LOWER(email)=LOWER($1))`,[(process.env.INITIAL_ADMIN_EMAIL||'admin@madebyaly.com').toLowerCase()]);await client.query(`INSERT INTO app_meta(key,value) VALUES('admin_password_bootstrapped_v2','done')`);console.log('Admin lozinka je resetovana.')}}
+  // Jednokratno: tokeni sesija članica se od sada čuvaju kao SHA-256 hash (postojeće sesije ostaju važeće).
+  const hashed=await client.query(`SELECT 1 FROM app_meta WHERE key='club_session_tokens_hashed_v1'`);
+  if(!hashed.rows.length){
+    await client.query('BEGIN');
+    try{
+      await client.query(`UPDATE club_sessions SET token=encode(sha256(convert_to(token,'UTF8')),'hex')`);
+      await client.query(`INSERT INTO app_meta(key,value) VALUES('club_session_tokens_hashed_v1','done')`);
+      await client.query('COMMIT');console.log('Tokeni sesija članica su hashirani.');
+    }catch(e){await client.query('ROLLBACK');throw e}
+  }
   await client.query(`DELETE FROM staff_sessions WHERE expires_at<NOW()`);
+  await client.query(`DELETE FROM club_sessions WHERE expires_at<NOW()`);
   await client.end(); console.log('Migracije završene.');
 }
 migrate().catch(error=>{console.error(error);process.exit(1)});
