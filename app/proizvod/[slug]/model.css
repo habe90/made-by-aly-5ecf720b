@@ -2,10 +2,6 @@
 .mdBig{position:relative;background:#fff}
 .mdBig img{object-fit:contain!important;object-position:center!important;animation:mdFade .35s ease}
 @keyframes mdFade{from{opacity:.3}to{opacity:1}}
-.mdTag{position:absolute;left:16px;bottom:16px;display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.92);border-radius:30px;padding:7px 16px 7px 7px;font-size:13px;font-weight:500;color:var(--hm-ink);box-shadow:0 6px 18px rgba(0,0,0,.08)}
-.mdTag i{width:26px;height:26px;border-radius:50%;background-size:cover}
-.pdThumbs .mdThumbColor{background:#fff}
-.pdThumbs .mdThumbColor img{object-fit:contain}
 .pdThumbs button img{background:#fff}
 
 .mdPalette{padding:18px 0 20px;border-top:1px solid var(--hm-line)}
@@ -26,22 +22,24 @@
 .mdAllHead{display:flex;align-items:center;justify-content:center;gap:18px}
 .mdAllHead span{width:60px;height:1px;background:var(--hm-ink)}
 .mdAll h2{font-size:52px;margin:6px 0 28px;color:#14213d!important}
-.mdGrid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
-.mdGrid.n10{grid-template-columns:repeat(5,1fr)}
-.mdGrid button{display:flex;flex-direction:column;background:#fff;border:1px solid var(--hm-line);border-radius:14px;padding:0;overflow:hidden;cursor:pointer;font:inherit;color:inherit;transition:transform .2s,box-shadow .2s,border-color .2s}
-.mdGrid button:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(40,32,20,.12)}
-.mdGrid button.on{border-color:var(--hm-gold);box-shadow:0 0 0 2px var(--hm-gold)}
-.mdGridPhoto{display:block;aspect-ratio:5/8;background:#fff}
-.mdGridPhoto img{width:100%;height:100%;object-fit:contain;display:block}
-.mdGridName{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 8px 12px;font-size:13px;font-weight:500;color:var(--hm-ink);border-top:1px solid #f0ebe2;background:#fbfaf7}
-.mdGridName i{width:18px;height:18px;border-radius:50%;background-size:cover;border:1px solid rgba(0,0,0,.12);flex:none}
+.mdChips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 0 30px}
+.mdChips button{display:inline-flex;align-items:center;gap:9px;padding:7px 16px 7px 7px;border-radius:30px;border:1px solid var(--hm-line);background:#fff;font:500 13px Montserrat,Arial,sans-serif;color:var(--hm-ink);cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.mdChips button:hover{border-color:var(--hm-gold)}
+.mdChips button.on{border-color:var(--hm-gold);box-shadow:0 0 0 1px var(--hm-gold)}
+.mdChips i{width:28px;height:28px;border-radius:50%;background-size:cover;border:1px solid rgba(0,0,0,.1)}
+.mdShowcase{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.mdShowcase button{padding:0;border:1px solid var(--hm-line);border-radius:14px;overflow:hidden;background:#fff;cursor:zoom-in;line-height:0}
+.mdShowcase img{width:100%;height:auto;display:block}
+.mdZoom{cursor:zoom-out;padding:24px}
+.mdZoom img{max-width:100%;max-height:calc(100dvh - 48px);width:auto;height:auto;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.4);background:#fff}
+.mdZoom .hmClose{position:fixed;top:14px;right:18px;color:#fff;font-size:36px;background:none;border:0;cursor:pointer}
+button.pdBig{display:block;width:100%;padding:0;border:0;cursor:zoom-in}
 
-@media(max-width:1024px){
-  .mdGrid,.mdGrid.n10{grid-template-columns:repeat(4,1fr)}
-}
+
 @media(max-width:760px){
   .mdAll h2{font-size:38px}
-  .mdGrid,.mdGrid.n10{grid-template-columns:repeat(2,1fr);gap:10px}
+  .mdShowcase{grid-template-columns:1fr}
+  .mdChips button{font-size:12px}
   .mdFeatures{grid-template-columns:1fr}
   .mdPalette>div{grid-template-columns:repeat(6,1fr);gap:10px}
 }

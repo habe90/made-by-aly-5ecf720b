@@ -1,6 +1,6 @@
 'use client';
 
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import SitePage from '../../components/SitePage';
 import {CONTACT_EMAIL} from '../../components/siteConfig';
 import {Arrow, InstaIcon, MailIcon} from '../../components/SiteIcons';
@@ -12,20 +12,32 @@ const CAT = {haljine: 'Haljine', abaye: 'Abaye', khimari: 'Khimari'};
 
 export default function ModelPage({model}) {
   const [color, setColor] = useState(null);
-  const [view, setView] = useState('photo-0');
+  const [view, setView] = useState(0);
+  const [zoom, setZoom] = useState(null);
   const c = model.colors[color ?? 0];
   const chosen = color !== null;
   const label = (col, i) => model.numbered ? `${i + 1} · ${col.name}` : col.name;
 
-  const big = view === 'color'
-    ? [c.photo, `${model.name} u boji ${c.name}`]
-    : model.photos[Number(view.split('-')[1])];
+  // Samo originalne fotografije. Ako boja ima vlastitu originalnu fotografiju, ona ide prva.
+  const gallery = [
+    ...(chosen && c.photo ? [[c.photo, `${model.name} u boji ${c.name}`]] : []),
+    ...model.photos,
+    ...(model.showcase || [])
+  ];
+  const big = gallery[Math.min(view, gallery.length - 1)];
 
   function pick(i, scroll = false) {
     setColor(i);
-    setView('color');
+    setView(0);
     if (scroll) window.scrollTo({top: 0, behavior: 'smooth'});
   }
+
+  useEffect(() => {
+    if (!zoom) return;
+    const onKey = e => e.key === 'Escape' && setZoom(null);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [zoom]);
 
   return <SitePage active={NAV[model.cat] || 'Kolekcija'}>
     <main className="hmWrap">
@@ -34,13 +46,11 @@ export default function ModelPage({model}) {
       <section className="pdMain">
         <div className="pdGallery">
           <div className="pdThumbs">
-            {model.photos.map(([src, alt], i) => <button key={src} className={view === `photo-${i}` ? 'on' : ''} onClick={() => setView(`photo-${i}`)} aria-label={alt}><img src={src} alt=""/></button>)}
-            <button className={view === 'color' ? 'on mdThumbColor' : 'mdThumbColor'} onClick={() => setView('color')} aria-label={`Prikaz u boji ${c.name}`}><img src={c.photo} alt=""/></button>
+            {gallery.map(([src, alt], i) => <button key={src} className={view === i ? 'on' : ''} onClick={() => setView(i)} aria-label={alt}><img src={src} alt=""/></button>)}
           </div>
-          <div className="pdBig mdBig">
+          <button className="pdBig mdBig" onClick={() => setZoom(big)} aria-label={`Uvećaj: ${big[1]}`}>
             <img key={big[0]} src={big[0]} alt={big[1]}/>
-            {view === 'color' && <span className="mdTag"><i style={{backgroundImage: `url(${c.swatch})`}}/>{label(c, color)}</span>}
-          </div>
+          </button>
         </div>
 
         <div className="pdInfo hmBox">
@@ -75,12 +85,14 @@ export default function ModelPage({model}) {
       <section className="hmBox mdAll" aria-labelledby="boje">
         <div className="mdAllHead"><span/><p className="hmEyebrow">{model.type}</p><span/></div>
         <h2 id="boje">Dostupne boje</h2>
-        <div className={`mdGrid n${model.colors.length}`}>
-          {model.colors.map((col, i) => <button key={col.name} className={color === i ? 'on' : ''} onClick={() => pick(i, true)} aria-label={`Prikaži ${model.name} u boji ${col.name}`}>
-            <span className="mdGridPhoto"><img src={col.photo} alt={`${model.name} — ${col.name}`} loading="lazy"/></span>
-            <span className="mdGridName"><i style={{backgroundImage: `url(${col.swatch})`, backgroundColor: col.hex}}/>{label(col, i)}</span>
+        <div className="mdChips">
+          {model.colors.map((col, i) => <button key={col.name} className={color === i ? 'on' : ''} onClick={() => pick(i, true)} aria-label={`Odaberi boju ${col.name}`}>
+            <i style={{backgroundImage: `url(${col.swatch})`, backgroundColor: col.hex}}/>{label(col, i)}
           </button>)}
         </div>
+        {model.showcase && <div className="mdShowcase">
+          {model.showcase.map(([src, alt]) => <button key={src} onClick={() => setZoom([src, alt])} aria-label={`Uvećaj: ${alt}`}><img src={src} alt={alt} loading="lazy"/></button>)}
+        </div>}
       </section>
 
       <section className="onCta mdMore">
@@ -88,5 +100,10 @@ export default function ModelPage({model}) {
         <div><a className="hmGoldBtn" href="/kolekcija">Kolekcija <Arrow/></a></div>
       </section>
     </main>
+
+    {zoom && <div className="siteModal mdZoom" role="dialog" aria-modal="true" aria-label={zoom[1]} onClick={() => setZoom(null)}>
+      <button className="hmClose" onClick={() => setZoom(null)} aria-label="Zatvori">×</button>
+      <img src={zoom[0]} alt={zoom[1]}/>
+    </div>}
   </SitePage>;
 }
