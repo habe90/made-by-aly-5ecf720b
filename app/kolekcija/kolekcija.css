@@ -1,0 +1,60 @@
+.kolTabs{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:var(--hm-card);border-radius:14px;padding:10px;box-shadow:var(--hm-shadow)}
+.kolTabs button{background:none;border:0;border-radius:8px;padding:12px 24px;font:500 13px Montserrat,Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--hm-text);cursor:pointer;transition:background .2s,color .2s}
+.kolTabs button:hover{background:#f1ece3}
+.kolTabs button.on{background:var(--hm-dark);color:#fff;box-shadow:inset -3px 0 0 var(--hm-gold)}
+.kolTabs span{margin-left:auto;padding-right:14px;font-size:13px;color:var(--hm-muted)}
+
+.kolGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.kolCard{display:flex;flex-direction:column;text-align:left;background:var(--hm-card);border:0;border-radius:14px;overflow:hidden;padding:0;cursor:pointer;box-shadow:0 10px 28px rgba(40,32,20,.08);transition:transform .25s,box-shadow .25s;font:inherit;color:inherit}
+.kolCard:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(40,32,20,.14)}
+.kolPhoto{display:block;aspect-ratio:3/4;overflow:hidden;background:#e4ded3}
+.kolPhoto img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;transition:transform .6s}
+.kolCard:hover .kolPhoto img{transform:scale(1.04)}
+.kolInfo{display:flex;flex-direction:column;gap:4px;padding:16px 18px 18px}
+.kolInfo small{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--hm-gold)}
+.kolInfo strong{font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;font-weight:500;color:var(--hm-ink);line-height:1.15}
+.kolSwatches{display:flex;gap:7px;margin-top:6px}
+.kolSwatches i{width:15px;height:15px;border-radius:50%;border:1px solid rgba(0,0,0,.15);box-shadow:inset 0 0 0 2px #fff}
+
+.kolClub{display:flex;align-items:center;gap:30px;padding:30px 44px;border-radius:14px;color:#ece6da;background:linear-gradient(90deg,rgba(20,20,22,.95),rgba(20,20,22,.7)),url('/images/club-brown.png') center/cover;box-shadow:0 14px 34px rgba(0,0,0,.18)}
+.kolClub .hmEyebrow{color:var(--hm-gold-2)}
+.kolClub h2{color:#fff!important;font-size:30px;margin:4px 0 2px}
+.kolClub p:not(.hmEyebrow){margin:0;color:#c9c2b5;font-size:14px}
+.kolClub .hmGoldBtn{margin-left:auto}
+.kolClub .hmCrown{color:var(--hm-gold-2);display:flex}
+
+/* Detalj modela */
+.kolModal{align-items:center}
+.siteModal>.kolModalCard{width:min(980px,100%);max-height:calc(100dvh - 40px);overflow:auto;display:grid;grid-template-columns:1fr 1fr;background:var(--hm-card);border-radius:18px;text-align:left;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.kolModalCard .hmClose{color:var(--hm-ink);z-index:2;background:rgba(255,255,255,.8);border-radius:50%;width:40px;height:40px;right:12px;top:12px;font-size:26px}
+.kolModalImage{background:#e4ded3;min-height:420px;position:relative}
+.kolModalImage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 15%}
+.kolModalCopy{padding:48px 44px;display:flex;flex-direction:column;align-items:flex-start}
+.kolModalCopy h2{font-size:46px;margin:10px 0 0;line-height:1.05}
+.kolModalCopy p:not(.hmEyebrow){margin:0 0 12px}
+.kolColors b{color:var(--hm-ink);font-weight:600}
+.kolNote{font-size:14px;color:var(--hm-muted)}
+.kolActions{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
+.kolMore{margin-top:22px;display:inline-flex;align-items:center;gap:8px;color:var(--hm-ink);font-size:13px;letter-spacing:1px;text-decoration:none;border-bottom:1px solid var(--hm-gold);padding-bottom:3px}
+
+@media(max-width:1024px){
+  .kolGrid{grid-template-columns:repeat(3,1fr)}
+  .kolClub{flex-wrap:wrap;padding:26px 30px}
+  .kolClub .hmGoldBtn{margin-left:0}
+}
+@media(max-width:760px){
+  .kolTabs{padding:6px;gap:4px}
+  .kolTabs button{padding:10px 14px;font-size:12px;letter-spacing:1px}
+  .kolTabs span{flex-basis:100%;text-align:center;margin:4px 0 2px;padding:0}
+  .kolGrid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .kolInfo{padding:12px 12px 14px}
+  .kolInfo strong{font-size:19px}
+  .kolInfo small{font-size:10px;letter-spacing:2px}
+  .kolClub{flex-direction:column;align-items:flex-start;padding:24px}
+  .kolClub .hmGoldBtn{width:100%}
+  .siteModal>.kolModalCard{grid-template-columns:1fr}
+  .kolModalImage{min-height:0;height:340px}
+  .kolModalCopy{padding:26px 22px 30px}
+  .kolModalCopy h2{font-size:36px}
+  .kolActions a{flex:1}
+}

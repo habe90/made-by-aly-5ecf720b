@@ -1,0 +1,101 @@
+/* ALY CLUB, prijava i registracija */
+.clHero{position:relative;min-height:520px;border-radius:18px;overflow:hidden;background:#141416;box-shadow:0 18px 50px rgba(0,0,0,.18);display:flex;align-items:center}
+.clHero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% center;transform:scaleX(-1)}
+.clHero:before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(15,15,17,.94) 0%,rgba(15,15,17,.8) 40%,rgba(15,15,17,.15) 75%)}
+.clHeroCopy{position:relative;z-index:2;max-width:560px;padding:60px 0 60px 64px;color:#d8d1c4}
+.clHeroCopy .hmEyebrow{color:var(--hm-gold-2)}
+.clHeroCopy h1{color:#fff!important;font-size:78px;letter-spacing:8px;margin:14px 0 0;line-height:1}
+.clHeroCopy h2{color:#e6d3ae!important;font-size:30px;font-style:italic;margin:8px 0 0}
+.clHeroCopy p:not(.hmEyebrow){margin:0 0 30px;font-size:16px}
+.clHeroCopy .hmOutlineBtn{color:#ece6da;border-color:#8f7442}
+.clActions{display:flex;flex-wrap:wrap;gap:14px}
+
+.clBenefits{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.clBenefits article{padding:34px 32px;text-align:center}
+.clIcon{display:inline-grid;place-items:center;width:62px;height:62px;border-radius:50%;background:#f3eee5;color:var(--hm-gold)}
+.clBenefits h3{font-size:28px;margin:16px 0 6px}
+.clBenefits p{margin:0;font-size:14px}
+
+.clCard{display:grid;grid-template-columns:55% 45%;min-height:420px;border-radius:18px;overflow:hidden;background:var(--hm-card);box-shadow:var(--hm-shadow)}
+.clCardImage{position:relative;min-height:300px}
+.clCardImage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.clCardCopy{padding:52px 52px 44px;display:flex;flex-direction:column;justify-content:center}
+.clCardCopy h2{font-size:44px;margin:12px 0 0;line-height:1.08}
+.clCardCopy p:not(.hmEyebrow){margin:0 0 16px}
+.clCardCopy ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.clCardCopy li{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--hm-ink);padding-left:16px;position:relative}
+.clCardCopy li:before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--hm-gold)}
+
+.clTeaser{display:flex;align-items:center;gap:30px;padding:44px 52px;border-radius:18px;color:#d8d1c4;background:linear-gradient(90deg,rgba(18,18,20,.95) 0%,rgba(18,18,20,.75) 55%,rgba(18,18,20,.35) 100%),url('/images/club-teaser.png') center/cover;box-shadow:0 14px 34px rgba(0,0,0,.18)}
+.clTeaser .hmEyebrow{color:var(--hm-gold-2)}
+.clTeaser h2{color:#fff!important;font-size:42px;margin:8px 0 4px}
+.clTeaser p:not(.hmEyebrow){margin:0}
+.clTeaser .hmGoldBtn{margin-left:auto}
+
+.clFaq{text-align:center}
+.clFaq h2{font-size:40px;margin:8px 0 26px}
+.clFaq>div{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:left}
+.clFaq article{padding:24px;border-radius:12px;background:#f3eee5}
+.clFaq h3{font-size:24px;margin:0 0 8px}
+.clFaq p{margin:0;font-size:14px}
+
+/* Prijava i registracija */
+.authLayout{display:grid;grid-template-columns:1fr 1fr;border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(40,32,20,.12);min-height:640px}
+.authLayout.wide{grid-template-columns:.8fr 1.2fr}
+.authVisual{position:relative;background:#141416}
+.authVisual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.authVisual:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,15,17,.7) 0%,rgba(15,15,17,0) 45%)}
+.authVisual p{position:absolute;z-index:1;left:36px;bottom:30px;margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-size:30px;line-height:1.2;color:#f3e7d2}
+.authPanel{border-radius:0;display:flex;flex-direction:column;justify-content:center;padding:56px 64px}
+.authPanel .authLogo{display:block;height:96px;width:auto;margin:0 auto 6px}
+.authPanel h1{font-size:46px;text-align:center;margin:8px 0 4px}
+.authPanel .authSub{text-align:center;margin:0 0 30px;color:#bdb5a7}
+.authPanel form{display:flex;flex-direction:column;gap:18px}
+.authRow{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px}
+.authRow button{background:none;border:0;color:var(--hm-gold-2);font:inherit;font-size:14px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.authPanel .hmGoldBtn{width:100%}
+.authSwitch{margin-top:28px;padding-top:24px;border-top:1px solid #3a352c;text-align:center;font-size:14px}
+.authSwitch p{margin:0 0 12px}
+.authSwitch .hmOutlineBtn{width:100%}
+.authPerks{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin:0 0 26px;padding:0;list-style:none}
+.authPerks li{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--hm-gold-2)}
+.authSuccess{text-align:center}
+.authSuccess p{margin:0 0 26px}
+
+@media(max-width:1024px){
+  .clHero{min-height:460px}
+  .clHeroCopy{padding:48px 40px}
+  .clHeroCopy h1{font-size:62px}
+  .clCard{grid-template-columns:1fr}
+  .clCardImage{height:340px}
+  .clCardCopy{padding:40px}
+  .clTeaser{flex-wrap:wrap;padding:36px 40px}
+  .clTeaser .hmGoldBtn{margin-left:0}
+  .clFaq>div{grid-template-columns:1fr}
+  .authLayout,.authLayout.wide{grid-template-columns:1fr}
+  .authVisual{height:300px}
+  .authPanel{padding:44px 40px}
+}
+@media(max-width:760px){
+  .clHero{min-height:0;flex-direction:column;align-items:stretch}
+  .clHero>img{position:relative;height:300px;object-position:28% 30%}
+  .clHero:before{background:linear-gradient(180deg,rgba(15,15,17,0) 0%,rgba(15,15,17,0) 30%,rgba(15,15,17,.96) 52%)}
+  .clHeroCopy{padding:0 24px 32px;margin-top:-40px}
+  .clHeroCopy h1{font-size:46px;letter-spacing:5px}
+  .clHeroCopy h2{font-size:24px}
+  .clActions a{flex:1 1 100%}
+  .clBenefits{grid-template-columns:1fr;gap:14px}
+  .clCardImage{height:260px}
+  .clCardCopy{padding:28px 24px}
+  .clCardCopy h2{font-size:34px}
+  .clCardCopy ul{grid-template-columns:1fr}
+  .clTeaser{padding:30px 24px;flex-direction:column;align-items:flex-start}
+  .clTeaser h2{font-size:32px}
+  .clTeaser .hmGoldBtn{width:100%}
+  .clFaq h2{font-size:30px}
+  .authVisual{height:220px}
+  .authVisual p{font-size:24px;left:22px;bottom:18px}
+  .authPanel{padding:32px 22px 36px}
+  .authPanel .authLogo{height:78px}
+  .authPanel h1{font-size:36px}
+}

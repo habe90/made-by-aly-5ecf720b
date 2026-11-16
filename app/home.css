@@ -1,18 +1,4 @@
-/* Početna — svijetla, "boxed" varijanta */
-body:has(.home){background:#f3efe8}
-.home{--hm-bg:#f3efe8;--hm-card:#fbfaf7;--hm-ink:#18181a;--hm-text:#3f3c37;--hm-muted:#7b756b;--hm-gold:#b8914f;--hm-gold-2:#ddbf80;--hm-line:#e3dccf;
-  background:var(--hm-bg);color:var(--hm-text);font-family:Montserrat,Arial,sans-serif;font-size:15px;font-weight:400;line-height:1.6;min-height:100vh}
-.home h1,.home h2,.home h3{font-family:'Cormorant Garamond',Georgia,serif;color:var(--hm-ink);font-weight:500}
-.hmWrap{max-width:1240px;margin:0 auto;padding:28px 24px 56px;display:flex;flex-direction:column;gap:28px}
-.hmEyebrow{font-size:12px;letter-spacing:6px;color:var(--hm-ink);margin:0;font-weight:500}
-.hmRule{display:block;width:56px;height:2px;background:var(--hm-gold);margin:22px 0}
-.hmRule.light{background:var(--hm-gold-2);width:42px;margin:12px 0 14px}
-
-/* Buttons */
-.hmDarkBtn{display:inline-flex;align-items:center;gap:16px;background:#1b1b1d;color:#fff;text-decoration:none;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:17px 30px;border-radius:4px;border-right:4px solid var(--hm-gold);transition:background .2s,transform .2s}
-.hmDarkBtn:hover{background:#2a2a2d;transform:translateY(-1px)}
-.hmGoldBtn{display:inline-flex;align-items:center;gap:14px;background:linear-gradient(90deg,#c9a25e,#e6c98c);color:#1a1a1a;border:0;border-radius:4px;padding:17px 30px;font:500 13px Montserrat,Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;box-shadow:0 6px 18px rgba(184,145,79,.3);transition:filter .2s,transform .2s}
-.hmGoldBtn:hover{filter:brightness(1.05);transform:translateY(-1px)}
+/* Početna — sekcije specifične za početnu (zajednički stil je u components/site.css) */
 
 /* Hero */
 .hmHero{position:relative;display:grid;grid-template-columns:47% 53%;min-height:520px;border-radius:18px;overflow:hidden;background:
@@ -27,34 +13,26 @@ body:has(.home){background:#f3efe8}
 .hmHeroImage{position:relative}
 .hmHeroImage img{position:absolute;inset:0 0 0 -12%;width:112%;height:100%;object-fit:cover;object-position:60% 6%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 32%);mask-image:linear-gradient(90deg,transparent 0%,#000 32%)}
 
-/* Categories */
+/* Kategorije */
 .hmCats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.hmCat{position:relative;display:block;height:230px;border-radius:14px;overflow:hidden;text-decoration:none;color:#fff;background:#6d5e4f;box-shadow:0 12px 30px rgba(40,32,20,.12)}
+.hmCat{position:relative;display:block;height:230px;border-radius:14px;overflow:hidden;text-decoration:none;color:#fff!important;background:#6d5e4f;box-shadow:0 12px 30px rgba(40,32,20,.12)}
 .hmCat img{position:absolute;right:0;top:0;height:100%;width:62%;object-fit:cover;object-position:center 18%;transition:transform .6s}
 .hmCat:before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#5e5246 0%,#6f6154 38%,rgba(111,97,84,.55) 55%,rgba(111,97,84,0) 75%)}
 .hmCat:hover img{transform:scale(1.05)}
 .hmCat>div{position:relative;z-index:2;padding:34px 30px}
-.hmCat h2{color:#fff;font-size:34px;letter-spacing:5px;text-transform:uppercase;margin:0;font-weight:500}
+.hmCat h2{color:#fff!important;font-size:34px;letter-spacing:5px;text-transform:uppercase;margin:0;font-weight:500}
 .hmCat p{margin:0;font-size:14px;line-height:1.5;color:#f0ebe3}
 .hmCircle{display:inline-grid;place-items:center;width:42px;height:42px;border:1px solid rgba(255,255,255,.85);border-radius:50%;margin-top:22px;transition:background .2s,color .2s}
 .hmCat:hover .hmCircle{background:#fff;color:#1b1b1d}
 
-/* ALY CLUB */
+/* ALY CLUB baner */
 .hmClub{display:flex;align-items:center;gap:34px;padding:28px 44px;border-radius:14px;color:#ece6da;background:
   linear-gradient(90deg,rgba(20,20,22,.96) 0%,rgba(20,20,22,.82) 55%,rgba(20,20,22,.6) 100%),url('/images/club-black.png') center/cover;box-shadow:0 14px 34px rgba(0,0,0,.18)}
 .hmCrown{color:var(--hm-gold-2);display:flex;padding-right:34px;border-right:1px solid #4a4130}
 .hmClub strong{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:34px;letter-spacing:9px;white-space:nowrap;padding-right:34px;border-right:1px solid #4a4130}
-.hmClub h2{color:#fff;font-family:Montserrat,Arial,sans-serif;font-size:17px;font-weight:600;margin:0}
+.hmClub h2{color:#fff!important;font-family:Montserrat,Arial,sans-serif!important;font-size:17px;font-weight:600!important;margin:0}
 .hmClub p{margin:4px 0 0;font-size:14px;color:#c9c2b5}
 .hmClub .hmGoldBtn{margin-left:auto}
-
-/* Section heading */
-.hmSectionHead{display:flex;align-items:center;justify-content:center;gap:26px;position:relative;margin:10px 0 22px}
-.hmSectionHead>span{width:80px;height:1px;background:var(--hm-gold)}
-.hmSectionHead h2{font-family:Montserrat,Arial,sans-serif;font-size:20px;letter-spacing:7px;font-weight:400;margin:0;text-align:center}
-.hmSeeAll{position:absolute;right:0;display:inline-flex;align-items:center;gap:8px;color:var(--hm-ink);text-decoration:none;font-size:13px;letter-spacing:1px}
-.hmSeeAll svg:last-child{color:var(--hm-gold)}
-.hmSeeAll:hover{color:var(--hm-gold)}
 
 /* Instagram */
 .hmInstaGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -68,8 +46,8 @@ body:has(.home){background:#f3efe8}
 .hmPlay{position:absolute;top:12px;right:12px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.45);color:#fff;font-size:11px}
 @keyframes hmPulse{50%{opacity:.6}}
 
-/* Story */
-.hmStory{display:grid;grid-template-columns:55% 45%;min-height:420px;border-radius:18px;overflow:hidden;background:var(--hm-card);box-shadow:0 18px 50px rgba(40,32,20,.08)}
+/* Naša priča */
+.hmStory{display:grid;grid-template-columns:55% 45%;min-height:420px;border-radius:18px;overflow:hidden;background:var(--hm-card);box-shadow:var(--hm-shadow)}
 .hmStoryImage{position:relative;min-height:320px}
 .hmStoryImage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
 .hmStoryImage em{position:absolute;left:8%;bottom:12%;font-family:'Cormorant Garamond',Georgia,serif;font-size:36px;line-height:1.25;color:#f3e7d2;text-shadow:0 2px 18px rgba(0,0,0,.45)}
@@ -78,22 +56,6 @@ body:has(.home){background:#f3efe8}
 .hmStoryCopy p:not(.hmEyebrow){margin:0 0 14px;color:var(--hm-text)}
 .hmStoryCopy .hmDarkBtn{margin-top:14px}
 
-/* Footer */
-.hmFooter{background:radial-gradient(120% 180% at 15% 0%,#2a2b2e 0%,#1d1e20 45%,#141416 100%);color:#cfc8bb;border-top:1px solid #3b3427}
-.hmFooterInner{max-width:1240px;margin:0 auto;padding:44px 24px 28px;display:grid;grid-template-columns:1fr 1.6fr 1fr;gap:36px;align-items:center}
-.hmFooterBrand img{height:74px;width:auto;display:block}
-.hmFooterBrand p{margin:10px 0 0;font-size:13px;color:#a7a093}
-.hmFooter nav{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 26px}
-.hmFooter nav a{color:#e9e3d7;text-decoration:none;font-size:12px;letter-spacing:1.6px;text-transform:uppercase}
-.hmFooter nav a:hover{color:var(--hm-gold-2)}
-.hmFooterSocial{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
-.hmFooterSocial a{color:#e9e3d7;display:flex}
-.hmFooterSocial a:hover{color:var(--hm-gold-2)}
-.hmFooterSocial em{font-family:'Cormorant Garamond',Georgia,serif;font-size:19px;color:#d9c49d}
-.hmFooterBottom{max-width:1240px;margin:0 auto;padding:14px 24px 22px;border-top:1px solid #34302a;display:flex;justify-content:space-between;gap:12px;font-size:12px;color:#8f897e}
-.hmFooterBottom p{margin:0}
-
-/* Tablet */
 @media(max-width:1024px){
   .hmHero h1{font-size:60px}
   .hmHeroCopy{padding:56px 0 40px 44px}
@@ -107,9 +69,7 @@ body:has(.home){background:#f3efe8}
   .hmStoryImage{height:380px}
   .hmStoryCopy{padding:40px}
 }
-/* Mobile */
 @media(max-width:760px){
-  .hmWrap{padding:16px 16px 40px;gap:20px}
   .hmHero{grid-template-columns:1fr;min-height:0;border-radius:14px}
   .hmHeroImage{order:-1;height:400px}
   .hmHeroImage img{inset:0;width:100%;object-position:center 8%;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 100%);mask-image:linear-gradient(180deg,#000 70%,transparent 100%)}
@@ -124,17 +84,9 @@ body:has(.home){background:#f3efe8}
   .hmCrown,.hmClub strong{border-right:0;padding-right:0}
   .hmClub strong{font-size:28px;letter-spacing:7px}
   .hmClub .hmGoldBtn{width:100%;justify-content:center}
-  .hmSectionHead{flex-wrap:wrap;gap:12px 16px}
-  .hmSectionHead>span{width:28px}
-  .hmSectionHead h2{font-size:14px;letter-spacing:4px}
-  .hmSeeAll{position:static;flex-basis:100%;justify-content:center}
   .hmInstaGrid{gap:10px}
   .hmPost{border-radius:10px}
   .hmStoryImage{height:320px}
   .hmStoryCopy{padding:30px 24px}
   .hmStoryCopy h2{font-size:38px}
-  .hmDarkBtn{padding:15px 24px}
-  .hmFooterInner{grid-template-columns:1fr;text-align:center;justify-items:center;padding:36px 16px 22px}
-  .hmFooterSocial{align-items:center}
-  .hmFooterBottom{flex-direction:column;align-items:center;text-align:center;padding:14px 16px 22px}
 }

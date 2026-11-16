@@ -1,0 +1,120 @@
+/* Zajednički stil javnog sajta — svijetle "boxed" sekcije, tamni header i footer */
+body:has(.site){background:#f3efe8}
+.site{--hm-bg:#f3efe8;--hm-card:#fbfaf7;--hm-ink:#18181a;--hm-text:#3f3c37;--hm-muted:#7b756b;--hm-gold:#b8914f;--hm-gold-2:#ddbf80;--hm-line:#e3dccf;--hm-dark:#1b1b1d;
+  --hm-shadow:0 18px 50px rgba(40,32,20,.08);
+  background:var(--hm-bg);color:var(--hm-text);font-family:Montserrat,Arial,sans-serif;font-size:15px;font-weight:400;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+.site h1,.site h2,.site h3{font-family:'Cormorant Garamond',Georgia,serif;color:var(--hm-ink);font-weight:500}
+.site a{color:inherit}
+.srOnly{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hmWrap{width:100%;max-width:1240px;margin:0 auto;padding:28px 24px 56px;display:flex;flex-direction:column;gap:28px;flex:1}
+.hmEyebrow{font-size:12px;letter-spacing:6px;color:var(--hm-ink);margin:0;font-weight:500;text-transform:uppercase}
+.hmRule{display:block;width:56px;height:2px;background:var(--hm-gold);margin:22px 0}
+.hmRule.light{background:var(--hm-gold-2);width:42px;margin:12px 0 14px}
+.hmRule.center{margin-left:auto;margin-right:auto}
+
+/* Boxovi */
+.hmBox{background:var(--hm-card);border-radius:18px;box-shadow:var(--hm-shadow);padding:44px}
+.hmBox.dark{background:radial-gradient(120% 140% at 10% 0%,#2a2b2e 0%,#1d1e20 50%,#141416 100%);color:#d8d1c4}
+.hmBox.dark h1,.hmBox.dark h2,.hmBox.dark h3{color:#fff}
+
+/* Uvod podstranice */
+.pgIntro{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:340px;border-radius:18px;overflow:hidden;background:linear-gradient(160deg,#fbfaf8 0%,#ecebe8 55%,#e2dfd9 100%);box-shadow:var(--hm-shadow)}
+.pgIntro>div:first-child{padding:56px 0 48px 60px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;position:relative;z-index:2}
+.pgIntro h1{font-size:64px;line-height:1;margin:16px 0 0}
+.pgIntro p:not(.hmEyebrow){margin:0;font-size:17px;max-width:440px}
+.pgIntroImage{position:relative}
+.pgIntroImage img{position:absolute;inset:0 0 0 -15%;width:115%;height:100%;object-fit:cover;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 35%);mask-image:linear-gradient(90deg,transparent 0%,#000 35%)}
+
+/* Dugmad */
+.hmDarkBtn{display:inline-flex;align-items:center;justify-content:center;gap:16px;background:var(--hm-dark);color:#fff!important;text-decoration:none;font:500 13px Montserrat,Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;padding:17px 30px;border:0;border-radius:4px;border-right:4px solid var(--hm-gold);cursor:pointer;transition:background .2s,transform .2s}
+.hmDarkBtn:hover{background:#2a2a2d;transform:translateY(-1px)}
+.hmGoldBtn{display:inline-flex;align-items:center;justify-content:center;gap:14px;background:linear-gradient(90deg,#c9a25e,#e6c98c);color:#1a1a1a!important;text-decoration:none;border:0;border-radius:4px;padding:17px 30px;font:500 13px Montserrat,Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;box-shadow:0 6px 18px rgba(184,145,79,.3);transition:filter .2s,transform .2s}
+.hmGoldBtn:hover{filter:brightness(1.05);transform:translateY(-1px)}
+.hmGoldBtn:disabled,.hmDarkBtn:disabled{opacity:.6;cursor:default;transform:none}
+.hmOutlineBtn{display:inline-flex;align-items:center;justify-content:center;gap:14px;background:transparent;color:var(--hm-ink);text-decoration:none;border:1px solid var(--hm-gold);border-radius:4px;padding:16px 28px;font:500 13px Montserrat,Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
+.hmOutlineBtn:hover{background:var(--hm-gold);color:#fff}
+.hmBox.dark .hmOutlineBtn{color:#ece6da}
+
+/* Naslov sekcije */
+.hmSectionHead{display:flex;align-items:center;justify-content:center;gap:26px;position:relative;margin:10px 0 22px}
+.hmSectionHead>span{width:80px;height:1px;background:var(--hm-gold)}
+.hmSectionHead h2{font-family:Montserrat,Arial,sans-serif;font-size:20px;letter-spacing:7px;font-weight:400;margin:0;text-align:center}
+.hmSeeAll{position:absolute;right:0;display:inline-flex;align-items:center;gap:8px;color:var(--hm-ink);text-decoration:none;font-size:13px;letter-spacing:1px}
+.hmSeeAll svg:last-child{color:var(--hm-gold)}
+.hmSeeAll:hover{color:var(--hm-gold)}
+
+/* Forme */
+.fGrid{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px}
+.fField{display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:500;letter-spacing:.3px;color:var(--hm-ink)}
+.fField.full{grid-column:1/-1}
+.fField input,.fField select,.fField textarea{width:100%;font:400 15px Montserrat,Arial,sans-serif;color:var(--hm-ink);background:#fff;border:1px solid var(--hm-line);border-radius:6px;padding:14px 16px;outline:none;transition:border-color .2s,box-shadow .2s}
+.fField input:focus,.fField select:focus,.fField textarea:focus{border-color:var(--hm-gold);box-shadow:0 0 0 3px rgba(184,145,79,.15)}
+.fField input[readonly],.fField input:disabled{background:#f4f1ec;color:var(--hm-muted)}
+.fPass{position:relative;display:block}
+.fPass input{padding-right:70px}
+.fPass button{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--hm-muted);font:500 11px Montserrat,Arial,sans-serif;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:8px}
+.fCheck{display:flex;align-items:flex-start;gap:12px;font-size:14px;cursor:pointer;line-height:1.5}
+.fCheck input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--hm-gold);flex:none}
+.fMsg{margin:0;padding:12px 16px;border-radius:6px;background:#f6efe1;color:#7a5b23;font-size:14px}
+.fMsg.ok{background:#eef4ea;color:#3d6b2c}
+/* Tamni panel s formom */
+.hmBox.dark .fField{color:#e6dfd2}
+.hmBox.dark .fField input,.hmBox.dark .fField select,.hmBox.dark .fField textarea{background:#121214;border-color:#3a352c;color:#f1ebe0}
+.hmBox.dark .fField input::placeholder{color:#7f786c}
+.hmBox.dark .fField input:focus,.hmBox.dark .fField select:focus{border-color:var(--hm-gold-2)}
+.hmBox.dark .fPass button{color:#b5ac9c}
+.hmBox.dark .fCheck{color:#d8d1c4}
+.hmBox.dark .fMsg{background:#2c2618;color:#e7cf9b}
+.hmBox.dark .fMsg.ok{background:#1f2a1c;color:#b9d7a8}
+.hmBox.dark a{color:var(--hm-gold-2)}
+
+/* Modal (ALY CLUB prijava na novosti) */
+.siteModal{position:fixed;z-index:60;inset:0;background:rgba(20,18,15,.6);display:grid;place-items:center;padding:20px;backdrop-filter:blur(3px)}
+.siteModal>div{position:relative;width:min(520px,100%);text-align:center}
+.siteModal .hmClose{position:absolute;right:14px;top:10px;background:none;border:0;color:#d8d1c4;font-size:30px;line-height:1;cursor:pointer}
+.siteModal h2{font-size:44px;margin:10px 0 6px}
+.siteModal form{display:flex;gap:10px;margin-top:22px}
+.siteModal form .fField{flex:1}
+
+/* Footer */
+.hmFooter{background:radial-gradient(120% 180% at 15% 0%,#2a2b2e 0%,#1d1e20 45%,#141416 100%);color:#cfc8bb;border-top:1px solid #3b3427}
+.hmFooterInner{max-width:1240px;margin:0 auto;padding:44px 24px 28px;display:grid;grid-template-columns:1fr 1.6fr 1fr;gap:36px;align-items:center}
+.hmFooterBrand img{height:74px;width:auto;display:block}
+.hmFooterBrand p{margin:10px 0 0;font-size:13px;color:#a7a093}
+.hmFooter nav{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 26px}
+.hmFooter nav a{color:#e9e3d7;text-decoration:none;font-size:12px;letter-spacing:1.6px;text-transform:uppercase}
+.hmFooter nav a:hover{color:var(--hm-gold-2)}
+.hmFooterSocial{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.hmFooterSocial>div{display:flex;gap:16px}
+.hmFooterSocial a{color:#e9e3d7;display:flex}
+.hmFooterSocial a:hover{color:var(--hm-gold-2)}
+.hmFooterSocial em{font-family:'Cormorant Garamond',Georgia,serif;font-size:19px;color:#d9c49d}
+.hmFooterBottom{max-width:1240px;margin:0 auto;padding:14px 24px 22px;border-top:1px solid #34302a;display:flex;justify-content:space-between;gap:12px;font-size:12px;color:#8f897e}
+.hmFooterBottom p{margin:0}
+
+@media(max-width:1024px){
+  .hmBox{padding:34px}
+  .pgIntro h1{font-size:52px}
+  .pgIntro>div:first-child{padding:44px 0 40px 40px}
+}
+@media(max-width:760px){
+  .hmWrap{padding:16px 16px 40px;gap:20px}
+  .hmBox{padding:26px 20px;border-radius:14px}
+  .pgIntro{grid-template-columns:1fr;min-height:0;border-radius:14px}
+  .pgIntroImage{order:-1;height:260px}
+  .pgIntroImage img{inset:0;width:100%;-webkit-mask-image:linear-gradient(180deg,#000 65%,transparent 100%);mask-image:linear-gradient(180deg,#000 65%,transparent 100%)}
+  .pgIntro>div:first-child{padding:4px 24px 30px}
+  .pgIntro h1{font-size:42px}
+  .pgIntro p:not(.hmEyebrow){font-size:15px}
+  .hmSectionHead{flex-wrap:wrap;gap:12px 16px}
+  .hmSectionHead>span{width:28px}
+  .hmSectionHead h2{font-size:14px;letter-spacing:4px}
+  .hmSeeAll{position:static;flex-basis:100%;justify-content:center}
+  .hmDarkBtn,.hmGoldBtn,.hmOutlineBtn{padding:15px 24px}
+  .fGrid{grid-template-columns:1fr}
+  .siteModal form{flex-direction:column}
+  .siteModal h2{font-size:36px}
+  .hmFooterInner{grid-template-columns:1fr;text-align:center;justify-items:center;padding:36px 16px 22px}
+  .hmFooterSocial{align-items:center}
+  .hmFooterBottom{flex-direction:column;align-items:center;text-align:center;padding:14px 16px 22px}
+}

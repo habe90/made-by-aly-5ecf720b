@@ -1,34 +1,70 @@
 'use client';
 
-import Image from 'next/image';
-import { useState } from 'react';
-import { CartIcon } from '../../components/Icons';
+import {useState} from 'react';
+import SitePage from '../../components/SitePage';
+import {CONTACT_EMAIL} from '../../components/siteConfig';
+import {Arrow, InstaIcon, MailIcon} from '../../components/SiteIcons';
+import './proizvod.css';
 
-const nav=[['Početna','/'],['Kolekcija','/kolekcija'],['Haljine','/kolekcija'],['Khimari','/kolekcija'],['ALY CLUB','/club'],['O nama','/#onama'],['Kontakt','#kontakt']];
+const photos = [
+  ['main', '/images/luna-main.png', 'Luna haljina sprijeda'],
+  ['detail', '/images/luna-detail.png', 'Detalj rukava Luna haljine'],
+  ['back', '/images/luna-back.png', 'Luna haljina straga']
+];
+const colors = [['Crna', '#0b0b0b'], ['Taupe', '#9e968a'], ['Krem', '#ece6da']];
+const details = [
+  ['Opis', 'Elegantna haljina fluidnog pada i potpune pokrivenosti. Jednostavan, profinjen kroj stvara osjećaj udobnosti i gracioznosti.'],
+  ['Materijal', 'Mekani premium saten, lagan i prijatan za nošenje.'],
+  ['Dužina i kroj', 'Standardna dužina 145 cm, širok i profinjen kroj. Moguća izrada po mjeri.'],
+  ['Održavanje', 'Prati ručno ili na programu za osjetljive tkanine na 30°C. Ne sušiti u mašini.']
+];
 
-export default function LunaHaljina(){
- const [menu,setMenu]=useState(false),[photo,setPhoto]=useState('main'),[color,setColor]=useState('Crna'),[size,setSize]=useState('XS'),[length,setLength]=useState('140 cm (standard)'),[qty,setQty]=useState(1),[note,setNote]=useState(''),[favorite,setFavorite]=useState(false),[bag,setBag]=useState(0),[notice,setNotice]=useState('');
- const photos={main:'/images/luna-main.png',detail:'/images/luna-detail.png',back:'/images/luna-back.png'};
- function add(){setBag(bag+qty);setNotice(`${qty} × Luna haljina dodano u korpu.`);setTimeout(()=>setNotice(''),3000)}
- return <main className="productPage">
-  <header className="productHeader"><a className="brand" href="/">MADE BY ALY</a><button className="menuBtn" onClick={()=>setMenu(!menu)}>{menu?'×':'☰'}</button><nav className={menu?'nav open':'nav'}>{nav.map(([x,h])=><a key={x} href={h}>{x}</a>)}</nav><div className="productHeadIcons"><button aria-label="Pretraga">⌕</button><button aria-label="Profil">♙</button><button aria-label="Korpa"><CartIcon/>{bag>0&&<b>{bag}</b>}</button><span>KM⌄</span></div></header>
+export default function LunaHaljina() {
+  const [photo, setPhoto] = useState(0);
+  const [color, setColor] = useState('Crna');
 
-  <section className="productMain">
-   <div className="productGallery"><div className="thumbs">{Object.entries(photos).map(([key,src])=><button key={key} className={photo===key?'active':''} onClick={()=>setPhoto(key)}><Image src={src} alt="Luna haljina prikaz" fill sizes="100px"/></button>)}<span>⌄</span></div><div className="productBig"><Image src={photos[photo]} alt="Luna crna haljina" fill priority sizes="52vw"/><p>SKROMNOST<br/>U SVAKOM<br/>KORAKU<i/></p></div></div>
+  return <SitePage active="Haljine">
+    <main className="hmWrap">
+      <nav className="pdCrumb" aria-label="Putanja"><a href="/kolekcija">Kolekcija</a> <span>›</span> <a href="/kolekcija?k=haljine">Haljine</a> <span>›</span> Luna haljina</nav>
 
-   <div className="productForm"><p className="productMaker">MADE BY ALY</p><h1>Luna haljina</h1><div className="priceRow"><strong>229,00 KM</strong><span className="stars">★★★★★</span><small>5.0 (24 recenzije)</small></div><p className="productLead">Luna haljina donosi bezvremensku eleganciju u svakoj prilici.<br/>Njen jednostavan, profinjen kroj i fluidan pad stvaraju osjećaj<br/>udobnosti i gracioznosti, uz potpunu pokrivenost.</p>
-    <label>Boja: {color}</label><div className="colorPick">{[['Crna','#050505'],['Taupe','#9e968a'],['Krem','#eee']].map(([n,c])=><button key={n} aria-label={n} className={color===n?'active':''} onClick={()=>setColor(n)} style={{background:c}}/>)}</div>
-    <label>Veličina:</label><div className="sizeRow">{['XS','S','M','L','XL'].map(s=><button key={s} className={size===s?'active':''} onClick={()=>setSize(s)}>{s}</button>)}<a href="#guide">Vodič za veličine　→</a></div>
-    <label>Dužina:</label><select value={length} onChange={e=>setLength(e.target.value)}><option>140 cm (standard)</option><option>145 cm</option><option>150 cm</option><option>155 cm</option></select>
-    <label>Količina:</label><div className="quantity"><button onClick={()=>setQty(Math.max(1,qty-1))}>−</button><span>{qty}</span><button onClick={()=>setQty(qty+1)}>＋</button></div>
-    <div className="buyRow"><button className="addBag" onClick={add}><CartIcon size={20}/> Dodaj u korpu</button><button className={favorite?'heart active':'heart'} onClick={()=>setFavorite(!favorite)}>♡</button></div>{notice&&<p className="cartNotice">{notice}</p>}
-    <label>Napomena za izradu (opcionalno):</label><textarea maxLength="200" value={note} onChange={e=>setNote(e.target.value)} placeholder="Npr. posebne mjere, dužina rukava..."/><small className="count">{note.length}/200</small>
-    <div className="accordions">{[['Opis','Elegantna haljina fluidnog pada i potpune pokrivenosti.'],['Materijal','Premium mat tkanina, lagana i prijatna za nošenje.'],['Dužina i kroj','Dostupna u više dužina, širokog i profinjenog kroja.'],['Održavanje','Nježno pranje na 30°C. Ne sušiti u mašini.']].map(([t,c])=><details key={t}><summary>{t}<span>⌄</span></summary><p>{c}</p></details>)}</div>
-   </div>
-  </section>
+      <section className="pdMain">
+        <div className="pdGallery">
+          <div className="pdThumbs">{photos.map(([key, src, alt], i) => <button key={key} className={photo === i ? 'on' : ''} onClick={() => setPhoto(i)} aria-label={alt}><img src={src} alt=""/></button>)}</div>
+          <div className="pdBig"><img src={photos[photo][1]} alt={photos[photo][2]}/></div>
+        </div>
 
-  <section className="productPair"><div className="pairCopy"><p>Upotpunite svoj izgled</p><h2>Luna khimar</h2><span>Savršen spoj. Luna khimar od istog<br/>materijala, za jedinstven i elegantan izgled.</span><strong>119,00 KM</strong><a href="/kolekcija">Pogledaj khimar　→</a></div><figure><Image src="/images/luna-khimar-front.png" alt="Luna khimar sprijeda" fill sizes="33vw"/><figcaption>JEDNOSTAVNOST<br/>KOJA GOVORI<br/>VIŠE<i/></figcaption></figure><figure><Image src="/images/luna-back.png" alt="Luna khimar straga" fill sizes="33vw"/><figcaption>ISTI PUT<br/>ISTA LJEPOTA<i/></figcaption></figure></section>
+        <div className="pdInfo hmBox">
+          <p className="hmEyebrow">MADE BY ALY · HALJINE</p>
+          <h1>Luna haljina</h1>
+          <i className="hmRule"/>
+          <p className="pdLead">Luna haljina donosi bezvremensku eleganciju u svakoj prilici. Njen jednostavan, profinjen kroj i fluidan pad stvaraju osjećaj udobnosti i gracioznosti, uz potpunu pokrivenost.</p>
 
-  <footer id="kontakt" className="productFooter"><div className="productFooterTop"><div><a className="brand" href="/">MADE BY ALY</a><p>Više od odjeće.<br/>To je način.</p></div><nav><a href="/">Početna</a><a href="/kolekcija">Kolekcija</a><a href="/kolekcija">Haljine</a><a href="/kolekcija">Khimari</a></nav><nav><a href="/club">ALY CLUB</a><a href="/#onama">O nama</a><a href="#kontakt">Kontakt</a></nav><div className="newsletter"><b>Prijavite se na newsletter</b><form onSubmit={e=>e.preventDefault()}><input type="email" placeholder="Vaša e-mail adresa"/><button>→</button></form><p>Budite prve koje saznaju za nove kolekcije,<br/>posebne ponude i više.</p></div><div className="footerSocial">◎　●　♪　▰</div></div><div className="productFooterBottom"><span>© 2024 MADE BY ALY. Sva prava zadržana.</span><span>S ljubavlju, uvijek.　♡</span></div></footer>
- </main>
+          <div className="pdRow"><b>Boja: <span>{color}</span></b><div className="pdColors">{colors.map(([n, c]) => <button key={n} aria-label={n} title={n} className={color === n ? 'on' : ''} onClick={() => setColor(n)} style={{background: c}}/>)}</div></div>
+          <div className="pdRow"><b>Veličine</b><div className="pdSizes">{['XS', 'S', 'M', 'L', 'XL'].map(s => <span key={s}>{s}</span>)}<span className="pdCustom">Po mjeri</span></div></div>
+
+          <div className="pdCta">
+            <p>Zanima te ovaj model? Pošalji nam upit za boju, veličinu ili izradu po mjeri.</p>
+            <div>
+              <a className="hmDarkBtn" href="/instagram" target="_blank" rel="noopener noreferrer"><InstaIcon size={18}/> Pošalji upit</a>
+              <a className="hmOutlineBtn" href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Upit: Luna haljina (' + color + ')')}`}><MailIcon size={18}/> E-mail</a>
+            </div>
+          </div>
+
+          <div className="pdDetails">{details.map(([t, c], i) => <details key={t} open={i === 0}><summary>{t}</summary><p>{c}</p></details>)}</div>
+        </div>
+      </section>
+
+      <section className="pdPair">
+        <div className="pdPairCopy hmBox">
+          <p className="hmEyebrow">UPOTPUNI IZGLED</p>
+          <h2>Luna khimar</h2>
+          <i className="hmRule"/>
+          <p>Savršen spoj. Luna khimar od istog materijala, za jedinstven i elegantan izgled.</p>
+          <a className="hmDarkBtn" href="/kolekcija?k=khimari">Pogledaj khimare <Arrow/></a>
+        </div>
+        <figure><img src="/images/luna-khimar-front.png" alt="Luna khimar sprijeda" loading="lazy"/><figcaption>Jednostavnost<br/>koja govori više</figcaption></figure>
+        <figure><img src="/images/luna-back.png" alt="Luna khimar straga" loading="lazy"/><figcaption>Isti put,<br/>ista ljepota</figcaption></figure>
+      </section>
+    </main>
+  </SitePage>;
 }

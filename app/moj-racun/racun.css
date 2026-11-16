@@ -1,0 +1,41 @@
+.acLoading{text-align:center;padding:80px 20px;font-size:16px}
+.acLayout{display:grid;grid-template-columns:330px 1fr;gap:24px;align-items:start}
+.acSide{display:flex;flex-direction:column;gap:20px;position:sticky;top:124px}
+.acCard{border-radius:16px;padding:26px;color:#d8d1c4;background:radial-gradient(120% 140% at 10% 0%,#2e2f32 0%,#1d1e20 55%,#141416 100%);box-shadow:0 14px 34px rgba(0,0,0,.2);border:1px solid #3b3427}
+.acCard img{height:64px;width:auto;display:block}
+.acCardName{font-family:'Cormorant Garamond',Georgia,serif;font-size:28px;color:#fff;margin:18px 0 14px;line-height:1.1}
+.acCard>div{display:flex;justify-content:space-between;gap:12px}
+.acCard span{display:flex;flex-direction:column;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#a79f90}
+.acCard span b{font-size:14px;letter-spacing:1px;color:#e6d3ae;font-weight:500;margin-top:3px}
+.acCard em{display:flex;align-items:center;gap:8px;margin-top:18px;font-style:normal;font-size:12px;letter-spacing:1px;color:#b9d7a8}
+.acCard em i{width:8px;height:8px;border-radius:50%;background:#7fbf6a}
+.acNav{padding:10px;display:flex;flex-direction:column}
+.acNav a,.acNav button{display:block;text-align:left;padding:13px 16px;border-radius:8px;text-decoration:none;font:500 13px Montserrat,Arial,sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:var(--hm-ink);background:none;border:0;cursor:pointer}
+.acNav a:hover,.acNav button:hover{background:#f3eee5}
+.acNav button{color:#9a4b3a;margin-top:4px;border-top:1px solid var(--hm-line);border-radius:0 0 8px 8px}
+.acMain{display:flex;flex-direction:column;gap:24px}
+.acMain form{display:flex;flex-direction:column;gap:22px}
+.acMain form .hmDarkBtn{align-self:flex-start}
+.acHead h2{font-size:36px;margin:0}
+.acHead p{margin:4px 0 0;color:var(--hm-muted);font-size:14px}
+.acNews{padding:20px;border-radius:12px;background:#f3eee5}
+.acNews b{color:var(--hm-ink)}
+.acClub{display:flex;align-items:center;gap:24px;padding:32px 40px;border-radius:16px;color:#d8d1c4;background:linear-gradient(90deg,rgba(20,20,22,.95),rgba(20,20,22,.75)),url('/images/club-black.png') center/cover;box-shadow:0 14px 34px rgba(0,0,0,.18)}
+.acClub .hmEyebrow{color:var(--hm-gold-2)}
+.acClub h2{color:#fff!important;font-size:34px;margin:4px 0}
+.acClub p:not(.hmEyebrow){margin:0;font-size:14px}
+.acClub .hmGoldBtn{margin-left:auto}
+
+@media(max-width:1024px){
+  .acLayout{grid-template-columns:1fr}
+  .acSide{position:static;display:grid;grid-template-columns:1fr 1fr}
+  .acClub{flex-wrap:wrap}
+  .acClub .hmGoldBtn{margin-left:0}
+}
+@media(max-width:760px){
+  .acSide{grid-template-columns:1fr}
+  .acHead h2{font-size:30px}
+  .acMain form .hmDarkBtn{align-self:stretch}
+  .acClub{padding:26px 22px}
+  .acClub .hmGoldBtn{width:100%}
+}
