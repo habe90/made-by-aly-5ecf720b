@@ -67,7 +67,7 @@ export default function ModelPage({model}) {
           <i className="hmRule"/>
           <p className="pdLead">{model.lead}</p>
 
-          <div className="mdPalette">
+          <div className={model.colors.length > 40 ? 'mdPalette many' : 'mdPalette'}>
             <p><b>Boja:</b> {chosen ? label(c, color) : 'odaberi boju'} <span>{model.colors.length} boja</span></p>
             <div role="radiogroup" aria-label="Boje">
               {model.colors.map((col, i) => <button key={col.name} role="radio" aria-checked={color === i} title={label(col, i)} aria-label={label(col, i)} className={color === i ? 'on' : ''} onClick={() => pick(i)} style={swatchStyle(col)}>{model.numbered && <small>{i + 1}</small>}</button>)}
@@ -93,12 +93,13 @@ export default function ModelPage({model}) {
       <section className="hmBox mdAll" aria-labelledby="boje">
         <div className="mdAllHead"><span/><p className="hmEyebrow">{model.type}</p><span/></div>
         <h2 id="boje">Dostupne boje</h2>
-        <div className="mdChips">
+        {/* Kod velikih paleta (npr. 95 nijansi) dugmad bi bila preduga lista — tada je dovoljna originalna grafika. */}
+        {model.colors.length <= 40 && <div className="mdChips">
           {model.colors.map((col, i) => <button key={col.name} className={color === i ? 'on' : ''} onClick={() => pick(i, true)} aria-label={`Odaberi boju ${col.name}`}>
             <i style={swatchStyle(col)}/>{label(col, i)}
           </button>)}
-        </div>
-        {model.showcase && <div className="mdShowcase">
+        </div>}
+        {model.showcase && <div className={model.showcase.length === 1 ? 'mdShowcase single' : 'mdShowcase'}>
           {model.showcase.map(([src, alt]) => <button key={src} onClick={() => setZoom([src, alt])} aria-label={`Uvećaj: ${alt}`}><img src={src} alt={alt} loading="lazy"/></button>)}
         </div>}
       </section>
