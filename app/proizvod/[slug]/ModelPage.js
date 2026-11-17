@@ -5,6 +5,7 @@ import SitePage from '../../components/SitePage';
 import {CONTACT_EMAIL} from '../../components/siteConfig';
 import {Arrow, InstaIcon, MailIcon} from '../../components/SiteIcons';
 import '../luna-haljina/proizvod.css';
+import RecolorCanvas from './RecolorCanvas';
 import './model.css';
 
 const NAV = {haljine: 'Haljine', khimari: 'Khimari'};
@@ -18,13 +19,14 @@ export default function ModelPage({model}) {
   const chosen = color !== null;
   const label = (col, i) => model.numbered ? `${i + 1} · ${col.name}` : col.name;
 
-  // Samo originalne fotografije. Ako boja ima vlastitu originalnu fotografiju, ona ide prva.
-  const gallery = [
-    ...(chosen && c.photo ? [[c.photo, `${model.name} u boji ${c.name}`]] : []),
-    ...model.photos,
-    ...(model.showcase || [])
-  ];
+  // Samo originalne fotografije. Odabrana boja ide prva: vlastita fotografija te boje ako postoji,
+  // inače originalna fotografija obojena u browseru (recolor).
+  const first = !chosen ? [] : c.photo ? [{src: c.photo, alt: `${model.name} u boji ${c.name}`}]
+    : model.recolor ? [{src: model.recolor.src, mask: model.recolor.mask, hex: c.hex, alt: `${model.name} u boji ${c.name}`}] : [];
+  const rest = [...model.photos, ...(model.showcase || [])].map(([src, alt]) => ({src, alt})).filter(g => !first.some(x => !x.hex && x.src === g.src));
+  const gallery = [...first, ...rest];
   const big = gallery[Math.min(view, gallery.length - 1)];
+  const swatchStyle = col => ({backgroundImage: col.swatch ? `url(${col.swatch})` : undefined, backgroundColor: col.hex});
 
   function pick(i, scroll = false) {
     setColor(i);
@@ -46,11 +48,17 @@ export default function ModelPage({model}) {
       <section className="pdMain">
         <div className="pdGallery">
           <div className="pdThumbs">
-            {gallery.map(([src, alt], i) => <button key={src} className={view === i ? 'on' : ''} onClick={() => setView(i)} aria-label={alt}><img src={src} alt=""/></button>)}
+            {gallery.map((g, i) => <button key={g.src + (g.hex || '')} className={view === i ? 'on' : ''} onClick={() => setView(i)} aria-label={g.alt}><img src={g.src} alt=""/>{g.hex && <i className="mdThumbDot" style={swatchStyle(c)}/>}</button>)}
           </div>
-          <button className="pdBig mdBig" onClick={() => setZoom(big)} aria-label={`Uvećaj: ${big[1]}`}>
-            <img key={big[0]} src={big[0]} alt={big[1]}/>
-          </button>
+          {big.hex
+            ? <div className="pdBig mdBig">
+                <RecolorCanvas src={big.src} mask={big.mask} hex={big.hex} alt={big.alt}/>
+                <span className="mdTag"><i style={swatchStyle(c)}/>{label(c, color)}<small>digitalni prikaz boje</small></span>
+              </div>
+            : <button className="pdBig mdBig" onClick={() => setZoom([big.src, big.alt])} aria-label={`Uvećaj: ${big.alt}`}>
+                <img key={big.src} src={big.src} alt={big.alt}/>
+                {first.length > 0 && view === 0 && <span className="mdTag"><i style={swatchStyle(c)}/>{label(c, color)}</span>}
+              </button>}
         </div>
 
         <div className="pdInfo hmBox">
@@ -62,7 +70,7 @@ export default function ModelPage({model}) {
           <div className="mdPalette">
             <p><b>Boja:</b> {chosen ? label(c, color) : 'odaberi boju'} <span>{model.colors.length} boja</span></p>
             <div role="radiogroup" aria-label="Boje">
-              {model.colors.map((col, i) => <button key={col.name} role="radio" aria-checked={color === i} title={label(col, i)} aria-label={label(col, i)} className={color === i ? 'on' : ''} onClick={() => pick(i)} style={{backgroundImage: `url(${col.swatch})`, backgroundColor: col.hex}}>{model.numbered && <small>{i + 1}</small>}</button>)}
+              {model.colors.map((col, i) => <button key={col.name} role="radio" aria-checked={color === i} title={label(col, i)} aria-label={label(col, i)} className={color === i ? 'on' : ''} onClick={() => pick(i)} style={swatchStyle(col)}>{model.numbered && <small>{i + 1}</small>}</button>)}
             </div>
           </div>
 
@@ -87,7 +95,7 @@ export default function ModelPage({model}) {
         <h2 id="boje">Dostupne boje</h2>
         <div className="mdChips">
           {model.colors.map((col, i) => <button key={col.name} className={color === i ? 'on' : ''} onClick={() => pick(i, true)} aria-label={`Odaberi boju ${col.name}`}>
-            <i style={{backgroundImage: `url(${col.swatch})`, backgroundColor: col.hex}}/>{label(col, i)}
+            <i style={swatchStyle(col)}/>{label(col, i)}
           </button>)}
         </div>
         {model.showcase && <div className="mdShowcase">

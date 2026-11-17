@@ -3,6 +3,7 @@
 // Sve fotografije su originali (bez ponovne kompresije). Nova boja/model: slike u public/images/modeli/<model>/.
 const z = '/images/modeli/zafira';
 const r = '/images/modeli/rose';
+const v = '/images/modeli/vintage-beauty';
 
 const palette = (dir, list) => list.map(([name, hex], i) => ({name, hex, swatch: `${dir}/tkanina-${i + 1}.webp`}));
 
@@ -14,6 +15,8 @@ export const MODELI = [
     cat: 'haljine',
     lead: 'Zafira je udobna haljina od kvalitetnog rebrastog materijala, s visokim ovratnikom i rukavima koji se skupljaju vezicama. Široki, ravni kroj pruža potpunu pokrivenost i slobodu pokreta — za svaki dan i svaku priliku.',
     photos: [[`${z}/glavna.png`, 'Zafira haljina na lutki, prikaz sprijeda'], [`${z}/detalj.webp`, 'Detalj rukava Zafira haljine s MADE BY ALY etiketom']],
+    // Boja se nanosi na originalnu fotografiju u browseru (maska = dio slike koji je haljina).
+    recolor: {src: `${z}/glavna.png`, mask: `${z}/maska.png`},
     showcase: [[`${z}/sve-boje.webp`, 'Zafira haljina u svih 12 boja'], [`${z}/paleta.webp`, 'Paleta boja Zafira haljine s uzorcima tkanine']],
     features: ['Kvalitetan rebrasti materijal', 'Udobna i lagana', 'Prozračna i prijatna', 'Trajna boja'],
     details: [
@@ -34,6 +37,7 @@ export const MODELI = [
     cat: 'haljine',
     lead: 'Rose je mekana, široka haljina od teksturiranog pletiva, s blagim ovratnikom i balon rukavima stegnutim na manžetni. Topli, neutralni tonovi koji se lako kombinuju — udobnost bez kompromisa.',
     photos: [[`${r}/glavna.webp`, 'Rose haljina na lutki u svijetlo sivoj boji'], [`${r}/detalj.webp`, 'Detalj Rose haljine s balon rukavima i MADE BY ALY etiketom']],
+    recolor: {src: `${r}/glavna.webp`, mask: `${r}/maska.png`},
     showcase: [[`${r}/sve-boje.webp`, 'Rose haljina u svih 10 boja'], [`${r}/paleta.webp`, 'Paleta boja Rose haljine s uzorcima tkanine']],
     features: ['Teksturirano pletivo', 'Balon rukavi', 'Široki kroj', 'Neutralni tonovi'],
     details: [
@@ -46,6 +50,24 @@ export const MODELI = [
       ['Crna melange', '#2a2a2a'], ['Crna', '#111113'], ['Pijesak', '#c4b7ad'], ['Siva', '#6b6c70'], ['Antracit', '#343435']
     ]),
     numbered: true
+  },
+  {
+    slug: 'vintage-beauty',
+    name: 'Vintage beauty',
+    type: 'Abaya',
+    cat: 'abaye',
+    lead: 'Vintage beauty je set abaye i khimara od medinske svile, s nježnim volanima na khimaru i rukavima, manžetnama s dugmićima i bogatim padom tkanine. Romantičan detalj i potpuna pokrivenost u jednom modelu.',
+    photos: [[`${v}/cokolada.webp`, 'Vintage beauty abaya i khimar u boji čokolade'], [`${v}/maslinasta.webp`, 'Vintage beauty abaya i khimar u maslinasto zelenoj boji']],
+    features: ['Medinska svila', 'Khimar s volanima', 'Manžete s dugmićima', 'Potpuna pokrivenost'],
+    details: [
+      ['Materijal', 'Medinska svila — mekana, mat tkanina koja lijepo pada, ne gužva se lako i prijatna je za nošenje.'],
+      ['Kroj', 'Široka abaya s balon rukavima, manžete s dugmićima i volanom; dugi khimar s naboranim volanom.'],
+      ['Održavanje', 'Prati na 30°C, na programu za osjetljive tkanine. Peglati na niskoj temperaturi.']
+    ],
+    colors: [
+      {name: 'Čokolada', hex: '#6b3a28', photo: `${v}/cokolada.webp`},
+      {name: 'Maslinasto zelena', hex: '#5f6b2a', photo: `${v}/maslinasta.webp`}
+    ]
   }
 ];
 
