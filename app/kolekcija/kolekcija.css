@@ -28,19 +28,9 @@
 .kolClub .hmGoldBtn{margin-left:auto}
 .kolClub .hmCrown{color:var(--hm-gold-2);display:flex}
 
-/* Detalj modela */
-.kolModal{align-items:center}
-.siteModal>.kolModalCard{width:min(980px,100%);max-height:calc(100dvh - 40px);overflow:auto;display:grid;grid-template-columns:1fr 1fr;background:var(--hm-card);border-radius:18px;text-align:left;box-shadow:0 30px 80px rgba(0,0,0,.35)}
-.kolModalCard .hmClose{color:var(--hm-ink);z-index:2;background:rgba(255,255,255,.8);border-radius:50%;width:40px;height:40px;right:12px;top:12px;font-size:26px}
-.kolModalImage{background:#e4ded3;min-height:420px;position:relative}
-.kolModalImage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 15%}
-.kolModalCopy{padding:48px 44px;display:flex;flex-direction:column;align-items:flex-start}
-.kolModalCopy h2{font-size:46px;margin:10px 0 0;line-height:1.05}
-.kolModalCopy p:not(.hmEyebrow){margin:0 0 12px}
-.kolColors b{color:var(--hm-ink);font-weight:600}
-.kolNote{font-size:14px;color:var(--hm-muted)}
-.kolActions{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
-.kolMore{margin-top:22px;display:inline-flex;align-items:center;gap:8px;color:var(--hm-ink);font-size:13px;letter-spacing:1px;text-decoration:none;border-bottom:1px solid var(--hm-gold);padding-bottom:3px}
+.kolEmpty{text-align:center;padding:56px 24px}
+.kolEmpty h2{font-size:40px;margin:8px 0 6px}
+.kolEmpty p:not(.hmEyebrow){margin:0 0 22px}
 
 @media(max-width:1024px){
   .kolGrid{grid-template-columns:repeat(3,1fr)}
@@ -57,9 +47,4 @@
   .kolInfo small{font-size:10px;letter-spacing:2px}
   .kolClub{flex-direction:column;align-items:flex-start;padding:24px}
   .kolClub .hmGoldBtn{width:100%}
-  .siteModal>.kolModalCard{grid-template-columns:1fr}
-  .kolModalImage{min-height:0;height:340px}
-  .kolModalCopy{padding:26px 22px 30px}
-  .kolModalCopy h2{font-size:36px}
-  .kolActions a{flex:1}
 }

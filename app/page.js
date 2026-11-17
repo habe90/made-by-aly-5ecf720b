@@ -7,17 +7,17 @@ import {Arrow, Crown, InstaIcon} from './components/SiteIcons';
 import './home.css';
 
 const categories = [
-  {title: 'Abaye', text: ['Bezvremenski stil', 'i potpuna udobnost.'], image: '/images/product-amina.png', href: '/kolekcija?k=abaye'},
-  {title: 'Haljine', text: ['Elegantni modeli', 'za posebne prilike.'], image: '/images/product-lejla.png', href: '/kolekcija?k=haljine'},
-  {title: 'Khimari', text: ['Potpuna pokrivenost', 'u modernom izdanju.'], image: '/images/product-noor.png', href: '/kolekcija?k=khimari'}
+  {title: 'Abaye', text: ['Bezvremenski stil', 'i potpuna udobnost.'], image: '/images/pocetna/abaya-mocca-dugmad.webp', href: '/kolekcija?k=abaye'},
+  {title: 'Haljine', text: ['Elegantni modeli', 'za posebne prilike.'], image: '/images/pocetna/haljina-siva.webp', href: '/kolekcija?k=haljine'},
+  {title: 'Khimari', text: ['Potpuna pokrivenost', 'u modernom izdanju.'], image: '/images/pocetna/haljina-terakota.webp', href: '/kolekcija?k=khimari'}
 ];
 
 // Prikazuje se dok Instagram nije povezan ili ako API trenutno ne odgovara.
 const fallbackPosts = [
-  {id: 'f1', image: '/images/luna-khimar-front.png', caption: 'Luna khimar'},
-  {id: 'f2', image: '/images/editorial-taupe.png', caption: 'Inspiracija svaki dan'},
-  {id: 'f3', image: '/images/instagram-box.png', caption: 'MADE BY ALY pakovanje'},
-  {id: 'f4', image: '/images/collection-serena-dress.png', caption: 'Serena haljina'}
+  {id: 'f1', image: '/images/pocetna/abaya-krem-prugice.webp', caption: 'Krem abaya s prugicama'},
+  {id: 'f2', image: '/images/pocetna/haljina-siva.webp', caption: 'Siva haljina s naborima'},
+  {id: 'f3', image: '/images/pocetna/abaya-mocca-dugmad.webp', caption: 'Abaya s dugmićima'},
+  {id: 'f4', image: '/images/pocetna/haljina-terakota.webp', caption: 'Haljina u boji terakote'}
 ];
 
 export default function Home() {
@@ -42,7 +42,7 @@ export default function Home() {
           <a className="hmDarkBtn" href="/kolekcija">Istraži kolekciju <Arrow/></a>
           <p className="hmWords">SKROMNOST <span>·</span> SNAGA <span>·</span> LJEPOTA <span>·</span> ZAUVIJEK</p>
         </div>
-        <div className="hmHeroImage"><img src="/images/luna-main.png" alt="Žena u elegantnoj crnoj abaji među kamenim lukovima"/></div>
+        <div className="hmHeroImage"><img src="/images/pocetna/abaya-krem-prugice.webp" alt="Žena u krem abaji s prugicama u jesenjem parku"/></div>
       </section>
 
       <section className="hmCats" aria-label="Kategorije">
@@ -78,7 +78,7 @@ export default function Home() {
       </section>
 
       <section className="hmStory">
-        <div className="hmStoryImage"><img src="/images/story.png" alt="Naša priča — žena u crnoj abaji" loading="lazy"/><em>Skromnost<br/>je uvijek<br/>u modi.</em></div>
+        <div className="hmStoryImage"><img src="/images/pocetna/haljina-terakota.webp" alt="Naša priča — žena u haljini boje terakote" loading="lazy"/><em>Skromnost<br/>je uvijek<br/>u modi.</em></div>
         <div className="hmStoryCopy">
           <p className="hmEyebrow">NAŠA PRIČA</p><h2>Više od brenda.</h2><i className="hmRule"/>
           <p>MADE BY ALY je nastao iz ljubavi prema skromnoj eleganciji i želje da svaka žena može pronaći odjeću u kojoj se osjeća dostojanstveno, ugodno i lijepo – svaki dan.</p>

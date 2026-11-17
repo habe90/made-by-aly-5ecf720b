@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react';
 import SitePage from '../../components/SitePage';
 import {CONTACT_EMAIL} from '../../components/siteConfig';
 import {Arrow, InstaIcon, MailIcon} from '../../components/SiteIcons';
-import '../luna-haljina/proizvod.css';
+import './proizvod.css';
 import RecolorCanvas from './RecolorCanvas';
 import './model.css';
 

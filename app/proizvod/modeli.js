@@ -4,6 +4,7 @@
 const z = '/images/modeli/zafira';
 const r = '/images/modeli/rose';
 const v = '/images/modeli/vintage-beauty';
+const d = '/images/modeli/daly';
 
 const palette = (dir, list) => list.map(([name, hex], i) => ({name, hex, swatch: `${dir}/tkanina-${i + 1}.webp`}));
 
@@ -68,6 +69,28 @@ export const MODELI = [
       {name: 'Čokolada', hex: '#6b3a28', photo: `${v}/cokolada.webp`},
       {name: 'Maslinasto zelena', hex: '#5f6b2a', photo: `${v}/maslinasta.webp`}
     ]
+  },
+  {
+    slug: 'daly',
+    name: 'Daly',
+    type: 'Abaya',
+    cat: 'abaye',
+    lead: 'Daly je set abaye i dugog khimara od mekane tkanine sa suptilnim sjajem. Široki kroj s balon rukavima i rebrastim manžetama, slojeviti khimar koji lijepo pada — elegancija u 14 boja.',
+    photos: [[`${d}/glavna.webp`, 'Daly abaya i khimar u maslinasto zelenoj boji, prikaz sprijeda'], [`${d}/ledja.webp`, 'Daly abaya i khimar, prikaz s leđa'], [`${d}/detalj.webp`, 'Detalj rukava Daly abaye s MADE BY ALY etiketom']],
+    // Originalna fotografija je maslinasto zelena; ostale boje se nanose na nju u browseru.
+    recolor: {src: `${d}/glavna.webp`, mask: `${d}/maska.png`},
+    showcase: [[`${d}/paleta.webp`, 'Paleta boja Daly abaye']],
+    features: ['Tkanina sa suptilnim sjajem', 'Dugi khimar u setu', 'Balon rukavi', 'Rebraste manžete'],
+    details: [
+      ['Materijal', 'Mekana, lagana tkanina s finim sjajem koja lijepo pada i ugodna je za nošenje.'],
+      ['Kroj', 'Široka abaya s balon rukavima i rebrastim manžetama; dugi, slojeviti khimar.'],
+      ['Održavanje', 'Prati na 30°C, na programu za osjetljive tkanine. Ne sušiti u mašini.']
+    ],
+    colors: palette(d, [
+      ['Fuksija', '#c40c74'], ['Ljubičasta', '#501eba'], ['Teget plava', '#112157'], ['Maslinasto zelena', '#9e9a1f'], ['Lila', '#975d97'],
+      ['Žuta', '#d9cc06'], ['Kraljevsko plava', '#032eb9'], ['Petrol zelena', '#046969'], ['Pink', '#e1198c'], ['Zelena', '#05a432'],
+      ['Narandžasta', '#f14804'], ['Mint zelena', '#8bc5b1'], ['Crna', '#23242b'], ['Svijetla bež', '#e3d8cd']
+    ]).map(c => c.name === 'Maslinasto zelena' ? {...c, photo: `${d}/glavna.webp`} : c)
   }
 ];
 

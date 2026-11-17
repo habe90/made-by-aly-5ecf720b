@@ -11,7 +11,7 @@
 .hmWords{margin:auto 0 0;padding-top:34px;font-size:12px;letter-spacing:4px;color:var(--hm-text);white-space:nowrap}
 .hmWords span{color:var(--hm-gold);margin:0 6px}
 .hmHeroImage{position:relative}
-.hmHeroImage img{position:absolute;inset:0 0 0 -12%;width:112%;height:100%;object-fit:cover;object-position:60% 6%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 32%);mask-image:linear-gradient(90deg,transparent 0%,#000 32%)}
+.hmHeroImage img{position:absolute;inset:0 0 0 -12%;width:112%;height:100%;object-fit:cover;object-position:50% 12%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 32%);mask-image:linear-gradient(90deg,transparent 0%,#000 32%)}
 
 /* Kategorije */
 .hmCats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -49,7 +49,7 @@
 /* Naša priča */
 .hmStory{display:grid;grid-template-columns:55% 45%;min-height:420px;border-radius:18px;overflow:hidden;background:var(--hm-card);box-shadow:var(--hm-shadow)}
 .hmStoryImage{position:relative;min-height:320px}
-.hmStoryImage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hmStoryImage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
 .hmStoryImage em{position:absolute;left:8%;bottom:12%;font-family:'Cormorant Garamond',Georgia,serif;font-size:36px;line-height:1.25;color:#f3e7d2;text-shadow:0 2px 18px rgba(0,0,0,.45)}
 .hmStoryCopy{padding:56px 56px 48px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
 .hmStoryCopy h2{font-size:48px;margin:12px 0 0;line-height:1.05}
@@ -72,7 +72,7 @@
 @media(max-width:760px){
   .hmHero{grid-template-columns:1fr;min-height:0;border-radius:14px}
   .hmHeroImage{order:-1;height:400px}
-  .hmHeroImage img{inset:0;width:100%;object-position:center 8%;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 100%);mask-image:linear-gradient(180deg,#000 70%,transparent 100%)}
+  .hmHeroImage img{inset:0;width:100%;object-position:center 10%;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 100%);mask-image:linear-gradient(180deg,#000 70%,transparent 100%)}
   .hmHeroCopy{padding:4px 24px 30px}
   .hmHero h1{font-size:46px}
   .hmLead{font-size:16px}

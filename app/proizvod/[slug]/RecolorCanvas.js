@@ -49,15 +49,17 @@ export default function RecolorCanvas({src, mask, hex, alt}) {
       const idx = [], alpha = [];
       for (let p = 0; p < w * h; p++) { const v = m[p * 4]; if (v > 3) { idx.push(p); alpha.push(v / 255); } }
       const n = idx.length, L = new Float32Array(n), A = new Float32Array(n), B = new Float32Array(n);
-      const hist = new Uint32Array(101); const o = orig.data;
+      const hist = new Uint32Array(101); const o = orig.data; let sa = 0, sb = 0, sn = 0;
       for (let i = 0; i < n; i++) {
         const p = idx[i] * 4; const lab = rgbToLab(o[p], o[p + 1], o[p + 2]);
         L[i] = lab[0]; A[i] = lab[1]; B[i] = lab[2];
-        if (alpha[i] > 0.5) hist[Math.max(0, Math.min(100, Math.round(lab[0])))]++;
+        if (alpha[i] > 0.5) { hist[Math.max(0, Math.min(100, Math.round(lab[0])))]++; sa += lab[1]; sb += lab[2]; sn++; }
       }
       let total = 0; for (const c of hist) total += c;
       let acc = 0, Lm = 50; for (let i = 0; i <= 100; i++) { acc += hist[i]; if (acc >= total / 2) { Lm = i; break; } }
-      data.current = {w, h, orig, idx: Int32Array.from(idx), alpha: Float32Array.from(alpha), L, A, B, Lm};
+      // Prosječna boja originala: zadržavamo samo odstupanja (sjene, tekstura), ne i samu boju originala.
+      const Am = sn ? sa / sn : 0, Bm = sn ? sb / sn : 0;
+      data.current = {w, h, orig, idx: Int32Array.from(idx), alpha: Float32Array.from(alpha), L, A, B, Lm, Am, Bm};
       canvas.current.width = w; canvas.current.height = h;
       setReady(true);
     }).catch(() => {});
@@ -74,7 +76,7 @@ export default function RecolorCanvas({src, mask, hex, alt}) {
     const px = out.data, rgb = [0, 0, 0];
     for (let i = 0; i < d.idx.length; i++) {
       const L = Math.min(100, Math.max(0, Lt + (d.L[i] - d.Lm) * k));
-      labToRgb(L, at + d.A[i] * 0.15, bt + d.B[i] * 0.15, rgb, 0);
+      labToRgb(L, at + (d.A[i] - d.Am) * 0.15, bt + (d.B[i] - d.Bm) * 0.15, rgb, 0);
       const p = d.idx[i] * 4, m = d.alpha[i];
       px[p] = px[p] * (1 - m) + rgb[0] * m;
       px[p + 1] = px[p + 1] * (1 - m) + rgb[1] * m;
