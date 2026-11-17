@@ -28,3 +28,6 @@ export function ClockIcon({size = 26}) {
 export function LeafIcon({size = 26}) {
   return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" aria-hidden="true"><path d="M5 19C5 10 10 5 20 4c-1 10-6 15-15 15Z"/><path d="M5 19 13 11"/></svg>;
 }
+export function FacebookIcon({size = 22}) {
+  return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M15.5 7.5h-1.8A2.7 2.7 0 0 0 11 10.2V21M8.5 13h6"/></svg>;
+}

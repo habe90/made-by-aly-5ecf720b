@@ -1,10 +1,9 @@
 'use client';
 import SiteHeader, {SITE_LINKS} from './SiteHeader';
-import {InstaIcon, MailIcon} from './SiteIcons';
+import {FacebookIcon, InstaIcon} from './SiteIcons';
 import './site.css';
 
-import {CONTACT_EMAIL} from './siteConfig';
-export {CONTACT_EMAIL};
+import {FACEBOOK_URL, LOCATION} from './siteConfig';
 
 export function SiteFooter() {
   return <footer className="hmFooter">
@@ -14,12 +13,12 @@ export function SiteFooter() {
       <div className="hmFooterSocial">
         <div>
           <a href="/instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><InstaIcon/></a>
-          <a href={`mailto:${CONTACT_EMAIL}`} aria-label="E-mail"><MailIcon/></a>
+          <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FacebookIcon/></a>
         </div>
         <em>Hvala što si dio ove priče. ♡</em>
       </div>
     </div>
-    <div className="hmFooterBottom"><p>© {new Date().getFullYear()} MADE BY ALY. Sva prava zadržana.</p><p>Sarajevo · Bosna i Hercegovina</p></div>
+    <div className="hmFooterBottom"><p>© {new Date().getFullYear()} MADE BY ALY. Sva prava zadržana.</p><p>{LOCATION.replace(', ', ' · ')}</p></div>
   </footer>;
 }
 

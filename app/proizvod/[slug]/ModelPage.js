@@ -2,8 +2,8 @@
 
 import {useEffect, useState} from 'react';
 import SitePage from '../../components/SitePage';
-import {CONTACT_EMAIL} from '../../components/siteConfig';
-import {Arrow, InstaIcon, MailIcon} from '../../components/SiteIcons';
+import {FACEBOOK_URL} from '../../components/siteConfig';
+import {Arrow, FacebookIcon, InstaIcon} from '../../components/SiteIcons';
 import './proizvod.css';
 import RecolorCanvas from './RecolorCanvas';
 import './model.css';
@@ -82,7 +82,7 @@ export default function ModelPage({model}) {
               : <>Odaberi boju i pošalji nam upit za veličinu, dužinu ili izradu po mjeri.</>}</p>
             <div>
               <a className="hmDarkBtn" href="/instagram" target="_blank" rel="noopener noreferrer"><InstaIcon size={18}/> Pošalji upit</a>
-              <a className="hmOutlineBtn" href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`Upit: ${model.name}${chosen ? ` (${label(c, color)})` : ''}`)}`}><MailIcon size={18}/> E-mail</a>
+              <a className="hmOutlineBtn" href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer"><FacebookIcon size={18}/> Facebook</a>
             </div>
           </div>
 

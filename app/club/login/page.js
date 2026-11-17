@@ -2,7 +2,7 @@
 
 import {useState} from 'react';
 import SitePage from '../../components/SitePage';
-import {CONTACT_EMAIL} from '../../components/siteConfig';
+import {INSTAGRAM_HANDLE} from '../../components/siteConfig';
 import {Arrow} from '../../components/SiteIcons';
 import '../club.css';
 
@@ -39,7 +39,7 @@ export default function ClubLoginPage() {
             <label className="fField">Lozinka<span className="fPass"><input type={showPassword ? 'text' : 'password'} name="password" autoComplete="current-password" value={form.password} onChange={update} required placeholder="Unesi svoju lozinku"/><button type="button" onClick={() => setShowPassword(v => !v)} aria-label={showPassword ? 'Sakrij lozinku' : 'Prikaži lozinku'}>{showPassword ? 'Sakrij' : 'Prikaži'}</button></span></label>
             <div className="authRow">
               <label className="fCheck"><input type="checkbox" name="remember" checked={form.remember} onChange={update}/>Zapamti me</label>
-              <button type="button" onClick={() => { setOk(false); setMessage(`Za obnovu pristupa piši nam na ${CONTACT_EMAIL}.`); }}>Zaboravljena lozinka?</button>
+              <button type="button" onClick={() => { setOk(false); setMessage(`Za obnovu pristupa piši nam na Instagramu (${INSTAGRAM_HANDLE}) ili Facebooku.`); }}>Zaboravljena lozinka?</button>
             </div>
             {message && <p className={ok ? 'fMsg ok' : 'fMsg'}>{message}</p>}
             <button className="hmGoldBtn" disabled={sending}>{sending ? 'Prijava…' : <>Prijavi se <Arrow/></>}</button>

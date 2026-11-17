@@ -4,6 +4,7 @@ import {useState} from 'react';
 import SitePage from '../components/SitePage';
 import {Arrow, Crown, InstaIcon} from '../components/SiteIcons';
 import {CATEGORIES, MODELS} from './models';
+import {INSTAGRAM_HANDLE} from '../components/siteConfig';
 import './kolekcija.css';
 
 const ACTIVE = {haljine: 'Haljine', khimari: 'Khimari'};
@@ -48,7 +49,7 @@ export default function Kolekcija({initial = 'sve'}) {
         <p className="hmEyebrow">USKORO</p>
         <h2>Novi modeli stižu uskoro.</h2>
         <p>Prati nas na Instagramu da prva vidiš nove {CAT_LABEL[cat].toLowerCase()}.</p>
-        <a className="hmDarkBtn" href="/instagram" target="_blank" rel="noopener noreferrer"><InstaIcon size={18}/> @madebyaly</a>
+        <a className="hmDarkBtn" href="/instagram" target="_blank" rel="noopener noreferrer"><InstaIcon size={18}/> {INSTAGRAM_HANDLE}</a>
       </section>}
 
       <section className="kolClub">

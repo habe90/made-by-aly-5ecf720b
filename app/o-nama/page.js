@@ -31,7 +31,7 @@ export default function ONama() {
           <h2>Svaki komad s namjerom.</h2>
           <i className="hmRule"/>
           <p>Vjerujemo da modest fashion nije trend, već vrijednost koja traje. Zato svaki model nastaje polako i promišljeno — od izbora tkanine do posljednjeg šava.</p>
-          <p>Naše abaye, haljine i khimare kreiramo u Sarajevu, za žene koje žele spojiti pokrivenost, udobnost i bezvremensku eleganciju.</p>
+          <p>Naše abaye, haljine i khimare kreiramo u Tuzli, za žene koje žele spojiti pokrivenost, udobnost i bezvremensku eleganciju.</p>
         </div>
       </section>
 

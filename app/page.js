@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react';
 import SitePage from './components/SitePage';
 import ClubModal from './components/ClubModal';
 import {Arrow, Crown, InstaIcon} from './components/SiteIcons';
+import {INSTAGRAM_HANDLE} from './components/siteConfig';
 import './home.css';
 
 const categories = [
@@ -66,7 +67,7 @@ export default function Home() {
       <section className="hmInsta" aria-labelledby="insta-title">
         <div className="hmSectionHead">
           <span/><h2 id="insta-title">PRATI NAS NA INSTAGRAMU</h2><span/>
-          <a href="/instagram" target="_blank" rel="noopener noreferrer" className="hmSeeAll"><InstaIcon size={16}/> @madebyaly <Arrow/></a>
+          <a href="/instagram" target="_blank" rel="noopener noreferrer" className="hmSeeAll"><InstaIcon size={16}/> {INSTAGRAM_HANDLE} <Arrow/></a>
         </div>
         <div className={posts === null ? 'hmInstaGrid loading' : 'hmInstaGrid'}>
           {shown.map(p => <a key={p.id} href={live ? p.url : '/instagram'} target="_blank" rel="noopener noreferrer" className="hmPost">
