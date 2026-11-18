@@ -9,6 +9,7 @@ const ay = '/images/modeli/ayra';
 const gi = '/images/modeli/gia';
 const va = '/images/modeli/vayne';
 const el = '/images/modeli/elise';
+const eo = '/images/modeli/elodie';
 
 const palette = (dir, list) => list.map(([name, hex], i) => ({name, hex, swatch: `${dir}/tkanina-${i + 1}.webp`}));
 
@@ -203,6 +204,35 @@ export const MODELI = [
       ['Puder roza', '#dda6a9'], ['Bijela', '#e6e3e0'], ['Bež', '#b8a792'], ['Svijetla bež', '#d0b5a4'], ['Smeđa', '#9f7e6a'],
       ['Oker', '#ce8435'], ['Narandžasta', '#b94522'], ['Cigla crvena', '#862f2c']
     ])
+  },
+  {
+    slug: 'elodie',
+    name: 'Elodie',
+    type: 'Komplet',
+    cat: 'abaye',
+    lead: 'Elodie je komplet od tunike i suknje od hurem štofa — široka tunika s velikim manžetama i džepovima, preko duge, bogate suknje. Elegantan, slojevit izgled uz potpunu udobnost, dostupan u 13 boja.',
+    photos: [[`${eo}/maslinasta-1.webp`, 'Elodie komplet u maslinastoj boji, sjedeći'], [`${eo}/maslinasta-2.webp`, 'Elodie komplet u maslinastoj boji, detalj rukava'], [`${eo}/maslinasta-3.webp`, 'Elodie komplet u maslinastoj boji, stojeći']],
+    // Boje bez vlastite fotografije: komplet (tunika i suknja) se boji na originalnoj fotografiji; marama ostaje originalna.
+    recolor: {src: `${eo}/babyplava-1.webp`, mask: `${eo}/maska.png`},
+    showcase: [[`${eo}/paleta.webp`, 'Paleta dostupnih boja za Elodie komplet']],
+    features: ['Hurem štof', 'Tunika i suknja', 'Široke manžete i džepovi', '13 boja'],
+    details: [
+      ['Materijal', 'Hurem štof — mekan, mat i postojan materijal koji lijepo pada. Marama na fotografijama je od muslina.'],
+      ['Komplet', 'Široka tunika s velikim manžetama i džepovima, i duga, bogata suknja.'],
+      ['Održavanje', 'Prati na 30°C, na programu za osjetljive tkanine. Peglati na srednjoj temperaturi.']
+    ],
+    colors: palette(eo, [
+      ['Bijela', '#e5e1de'], ['Svijetlosiva', '#beb2ac'], ['Bež', '#caa282'], ['Smeđa', '#43241c'], ['Crna', '#111113'],
+      ['Baby roza', '#efb8b9'], ['Baby plava', '#bbcfea'], ['Tamnoplava', '#171d31'], ['Tamnozelena', '#0f403a'], ['Maslinasta', '#706c53'],
+      ['Crvena', '#b40e1f'], ['Bordo', '#691424'], ['Narandžasta', '#ea661e']
+    ]).map(c => ({...c, photos: {
+      'Bijela': ['bijela-1', 'bijela-2'],
+      'Svijetlosiva': ['svijetlosiva-1', 'svijetlosiva-2', 'svijetlosiva-3'],
+      'Baby plava': ['babyplava-1', 'babyplava-2', 'babyplava-3'],
+      'Maslinasta': ['maslinasta-1', 'maslinasta-2', 'maslinasta-3'],
+      'Crvena': ['crvena-1', 'crvena-2'],
+      'Narandžasta': ['narandzasta-1', 'narandzasta-2', 'narandzasta-3']
+    }[c.name]?.map(n => `${eo}/${n}.webp`)}))
   }
 ];
 

@@ -21,7 +21,9 @@ export default function ModelPage({model}) {
 
   // Samo originalne fotografije. Odabrana boja ide prva: vlastita fotografija te boje ako postoji,
   // inače originalna fotografija obojena u browseru (recolor).
-  const first = !chosen ? [] : c.photo ? [{src: c.photo, alt: `${model.name} u boji ${c.name}`}]
+  // `photos` = više originalnih fotografija iste boje (npr. Elodie: sjedeći, s rukom, stojeći).
+  const first = !chosen ? [] : c.photos ? c.photos.map((src, i) => ({src, alt: `${model.name} u boji ${c.name}, fotografija ${i + 1}`}))
+    : c.photo ? [{src: c.photo, alt: `${model.name} u boji ${c.name}`}]
     : model.recolor ? [{src: model.recolor.src, mask: model.recolor.mask, hex: c.hex, alt: `${model.name} u boji ${c.name}`}] : [];
   const rest = [...model.photos, ...(model.showcase || [])].map(([src, alt]) => ({src, alt})).filter(g => !first.some(x => !x.hex && x.src === g.src));
   const gallery = [...first, ...rest];
