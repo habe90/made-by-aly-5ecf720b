@@ -10,6 +10,8 @@ const gi = '/images/modeli/gia';
 const va = '/images/modeli/vayne';
 const el = '/images/modeli/elise';
 const eo = '/images/modeli/elodie';
+const ly = '/images/modeli/leya';
+const vl = '/images/modeli/velora';
 
 const palette = (dir, list) => list.map(([name, hex], i) => ({name, hex, swatch: `${dir}/tkanina-${i + 1}.webp`}));
 
@@ -233,6 +235,62 @@ export const MODELI = [
       'Crvena': ['crvena-1', 'crvena-2'],
       'Narandžasta': ['narandzasta-1', 'narandzasta-2', 'narandzasta-3']
     }[c.name]?.map(n => `${eo}/${n}.webp`)}))
+  },
+  {
+    slug: 'leya',
+    name: 'Leya',
+    type: 'Komplet',
+    cat: 'abaye',
+    lead: 'Leya je komplet od tunike i suknje od tanke viskozne pletenine s dosta elastina. Mekan, rastezljiv i lagan — široka tunika s balon rukavima i rebrastim manžetama, i suknja s elastičnim strukom za potpunu udobnost.',
+    photos: [[`${ly}/krem-1.png`, 'Leya komplet u krem boji, cijeli prikaz'], [`${ly}/krem-2.webp`, 'Leya komplet u krem boji, tunika'], [`${ly}/krem-3.webp`, 'Leya komplet u krem boji, detalj rukava s etiketom'], [`${ly}/krem-4.webp`, 'Leya komplet u krem boji, elastični struk suknje']],
+    // Boje bez fotografije: komplet se boji na originalnoj fotografiji (svijetlo siva); marama ostaje originalna.
+    recolor: {src: `${ly}/svijetlosiva-1.webp`, mask: `${ly}/maska.png`},
+    showcase: [[`${ly}/paleta.webp`, 'Paleta dostupnih boja za Leya komplet']],
+    features: ['Viskozna pletenina s elastinom', 'Tunika i suknja', 'Elastični struk', '10 boja'],
+    details: [
+      ['Materijal', 'Tanka viskozna pletenina s dosta elastina — mekana, rastezljiva i prijatna na koži.'],
+      ['Komplet', 'Široka tunika s balon rukavima i rebrastim manžetama, i duga suknja s elastičnim strukom.'],
+      ['Održavanje', 'Prati na 30°C, na programu za osjetljive tkanine. Sušiti položeno.']
+    ],
+    colors: palette(ly, [
+      ['Krem', '#e7e2db'], ['Svijetlo siva', '#c2c2c3'], ['Bež', '#b09e92'], ['Taupe', '#af9f96'], ['Mocca', '#8a7a72'],
+      ['Crna melange', '#2a2a2a'], ['Crna', '#111113'], ['Pijesak', '#c4b7ad'], ['Siva', '#6b6c70'], ['Antracit', '#343435']
+    ]).map(c => ({...c, photos: {
+      'Krem': ['krem-1.png', 'krem-2.webp', 'krem-3.webp', 'krem-4.webp'],
+      'Svijetlo siva': ['svijetlosiva-1.webp', 'svijetlosiva-2.webp', 'svijetlosiva-3.webp', 'svijetlosiva-4.webp'],
+      'Mocca': ['mocca-1.webp', 'mocca-2.webp', 'mocca-3.webp', 'mocca-4.webp'],
+      'Siva': ['siva-1.webp', 'siva-2.webp', 'siva-3.webp', 'siva-4.webp']
+    }[c.name]?.map(n => `${ly}/${n}`)})),
+    numbered: true
+  },
+  {
+    slug: 'velora',
+    name: 'Velora',
+    type: 'Komplet',
+    cat: 'abaye',
+    lead: 'Velora je svečani komplet od poliestera bogatog, svilenkastog sjaja — dugi khimar, gornji dio s balon rukavima i naboranim manžetama te široka suknja koja lijepo pada. Dostupna u 29 nijansi.',
+    photos: [[`${vl}/crvena.webp`, 'Velora komplet u crvenoj boji'], [`${vl}/roza.webp`, 'Velora komplet u roza boji'], [`${vl}/bijela.webp`, 'Velora komplet u bijeloj boji'], [`${vl}/babyplava.webp`, 'Velora komplet u baby plavoj boji'], [`${vl}/ljubicasta.webp`, 'Velora komplet u ljubičastoj boji']],
+    // Nijanse bez fotografije se boje na originalnoj (ljubičastoj) fotografiji.
+    recolor: {src: `${vl}/ljubicasta.webp`, mask: `${vl}/maska.png`},
+    showcase: [[`${vl}/paleta.webp`, 'Paleta dostupnih nijansi za Velora komplet']],
+    features: ['Poliester sa sjajem', 'Khimar u kompletu', 'Naborane manžete', '29 nijansi'],
+    details: [
+      ['Materijal', 'Poliester svilenkastog sjaja i fine teksture, lagan i otporan na gužvanje.'],
+      ['Komplet', 'Dugi khimar, gornji dio s balon rukavima i naboranim manžetama te široka, duga suknja.'],
+      ['Održavanje', 'Prati na 30°C, na programu za osjetljive tkanine. Peglati na niskoj temperaturi.']
+    ],
+    // Nijanse s pravom fotografijom (prema paleti: 01 bijela, 10 roza, 16 ljubičasta, 19 crvena, 29 baby plava).
+    colors: palette(vl, [
+      ['Nijansa 01', '#f2eee4'], ['Nijansa 02', '#bfb295'], ['Nijansa 03', '#b19d81'], ['Nijansa 04', '#8c756c'], ['Nijansa 05', '#0a0706'],
+      ['Nijansa 06', '#935c3a'], ['Nijansa 07', '#583a37'], ['Nijansa 08', '#e1ac9c'], ['Nijansa 09', '#9e757f'], ['Nijansa 10', '#cca9bf'],
+      ['Nijansa 11', '#a1a6a5'], ['Nijansa 12', '#b0b8b2'], ['Nijansa 13', '#8da4ac'], ['Nijansa 14', '#898a9b'], ['Nijansa 15', '#a698c3'],
+      ['Nijansa 16', '#9570a2'], ['Nijansa 17', '#c74677'], ['Nijansa 18', '#741626'], ['Nijansa 19', '#bd1f26'], ['Nijansa 20', '#8a3b2f'],
+      ['Nijansa 21', '#bac00e'], ['Nijansa 22', '#866723'], ['Nijansa 23', '#9ecd7b'], ['Nijansa 24', '#473824'], ['Nijansa 25', '#4f8898'],
+      ['Nijansa 26', '#1a7aa8'], ['Nijansa 27', '#346ab0'], ['Nijansa 28', '#132ca2'], ['Nijansa 29', '#9fbae3']
+    ]).map(c => {
+      const f = {'Nijansa 01': 'bijela', 'Nijansa 10': 'roza', 'Nijansa 16': 'ljubicasta', 'Nijansa 19': 'crvena', 'Nijansa 29': 'babyplava'}[c.name];
+      return f ? {...c, photo: `${vl}/${f}.webp`} : c;
+    })
   }
 ];
 
