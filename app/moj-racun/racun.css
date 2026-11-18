@@ -20,7 +20,7 @@
 .acHead p{margin:4px 0 0;color:var(--hm-muted);font-size:14px}
 .acNews{padding:20px;border-radius:12px;background:#f3eee5}
 .acNews b{color:var(--hm-ink)}
-.acClub{display:flex;align-items:center;gap:24px;padding:32px 40px;border-radius:16px;color:#d8d1c4;background:linear-gradient(90deg,rgba(20,20,22,.95),rgba(20,20,22,.75)),url('/images/club-black.png') center/cover;box-shadow:0 14px 34px rgba(0,0,0,.18)}
+.acClub{display:flex;align-items:center;gap:24px;padding:32px 40px;border-radius:16px;color:#d8d1c4;background:linear-gradient(90deg,rgba(20,20,22,.95),rgba(20,20,22,.75)),url('/images/club-black.webp') center/cover;box-shadow:0 14px 34px rgba(0,0,0,.18)}
 .acClub .hmEyebrow{color:var(--hm-gold-2)}
 .acClub h2{color:#fff!important;font-size:34px;margin:4px 0}
 .acClub p:not(.hmEyebrow){margin:0;font-size:14px}

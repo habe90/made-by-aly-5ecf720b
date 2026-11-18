@@ -28,7 +28,7 @@ export default function Kolekcija({initial = 'sve'}) {
           <i className="hmRule"/>
           <p>Odabrani komadi. Bezvremenska elegancija. Pogledaj modele koje izrađujemo — za upit o modelu, boji ili mjerama javi nam se direktno.</p>
         </div>
-        <div className="pgIntroImage"><img src="/images/collection-dresses.png" alt="Tri modela MADE BY ALY u kamenim lukovima"/></div>
+        <div className="pgIntroImage"><img src="/images/collection-dresses.webp" alt="Tri modela MADE BY ALY u kamenim lukovima"/></div>
       </section>
 
       <div className="kolTabs" role="tablist" aria-label="Kategorije">

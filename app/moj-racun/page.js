@@ -58,7 +58,7 @@ export default function Account() {
           <i className="hmRule"/>
           <p>Hvala što si dio naše priče. Ljepota ima veći smisao kada je dijelimo.</p>
         </div>
-        <div className="pgIntroImage"><img src="/images/member-profile-hero.png" alt="ALY CLUB elegantna članica"/></div>
+        <div className="pgIntroImage"><img src="/images/member-profile-hero.webp" alt="ALY CLUB elegantna članica"/></div>
       </section>
 
       <div className="acLayout">

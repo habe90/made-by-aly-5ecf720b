@@ -26,7 +26,7 @@
 .clCardCopy li{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--hm-ink);padding-left:16px;position:relative}
 .clCardCopy li:before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--hm-gold)}
 
-.clTeaser{display:flex;align-items:center;gap:30px;padding:44px 52px;border-radius:18px;color:#d8d1c4;background:linear-gradient(90deg,rgba(18,18,20,.95) 0%,rgba(18,18,20,.75) 55%,rgba(18,18,20,.35) 100%),url('/images/club-teaser.png') center/cover;box-shadow:0 14px 34px rgba(0,0,0,.18)}
+.clTeaser{display:flex;align-items:center;gap:30px;padding:44px 52px;border-radius:18px;color:#d8d1c4;background:linear-gradient(90deg,rgba(18,18,20,.95) 0%,rgba(18,18,20,.75) 55%,rgba(18,18,20,.35) 100%),url('/images/club-teaser.webp') center/cover;box-shadow:0 14px 34px rgba(0,0,0,.18)}
 .clTeaser .hmEyebrow{color:var(--hm-gold-2)}
 .clTeaser h2{color:#fff!important;font-size:42px;margin:8px 0 4px}
 .clTeaser p:not(.hmEyebrow){margin:0}

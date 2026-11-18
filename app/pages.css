@@ -11,7 +11,7 @@
 .onValues span{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;color:var(--hm-gold)}
 .onValues h3{font-size:30px;margin:6px 0 8px;text-transform:uppercase;letter-spacing:3px}
 .onValues p{margin:0;font-size:14px}
-.onCta{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:36px 44px;border-radius:18px;color:#d8d1c4;background:linear-gradient(90deg,rgba(20,20,22,.96),rgba(20,20,22,.8)),url('/images/club-black.png') center/cover;box-shadow:0 14px 34px rgba(0,0,0,.18)}
+.onCta{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:36px 44px;border-radius:18px;color:#d8d1c4;background:linear-gradient(90deg,rgba(20,20,22,.96),rgba(20,20,22,.8)),url('/images/club-black.webp') center/cover;box-shadow:0 14px 34px rgba(0,0,0,.18)}
 .onCta h2{color:#fff!important;font-size:36px;margin:0 0 4px}
 .onCta p{margin:0;font-size:14px}
 .onCta>div:last-child{display:flex;gap:12px;flex-wrap:wrap}

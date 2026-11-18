@@ -15,7 +15,7 @@ export default function Kontakt() {
           <i className="hmRule"/>
           <p>Imaš pitanje o modelu, boji, mjerama ili izradi po narudžbi? Javi nam se — rado ćemo pomoći da pronađeš komad koji je baš za tebe.</p>
         </div>
-        <div className="pgIntroImage"><img src="/images/instagram-stone.png" alt="Kameni lukovi i stubovi"/></div>
+        <div className="pgIntroImage"><img src="/images/instagram-stone.webp" alt="Kameni lukovi i stubovi"/></div>
       </section>
 
       <section className="ktCards">

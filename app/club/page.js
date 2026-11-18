@@ -19,7 +19,7 @@ export default function ClubPage() {
   return <SitePage active="ALY CLUB">
     <main className="hmWrap">
       <section className="clHero">
-        <img src="/images/club-hero.png" alt="Žena u raskošnoj crnoj abaji među kamenim stubovima"/>
+        <img src="/images/club-hero.webp" alt="Žena u raskošnoj crnoj abaji među kamenim stubovima"/>
         <div className="clHeroCopy">
           <p className="hmEyebrow">MADE BY ALY</p>
           <h1>ALY CLUB</h1>
@@ -40,7 +40,7 @@ export default function ClubPage() {
       </section>
 
       <section className="clCard">
-        <div className="clCardImage"><img src="/images/club-card-scene.png" alt="Crna ALY CLUB članska kartica na kamenu" loading="lazy"/></div>
+        <div className="clCardImage"><img src="/images/club-card-scene.webp" alt="Crna ALY CLUB članska kartica na kamenu" loading="lazy"/></div>
         <div className="clCardCopy">
           <p className="hmEyebrow">ČLANSTVO KOJE IMA POSEBAN ZNAČAJ</p>
           <h2>Više od kartice.<br/>Dio tvoje priče.</h2>

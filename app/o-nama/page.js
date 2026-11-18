@@ -21,11 +21,11 @@ export default function ONama() {
           <i className="hmRule"/>
           <p>MADE BY ALY je nastao iz ljubavi prema skromnoj eleganciji i želje da svaka žena može pronaći odjeću u kojoj se osjeća dostojanstveno, ugodno i lijepo – svaki dan.</p>
         </div>
-        <div className="pgIntroImage"><img src="/images/story.png" alt="Žena u crnoj abaji među kamenim stubovima" style={{objectPosition: 'center 30%'}}/></div>
+        <div className="pgIntroImage"><img src="/images/story.webp" alt="Žena u crnoj abaji među kamenim stubovima" style={{objectPosition: 'center 30%'}}/></div>
       </section>
 
       <section className="onSplit">
-        <div className="onImage"><img src="/images/fabric.png" alt="Crna premium tkanina" loading="lazy"/><em>Skromnost<br/>je uvijek<br/>u modi.</em></div>
+        <div className="onImage"><img src="/images/fabric.webp" alt="Crna premium tkanina" loading="lazy"/><em>Skromnost<br/>je uvijek<br/>u modi.</em></div>
         <div className="hmBox onText">
           <p className="hmEyebrow">KO SMO MI</p>
           <h2>Svaki komad s namjerom.</h2>

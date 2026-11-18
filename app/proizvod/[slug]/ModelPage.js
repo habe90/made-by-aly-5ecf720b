@@ -33,7 +33,9 @@ export default function ModelPage({model}) {
   function pick(i, scroll = false) {
     setColor(i);
     setView(0);
-    if (scroll) window.scrollTo({top: 0, behavior: 'smooth'});
+    // Na mobitelu je fotografija iznad palete — pomjeri je u kadar da se promjena boje odmah vidi.
+    const mobile = window.matchMedia('(max-width: 1024px)').matches;
+    if (scroll || mobile) document.getElementById('galerija')?.scrollIntoView({behavior: 'smooth', block: 'start'});
   }
 
   useEffect(() => {
@@ -48,7 +50,7 @@ export default function ModelPage({model}) {
       <nav className="pdCrumb" aria-label="Putanja"><a href="/kolekcija">Kolekcija</a> <span>›</span> <a href={`/kolekcija?k=${model.cat}`}>{CAT[model.cat]}</a> <span>›</span> {model.name}</nav>
 
       <section className="pdMain">
-        <div className="pdGallery">
+        <div className="pdGallery" id="galerija">
           <div className="pdThumbs">
             {gallery.map((g, i) => <button key={g.src + (g.hex || '')} className={view === i ? 'on' : ''} onClick={() => setView(i)} aria-label={g.alt}><img src={g.src} alt=""/>{g.hex && <i className="mdThumbDot" style={swatchStyle(c)}/>}</button>)}
           </div>

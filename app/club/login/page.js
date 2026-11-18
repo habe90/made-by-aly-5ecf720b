@@ -29,7 +29,7 @@ export default function ClubLoginPage() {
   return <SitePage active="ALY CLUB">
     <main className="hmWrap">
       <section className="authLayout">
-        <aside className="authVisual"><img src="/images/club-login-aside.png" alt="Žena u taupe khimaru u kamenoj arhitekturi"/><p>Više od odjeće.<br/>Način života.</p></aside>
+        <aside className="authVisual"><img src="/images/club-login-aside.webp" alt="Žena u taupe khimaru u kamenoj arhitekturi"/><p>Više od odjeće.<br/>Način života.</p></aside>
         <div className="authPanel hmBox dark">
           <img className="authLogo" src="/images/logo-aly.png" alt="MADE BY ALY" width="640" height="328"/>
           <h1>Dobrodošla nazad.</h1>

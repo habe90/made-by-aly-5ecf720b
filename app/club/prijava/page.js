@@ -33,7 +33,7 @@ export default function ClubRegistrationPage() {
   return <SitePage active="ALY CLUB">
     <main className="hmWrap">
       <section className="authLayout wide">
-        <aside className="authVisual"><img src="/images/club-registration-aside.png" alt="Žena u crnoj abaji među kamenim lukovima"/><p>Zajednica koja inspiriše,<br/>podržava i raste zajedno.</p></aside>
+        <aside className="authVisual"><img src="/images/club-registration-aside.webp" alt="Žena u crnoj abaji među kamenim lukovima"/><p>Zajednica koja inspiriše,<br/>podržava i raste zajedno.</p></aside>
         <div className="authPanel hmBox dark">
           <img className="authLogo" src="/images/logo-aly.png" alt="MADE BY ALY" width="640" height="328"/>
           {!success ? <>

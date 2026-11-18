@@ -6,6 +6,7 @@
   radial-gradient(70% 70% at 35% 100%,#e7e3dc 0%,rgba(231,227,220,0) 70%),
   linear-gradient(160deg,#fbfaf8 0%,#ecebe8 55%,#e2dfd9 100%);box-shadow:0 18px 50px rgba(40,32,20,.10)}
 .hmHeroCopy{position:relative;z-index:2;padding:72px 0 48px 64px;display:flex;flex-direction:column;align-items:flex-start}
+.hmHero>*,.hmStory>*,.hmCats>*{min-width:0}
 .hmHero h1{font-size:76px;line-height:.95;margin:18px 0 0;letter-spacing:-.5px}
 .hmLead{font-size:18px;line-height:1.55;color:var(--hm-text);margin:0 0 30px}
 .hmWords{margin:auto 0 0;padding-top:34px;font-size:12px;letter-spacing:4px;color:var(--hm-text);white-space:nowrap}
@@ -27,7 +28,7 @@
 
 /* ALY CLUB baner */
 .hmClub{display:flex;align-items:center;gap:34px;padding:28px 44px;border-radius:14px;color:#ece6da;background:
-  linear-gradient(90deg,rgba(20,20,22,.96) 0%,rgba(20,20,22,.82) 55%,rgba(20,20,22,.6) 100%),url('/images/club-black.png') center/cover;box-shadow:0 14px 34px rgba(0,0,0,.18)}
+  linear-gradient(90deg,rgba(20,20,22,.96) 0%,rgba(20,20,22,.82) 55%,rgba(20,20,22,.6) 100%),url('/images/club-black.webp') center/cover;box-shadow:0 14px 34px rgba(0,0,0,.18)}
 .hmCrown{color:var(--hm-gold-2);display:flex;padding-right:34px;border-right:1px solid #4a4130}
 .hmClub strong{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:34px;letter-spacing:9px;white-space:nowrap;padding-right:34px;border-right:1px solid #4a4130}
 .hmClub h2{color:#fff!important;font-family:Montserrat,Arial,sans-serif!important;font-size:17px;font-weight:600!important;margin:0}
@@ -76,7 +77,7 @@
   .hmHeroCopy{padding:4px 24px 30px}
   .hmHero h1{font-size:46px}
   .hmLead{font-size:16px}
-  .hmWords{padding-top:26px;font-size:10px;letter-spacing:3px}
+  .hmWords{padding-top:26px;font-size:10px;letter-spacing:2.5px;white-space:normal;line-height:2}
   .hmWords span{margin:0 4px}
   .hmCats{grid-template-columns:1fr;gap:14px}
   .hmCat{height:190px}
