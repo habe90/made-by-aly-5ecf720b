@@ -13,6 +13,7 @@ export const MODELS = MODELI.map(m => ({
   name: `${m.name} ${m.type.toLowerCase()}`,
   cat: m.cat,
   image: m.photos[0][0],
+  bg: m.bg,
   colors: m.colors.map(c => [c.name, c.hex]),
   page: `/proizvod/${m.slug}`,
   isNew: true

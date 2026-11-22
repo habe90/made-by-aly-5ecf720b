@@ -13,6 +13,8 @@ const eo = '/images/modeli/elodie';
 const ly = '/images/modeli/leya';
 const vl = '/images/modeli/velora';
 
+import {POZADINE} from './pozadine';
+
 const palette = (dir, list) => list.map(([name, hex], i) => ({name, hex, swatch: `${dir}/tkanina-${i + 1}.webp`}));
 
 // Modeli s jednom originalnom fotografijom (u jednoj boji). Druge boje i mjere — na upit.
@@ -21,6 +23,7 @@ const jedan = ([slug, name, type, color, hex, lead, features]) => {
   const alt = `${name} ${type.toLowerCase()} u boji ${color.toLowerCase()}`;
   return {
     slug, name, type, cat: 'haljine', lead, features,
+    bg: POZADINE[slug],
     photos: [[src, alt]],
     details: [
       ['Boje i mjere', `Model je prikazan u boji ${color.toLowerCase()}. Za druge boje, veličinu, dužinu ili izradu po mjeri pošalji nam upit.`],

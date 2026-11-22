@@ -60,7 +60,7 @@ export default function ModelPage({model}) {
                 <RecolorCanvas src={big.src} mask={big.mask} hex={big.hex} alt={big.alt}/>
                 <span className="mdTag"><i style={swatchStyle(c)}/>{label(c, color)}<small>digitalni prikaz boje</small></span>
               </div>
-            : <button className="pdBig mdBig" onClick={() => setZoom([big.src, big.alt])} aria-label={`Uvećaj: ${big.alt}`}>
+            : <button className="pdBig mdBig" style={model.bg ? {background: model.bg} : undefined} onClick={() => setZoom([big.src, big.alt])} aria-label={`Uvećaj: ${big.alt}`}>
                 <img key={big.src} src={big.src} alt={big.alt}/>
                 {first.length > 0 && view === 0 && <span className="mdTag"><i style={swatchStyle(c)}/>{label(c, color)}</span>}
               </button>}

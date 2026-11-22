@@ -38,7 +38,7 @@ export default function Kolekcija({initial = 'sve'}) {
 
       {shown.length > 0 ? <section className="kolGrid" aria-live="polite">
         {shown.map(m => <a key={m.id} className="kolCard" href={m.page} aria-label={`Pogledaj ${m.name}`}>
-          <span className="kolPhoto light"><img src={m.image} alt={m.name} loading="lazy"/>{m.isNew && <em className="kolBadge">Novo</em>}</span>
+          <span className={m.bg ? 'kolPhoto fill' : 'kolPhoto light'} style={m.bg ? {background: m.bg} : undefined}><img src={m.image} alt={m.name} loading="lazy"/>{m.isNew && <em className="kolBadge">Novo</em>}</span>
           <span className="kolInfo">
             <small>{CAT_LABEL[m.cat]}{m.colors.length > 3 && ` · ${m.colors.length} boja`}</small>
             <strong>{m.name}</strong>

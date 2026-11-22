@@ -11,6 +11,8 @@
 .kolPhoto{position:relative;display:block;aspect-ratio:3/4;overflow:hidden;background:#e4ded3}
 .kolPhoto.light{background:#fff}
 .kolPhoto.light img{object-fit:contain;object-position:center top}
+/* Story fotografije (9:16): pozadina = boja rubova slike, pa nema bijelih traka sa strane. */
+.kolPhoto.fill img{object-fit:contain;object-position:center}
 .kolBadge{position:absolute;top:12px;left:12px;background:var(--hm-dark);color:#f0dcae;font:500 10px/1 Montserrat,Arial,sans-serif;font-style:normal;letter-spacing:2px;text-transform:uppercase;padding:7px 10px;border-radius:4px;box-shadow:inset -2px 0 0 var(--hm-gold)}
 .kolSwatches b{font-size:11px;font-weight:500;color:var(--hm-muted);align-self:center}
 .kolPhoto img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;transition:transform .6s}
