@@ -1,10 +1,11 @@
 'use client';
 
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import SitePage from './components/SitePage';
 import ClubModal from './components/ClubModal';
 import {Arrow, Crown, InstaIcon} from './components/SiteIcons';
 import {INSTAGRAM_HANDLE} from './components/siteConfig';
+import {MODELS} from './kolekcija/models';
 import './home.css';
 
 const categories = [
@@ -13,24 +14,11 @@ const categories = [
   {title: 'Khimari', text: ['Potpuna pokrivenost', 'u modernom izdanju.'], image: '/images/pocetna/haljina-terakota.webp', href: '/kolekcija?k=khimari'}
 ];
 
-// Prikazuje se dok Instagram nije povezan ili ako API trenutno ne odgovara.
-const fallbackPosts = [
-  {id: 'f1', image: '/images/pocetna/abaya-krem-prugice.webp', caption: 'Krem abaya s prugicama'},
-  {id: 'f2', image: '/images/pocetna/haljina-siva.webp', caption: 'Siva haljina s naborima'},
-  {id: 'f3', image: '/images/pocetna/abaya-mocca-dugmad.webp', caption: 'Abaya s dugmićima'},
-  {id: 'f4', image: '/images/pocetna/haljina-terakota.webp', caption: 'Haljina u boji terakote'}
-];
+// Ispod Instagram naslova: 4 zadnja ubačena modela iz kolekcije.
+const latest = MODELS.slice(0, 4);
 
 export default function Home() {
   const [clubOpen, setClubOpen] = useState(false);
-  const [posts, setPosts] = useState(null);
-
-  useEffect(() => {
-    fetch('/api/instagram').then(r => r.json()).then(d => setPosts(d.posts || [])).catch(() => setPosts([]));
-  }, []);
-
-  const live = posts && posts.length > 0;
-  const shown = live ? posts : fallbackPosts;
 
   return <SitePage active="Početna" className="home">
     <main className="hmWrap">
@@ -65,15 +53,13 @@ export default function Home() {
       </section>
 
       <section className="hmInsta" aria-labelledby="insta-title">
-        <div className="hmSectionHead">
-          <span/><h2 id="insta-title">PRATI NAS NA INSTAGRAMU</h2><span/>
-          <a href="/instagram" target="_blank" rel="noopener noreferrer" className="hmSeeAll"><InstaIcon size={16}/> {INSTAGRAM_HANDLE} <Arrow/></a>
-        </div>
-        <div className={posts === null ? 'hmInstaGrid loading' : 'hmInstaGrid'}>
-          {shown.map(p => <a key={p.id} href={live ? p.url : '/instagram'} target="_blank" rel="noopener noreferrer" className="hmPost">
-            <img src={p.image} alt={p.caption || 'Instagram objava MADE BY ALY'} loading="lazy"/>
-            {p.video && <span className="hmPlay" aria-hidden="true">▶</span>}
-            <div className="hmPostHover"><InstaIcon size={28}/>{p.caption && <p>{p.caption}</p>}</div>
+        <div className="hmSectionHead"><span/><h2 id="insta-title">PRATI NAS NA INSTAGRAMU</h2><span/></div>
+        <a href="/instagram" target="_blank" rel="noopener noreferrer" className="hmIgBtn"><InstaIcon size={20}/> {INSTAGRAM_HANDLE}</a>
+        <div className="hmInstaGrid">
+          {latest.map(m => <a key={m.id} href={m.page} className="hmPost" style={m.bg ? {background: m.bg} : undefined}>
+            <img src={m.image} alt={m.name} loading="lazy" className={m.bg ? 'fit' : undefined}/>
+            <span className="hmPostName">{m.name}</span>
+            <div className="hmPostHover"><p>Pogledaj model</p><span className="hmCircle"><Arrow/></span></div>
           </a>)}
         </div>
       </section>

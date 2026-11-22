@@ -1,19 +1,11 @@
 // Pravi modeli s paletom boja. Svaka boja ima uzorak tkanine (swatch); `photo` je opcionalna originalna
 // fotografija modela u toj boji — kad postoji, prikazuje se pri izboru boje.
 // Sve fotografije su originali (bez ponovne kompresije). Nova boja/model: slike u public/images/modeli/<model>/.
-const z = '/images/modeli/zafira';
-const r = '/images/modeli/rose';
-const v = '/images/modeli/vintage-beauty';
-const d = '/images/modeli/daly';
-const ay = '/images/modeli/ayra';
+import {POZADINE} from './pozadine';
+
 const gi = '/images/modeli/gia';
 const va = '/images/modeli/vayne';
 const el = '/images/modeli/elise';
-const eo = '/images/modeli/elodie';
-const ly = '/images/modeli/leya';
-const vl = '/images/modeli/velora';
-
-import {POZADINE} from './pozadine';
 
 const palette = (dir, list) => list.map(([name, hex], i) => ({name, hex, swatch: `${dir}/tkanina-${i + 1}.webp`}));
 
@@ -56,113 +48,8 @@ const NOVI = [
   ['vintage', 'Vintage', 'Haljina', 'Maslinasta', '#6a6b38', 'Vintage je komplet od dugog khimara i široke haljine s rukavima koji se zakopčavaju dugmadima i završavaju volanom. Maslinasta boja i mekan pad za smiren, elegantan izgled.', ['Haljina i khimar', 'Manžete s dugmadima', 'Volan na rukavima', 'Mekan pad']]
 ].map(jedan);
 
+// Redoslijed: od najstarijeg do najnovijeg — novi model se dodaje na kraj (ili u NOVI).
 export const MODELI = [
-  {
-    slug: 'zafira',
-    name: 'Zafira',
-    type: 'Haljina',
-    cat: 'haljine',
-    lead: 'Zafira je udobna haljina od kvalitetnog rebrastog materijala, s visokim ovratnikom i rukavima koji se skupljaju vezicama. Široki, ravni kroj pruža potpunu pokrivenost i slobodu pokreta — za svaki dan i svaku priliku.',
-    photos: [[`${z}/glavna.png`, 'Zafira haljina na lutki, prikaz sprijeda'], [`${z}/detalj.webp`, 'Detalj rukava Zafira haljine s MADE BY ALY etiketom']],
-    // Boja se nanosi na originalnu fotografiju u browseru (maska = dio slike koji je haljina).
-    recolor: {src: `${z}/glavna.png`, mask: `${z}/maska.png`},
-    showcase: [[`${z}/sve-boje.webp`, 'Zafira haljina u svih 12 boja'], [`${z}/paleta.webp`, 'Paleta boja Zafira haljine s uzorcima tkanine']],
-    features: ['Kvalitetan rebrasti materijal', 'Udobna i lagana', 'Prozračna i prijatna', 'Trajna boja'],
-    details: [
-      ['Materijal', 'Mekan, rebrasti pleteni materijal koji lijepo pada i zadržava oblik.'],
-      ['Kroj', 'Široki ravni kroj, visoki ovratnik, rukavi s vezicama za podešavanje dužine i volumena.'],
-      ['Održavanje', 'Prati na 30°C, na programu za osjetljive tkanine. Ne sušiti u mašini.']
-    ],
-    colors: palette(z, [
-      ['Tamno plava', '#252e4c'], ['Bordo', '#561725'], ['Crna', '#1c1c1c'], ['Bijela', '#e9e6e3'],
-      ['Krem', '#dfcdb8'], ['Bež', '#82665b'], ['Svijetlo bež', '#ac937e'], ['Maslinasta', '#987915'],
-      ['Mint', '#718076'], ['Plava', '#263c74'], ['Ljubičasta', '#72326b'], ['Puder roza', '#cb868c']
-    ])
-  },
-  {
-    slug: 'rose',
-    name: 'Rose',
-    type: 'Haljina',
-    cat: 'haljine',
-    lead: 'Rose je mekana, široka haljina od teksturiranog pletiva, s blagim ovratnikom i balon rukavima stegnutim na manžetni. Topli, neutralni tonovi koji se lako kombinuju — udobnost bez kompromisa.',
-    photos: [[`${r}/glavna.webp`, 'Rose haljina na lutki u svijetlo sivoj boji'], [`${r}/detalj.webp`, 'Detalj Rose haljine s balon rukavima i MADE BY ALY etiketom']],
-    recolor: {src: `${r}/glavna.webp`, mask: `${r}/maska.png`},
-    showcase: [[`${r}/sve-boje.webp`, 'Rose haljina u svih 10 boja'], [`${r}/paleta.webp`, 'Paleta boja Rose haljine s uzorcima tkanine']],
-    features: ['Teksturirano pletivo', 'Balon rukavi', 'Široki kroj', 'Neutralni tonovi'],
-    details: [
-      ['Materijal', 'Mekano teksturirano pletivo, prijatno na koži i toplo za hladnije dane.'],
-      ['Kroj', 'Široki A kroj, blagi ovratnik, balon rukavi s rebrastom manžetnom.'],
-      ['Održavanje', 'Prati na 30°C, na programu za osjetljive tkanine. Sušiti položeno.']
-    ],
-    colors: palette(r, [
-      ['Krem', '#e7e2db'], ['Svijetlo siva', '#c2c2c3'], ['Bež', '#b09e92'], ['Taupe', '#af9f96'], ['Mocca', '#8a7a72'],
-      ['Crna melange', '#2a2a2a'], ['Crna', '#111113'], ['Pijesak', '#c4b7ad'], ['Siva', '#6b6c70'], ['Antracit', '#343435']
-    ]),
-    numbered: true
-  },
-  {
-    slug: 'vintage-beauty',
-    name: 'Vintage beauty',
-    type: 'Abaya',
-    cat: 'abaye',
-    lead: 'Vintage beauty je set abaye i khimara od medinske svile, s nježnim volanima na khimaru i rukavima, manžetnama s dugmićima i bogatim padom tkanine. Romantičan detalj i potpuna pokrivenost u jednom modelu.',
-    photos: [[`${v}/cokolada.webp`, 'Vintage beauty abaya i khimar u boji čokolade'], [`${v}/maslinasta.webp`, 'Vintage beauty abaya i khimar u maslinasto zelenoj boji']],
-    features: ['Medinska svila', 'Khimar s volanima', 'Manžete s dugmićima', 'Potpuna pokrivenost'],
-    details: [
-      ['Materijal', 'Medinska svila — mekana, mat tkanina koja lijepo pada, ne gužva se lako i prijatna je za nošenje.'],
-      ['Kroj', 'Široka abaya s balon rukavima, manžete s dugmićima i volanom; dugi khimar s naboranim volanom.'],
-      ['Održavanje', 'Prati na 30°C, na programu za osjetljive tkanine. Peglati na niskoj temperaturi.']
-    ],
-    colors: [
-      {name: 'Čokolada', hex: '#6b3a28', photo: `${v}/cokolada.webp`},
-      {name: 'Maslinasto zelena', hex: '#5f6b2a', photo: `${v}/maslinasta.webp`}
-    ]
-  },
-  {
-    slug: 'daly',
-    name: 'Daly',
-    type: 'Abaya',
-    cat: 'abaye',
-    lead: 'Daly je set abaye i dugog khimara od mekane tkanine sa suptilnim sjajem. Široki kroj s balon rukavima i rebrastim manžetama, slojeviti khimar koji lijepo pada — elegancija u 14 boja.',
-    photos: [[`${d}/glavna.webp`, 'Daly abaya i khimar u maslinasto zelenoj boji, prikaz sprijeda'], [`${d}/ledja.webp`, 'Daly abaya i khimar, prikaz s leđa'], [`${d}/detalj.webp`, 'Detalj rukava Daly abaye s MADE BY ALY etiketom']],
-    // Originalna fotografija je maslinasto zelena; ostale boje se nanose na nju u browseru.
-    recolor: {src: `${d}/glavna.webp`, mask: `${d}/maska.png`},
-    showcase: [[`${d}/paleta.webp`, 'Paleta boja Daly abaye']],
-    features: ['Tkanina sa suptilnim sjajem', 'Dugi khimar u setu', 'Balon rukavi', 'Rebraste manžete'],
-    details: [
-      ['Materijal', 'Mekana, lagana tkanina s finim sjajem koja lijepo pada i ugodna je za nošenje.'],
-      ['Kroj', 'Široka abaya s balon rukavima i rebrastim manžetama; dugi, slojeviti khimar.'],
-      ['Održavanje', 'Prati na 30°C, na programu za osjetljive tkanine. Ne sušiti u mašini.']
-    ],
-    colors: palette(d, [
-      ['Fuksija', '#c40c74'], ['Ljubičasta', '#501eba'], ['Teget plava', '#112157'], ['Maslinasto zelena', '#9e9a1f'], ['Lila', '#975d97'],
-      ['Žuta', '#d9cc06'], ['Kraljevsko plava', '#032eb9'], ['Petrol zelena', '#046969'], ['Pink', '#e1198c'], ['Zelena', '#05a432'],
-      ['Narandžasta', '#f14804'], ['Mint zelena', '#8bc5b1'], ['Crna', '#23242b'], ['Svijetla bež', '#e3d8cd']
-    ]).map(c => c.name === 'Maslinasto zelena' ? {...c, photo: `${d}/glavna.webp`} : c)
-  },
-  {
-    slug: 'ayra',
-    name: 'Ayra',
-    type: 'Haljina',
-    cat: 'haljine',
-    lead: 'Ayra je široka haljina od viskoznog štofa s finim prugicama, presvučenim dugmićima cijelom dužinom i bočnim džepovima. Udoban, elegantan kroj koji se lako nosi od jutra do večeri.',
-    photos: [[`${ay}/siva.webp`, 'Ayra haljina u sivoj boji'], [`${ay}/krem.webp`, 'Ayra haljina u krem boji'], [`${ay}/crna.webp`, 'Ayra haljina u crnoj boji'], [`${ay}/smeda.webp`, 'Ayra haljina u čokoladnoj boji'], [`${ay}/teget.webp`, 'Ayra haljina u teget boji'], [`${ay}/bez.webp`, 'Ayra haljina u bež boji']],
-    features: ['Viskozni štof', 'Fine prugice', 'Presvučeni dugmići', 'Bočni džepovi'],
-    details: [
-      ['Materijal', 'Viskozni štof — mekan, prozračan i ugodan na koži, s finim uzdužnim prugicama.'],
-      ['Kroj', 'Široki A kroj, okrugli izrez, presvučeni dugmići cijelom dužinom, rukavi s manžetom i bočni džepovi.'],
-      ['Održavanje', 'Prati na 30°C, na programu za osjetljive tkanine. Peglati na srednjoj temperaturi.']
-    ],
-    // Prave fotografije za svaku boju — bez digitalnog bojenja.
-    colors: [
-      {name: 'Siva', hex: '#7d7f82', swatch: `${ay}/tkanina-1.webp`, photo: `${ay}/siva.webp`},
-      {name: 'Krem', hex: '#d7d3c9', swatch: `${ay}/tkanina-2.webp`, photo: `${ay}/krem.webp`},
-      {name: 'Crna', hex: '#29282b', swatch: `${ay}/tkanina-3.webp`, photo: `${ay}/crna.webp`},
-      {name: 'Čokolada', hex: '#4a2c24', swatch: `${ay}/tkanina-4.webp`, photo: `${ay}/smeda.webp`},
-      {name: 'Teget', hex: '#252a45', swatch: `${ay}/tkanina-5.webp`, photo: `${ay}/teget.webp`},
-      {name: 'Bež', hex: '#c0b09f', swatch: `${ay}/tkanina-6.webp`, photo: `${ay}/bez.webp`}
-    ]
-  },
   {
     slug: 'gia',
     name: 'Gia',
@@ -248,93 +135,10 @@ export const MODELI = [
       ['Oker', '#ce8435'], ['Narandžasta', '#b94522'], ['Cigla crvena', '#862f2c']
     ])
   },
-  {
-    slug: 'elodie',
-    name: 'Elodie',
-    type: 'Komplet',
-    cat: 'abaye',
-    lead: 'Elodie je komplet od tunike i suknje od hurem štofa — široka tunika s velikim manžetama i džepovima, preko duge, bogate suknje. Elegantan, slojevit izgled uz potpunu udobnost, dostupan u 13 boja.',
-    photos: [[`${eo}/maslinasta-1.webp`, 'Elodie komplet u maslinastoj boji, sjedeći'], [`${eo}/maslinasta-2.webp`, 'Elodie komplet u maslinastoj boji, detalj rukava'], [`${eo}/maslinasta-3.webp`, 'Elodie komplet u maslinastoj boji, stojeći']],
-    // Boje bez vlastite fotografije: komplet (tunika i suknja) se boji na originalnoj fotografiji; marama ostaje originalna.
-    recolor: {src: `${eo}/babyplava-1.webp`, mask: `${eo}/maska.png`},
-    showcase: [[`${eo}/paleta.webp`, 'Paleta dostupnih boja za Elodie komplet']],
-    features: ['Hurem štof', 'Tunika i suknja', 'Široke manžete i džepovi', '13 boja'],
-    details: [
-      ['Materijal', 'Hurem štof — mekan, mat i postojan materijal koji lijepo pada. Marama na fotografijama je od muslina.'],
-      ['Komplet', 'Široka tunika s velikim manžetama i džepovima, i duga, bogata suknja.'],
-      ['Održavanje', 'Prati na 30°C, na programu za osjetljive tkanine. Peglati na srednjoj temperaturi.']
-    ],
-    colors: palette(eo, [
-      ['Bijela', '#e5e1de'], ['Svijetlosiva', '#beb2ac'], ['Bež', '#caa282'], ['Smeđa', '#43241c'], ['Crna', '#111113'],
-      ['Baby roza', '#efb8b9'], ['Baby plava', '#bbcfea'], ['Tamnoplava', '#171d31'], ['Tamnozelena', '#0f403a'], ['Maslinasta', '#706c53'],
-      ['Crvena', '#b40e1f'], ['Bordo', '#691424'], ['Narandžasta', '#ea661e']
-    ]).map(c => ({...c, photos: {
-      'Bijela': ['bijela-1', 'bijela-2'],
-      'Svijetlosiva': ['svijetlosiva-1', 'svijetlosiva-2', 'svijetlosiva-3'],
-      'Baby plava': ['babyplava-1', 'babyplava-2', 'babyplava-3'],
-      'Maslinasta': ['maslinasta-1', 'maslinasta-2', 'maslinasta-3'],
-      'Crvena': ['crvena-1', 'crvena-2'],
-      'Narandžasta': ['narandzasta-1', 'narandzasta-2', 'narandzasta-3']
-    }[c.name]?.map(n => `${eo}/${n}.webp`)}))
-  },
-  {
-    slug: 'leya',
-    name: 'Leya',
-    type: 'Komplet',
-    cat: 'abaye',
-    lead: 'Leya je komplet od tunike i suknje od tanke viskozne pletenine s dosta elastina. Mekan, rastezljiv i lagan — široka tunika s balon rukavima i rebrastim manžetama, i suknja s elastičnim strukom za potpunu udobnost.',
-    photos: [[`${ly}/krem-1.png`, 'Leya komplet u krem boji, cijeli prikaz'], [`${ly}/krem-2.webp`, 'Leya komplet u krem boji, tunika'], [`${ly}/krem-3.webp`, 'Leya komplet u krem boji, detalj rukava s etiketom'], [`${ly}/krem-4.webp`, 'Leya komplet u krem boji, elastični struk suknje']],
-    // Boje bez fotografije: komplet se boji na originalnoj fotografiji (svijetlo siva); marama ostaje originalna.
-    recolor: {src: `${ly}/svijetlosiva-1.webp`, mask: `${ly}/maska.png`},
-    showcase: [[`${ly}/paleta.webp`, 'Paleta dostupnih boja za Leya komplet']],
-    features: ['Viskozna pletenina s elastinom', 'Tunika i suknja', 'Elastični struk', '10 boja'],
-    details: [
-      ['Materijal', 'Tanka viskozna pletenina s dosta elastina — mekana, rastezljiva i prijatna na koži.'],
-      ['Komplet', 'Široka tunika s balon rukavima i rebrastim manžetama, i duga suknja s elastičnim strukom.'],
-      ['Održavanje', 'Prati na 30°C, na programu za osjetljive tkanine. Sušiti položeno.']
-    ],
-    colors: palette(ly, [
-      ['Krem', '#e7e2db'], ['Svijetlo siva', '#c2c2c3'], ['Bež', '#b09e92'], ['Taupe', '#af9f96'], ['Mocca', '#8a7a72'],
-      ['Crna melange', '#2a2a2a'], ['Crna', '#111113'], ['Pijesak', '#c4b7ad'], ['Siva', '#6b6c70'], ['Antracit', '#343435']
-    ]).map(c => ({...c, photos: {
-      'Krem': ['krem-1.png', 'krem-2.webp', 'krem-3.webp', 'krem-4.webp'],
-      'Svijetlo siva': ['svijetlosiva-1.webp', 'svijetlosiva-2.webp', 'svijetlosiva-3.webp', 'svijetlosiva-4.webp'],
-      'Mocca': ['mocca-1.webp', 'mocca-2.webp', 'mocca-3.webp', 'mocca-4.webp'],
-      'Siva': ['siva-1.webp', 'siva-2.webp', 'siva-3.webp', 'siva-4.webp']
-    }[c.name]?.map(n => `${ly}/${n}`)})),
-    numbered: true
-  },
-  {
-    slug: 'velora',
-    name: 'Velora',
-    type: 'Komplet',
-    cat: 'abaye',
-    lead: 'Velora je svečani komplet od poliestera bogatog, svilenkastog sjaja — dugi khimar, gornji dio s balon rukavima i naboranim manžetama te široka suknja koja lijepo pada. Dostupna u 29 nijansi.',
-    photos: [[`${vl}/crvena.webp`, 'Velora komplet u crvenoj boji'], [`${vl}/roza.webp`, 'Velora komplet u roza boji'], [`${vl}/bijela.webp`, 'Velora komplet u bijeloj boji'], [`${vl}/babyplava.webp`, 'Velora komplet u baby plavoj boji'], [`${vl}/ljubicasta.webp`, 'Velora komplet u ljubičastoj boji']],
-    // Nijanse bez fotografije se boje na originalnoj (ljubičastoj) fotografiji.
-    recolor: {src: `${vl}/ljubicasta.webp`, mask: `${vl}/maska.png`},
-    showcase: [[`${vl}/paleta.webp`, 'Paleta dostupnih nijansi za Velora komplet']],
-    features: ['Poliester sa sjajem', 'Khimar u kompletu', 'Naborane manžete', '29 nijansi'],
-    details: [
-      ['Materijal', 'Poliester svilenkastog sjaja i fine teksture, lagan i otporan na gužvanje.'],
-      ['Komplet', 'Dugi khimar, gornji dio s balon rukavima i naboranim manžetama te široka, duga suknja.'],
-      ['Održavanje', 'Prati na 30°C, na programu za osjetljive tkanine. Peglati na niskoj temperaturi.']
-    ],
-    // Nijanse s pravom fotografijom (prema paleti: 01 bijela, 10 roza, 16 ljubičasta, 19 crvena, 29 baby plava).
-    colors: palette(vl, [
-      ['Nijansa 01', '#f2eee4'], ['Nijansa 02', '#bfb295'], ['Nijansa 03', '#b19d81'], ['Nijansa 04', '#8c756c'], ['Nijansa 05', '#0a0706'],
-      ['Nijansa 06', '#935c3a'], ['Nijansa 07', '#583a37'], ['Nijansa 08', '#e1ac9c'], ['Nijansa 09', '#9e757f'], ['Nijansa 10', '#cca9bf'],
-      ['Nijansa 11', '#a1a6a5'], ['Nijansa 12', '#b0b8b2'], ['Nijansa 13', '#8da4ac'], ['Nijansa 14', '#898a9b'], ['Nijansa 15', '#a698c3'],
-      ['Nijansa 16', '#9570a2'], ['Nijansa 17', '#c74677'], ['Nijansa 18', '#741626'], ['Nijansa 19', '#bd1f26'], ['Nijansa 20', '#8a3b2f'],
-      ['Nijansa 21', '#bac00e'], ['Nijansa 22', '#866723'], ['Nijansa 23', '#9ecd7b'], ['Nijansa 24', '#473824'], ['Nijansa 25', '#4f8898'],
-      ['Nijansa 26', '#1a7aa8'], ['Nijansa 27', '#346ab0'], ['Nijansa 28', '#132ca2'], ['Nijansa 29', '#9fbae3']
-    ]).map(c => {
-      const f = {'Nijansa 01': 'bijela', 'Nijansa 10': 'roza', 'Nijansa 16': 'ljubicasta', 'Nijansa 19': 'crvena', 'Nijansa 29': 'babyplava'}[c.name];
-      return f ? {...c, photo: `${vl}/${f}.webp`} : c;
-    })
-  },
   ...NOVI
 ];
 
+// Za prikaz: zadnji ubačeni modeli prvi.
+export const NAJNOVIJI = [...MODELI].reverse();
 
 export const getModel = slug => MODELI.find(m => m.slug === slug);

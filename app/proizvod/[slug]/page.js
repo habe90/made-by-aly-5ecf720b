@@ -2,6 +2,9 @@ import {notFound} from 'next/navigation';
 import {MODELI, getModel} from '../modeli';
 import ModelPage from './ModelPage';
 
+// Samo postojeći modeli; izbačeni modeli (npr. stari linkovi) daju pravi 404.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return MODELI.map(m => ({slug: m.slug}));
 }

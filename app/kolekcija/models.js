@@ -1,5 +1,5 @@
 // Kolekcija prikazuje samo prave modele iz app/proizvod/modeli.js (svaki ima svoju stranicu i paletu boja).
-import {MODELI} from '../proizvod/modeli';
+import {NAJNOVIJI} from '../proizvod/modeli';
 
 export const CATEGORIES = [
   ['sve', 'Sve'],
@@ -8,7 +8,8 @@ export const CATEGORIES = [
   ['khimari', 'Khimari']
 ];
 
-export const MODELS = MODELI.map(m => ({
+// Zadnji ubačeni modeli su prvi.
+export const MODELS = NAJNOVIJI.map(m => ({
   id: m.slug,
   name: `${m.name} ${m.type.toLowerCase()}`,
   cat: m.cat,
