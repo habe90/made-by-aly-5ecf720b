@@ -15,6 +15,44 @@ const vl = '/images/modeli/velora';
 
 const palette = (dir, list) => list.map(([name, hex], i) => ({name, hex, swatch: `${dir}/tkanina-${i + 1}.webp`}));
 
+// Modeli s jednom originalnom fotografijom (u jednoj boji). Druge boje i mjere — na upit.
+const jedan = ([slug, name, type, color, hex, lead, features]) => {
+  const src = `/images/modeli/${slug}/glavna.webp`;
+  const alt = `${name} ${type.toLowerCase()} u boji ${color.toLowerCase()}`;
+  return {
+    slug, name, type, cat: 'haljine', lead, features,
+    photos: [[src, alt]],
+    details: [
+      ['Boje i mjere', `Model je prikazan u boji ${color.toLowerCase()}. Za druge boje, veličinu, dužinu ili izradu po mjeri pošalji nam upit.`],
+      ['Održavanje', 'Prati na 30°C, na programu za osjetljive tkanine. Peglati na niskoj temperaturi.']
+    ],
+    colors: [{name: color, hex, photo: src}]
+  };
+};
+
+const NOVI = [
+  ['noor', 'Noor', 'Haljina', 'Svijetlo žuta', '#f1e594', 'Noor je lepršava haljina s bijelim prednjim dijelom ukrašenim dugmadima, naborom ispod grudi i balon rukavima s volanom na manžetni. Nježna kombinacija svijetlo žute i bijele za proljetne i svečane dane.', ['Dvobojni gornji dio', 'Dekorativna dugmad', 'Balon rukavi s volanom', 'Široki, lepršavi kroj']],
+  ['abra', 'Abra', 'Haljina', 'Roza', '#d9608f', 'Abra je svečana haljina satenskog sjaja s naboranim ovratnikom od čipke, kapljičastim izrezom s biserom i balon rukavima koji završavaju volanom.', ['Satenski sjaj', 'Čipkasti ovratnik', 'Balon rukavi s volanom', 'Široki kroj']],
+  ['ruqaya', 'Ruqaya', 'Haljina', 'Baby plava', '#a9c6e6', 'Ruqaya je satenska haljina s naborom ispod grudi, balon rukavima i manžetama s dugmadima i volanom. Lepršava i elegantna — za posebne prilike.', ['Satenski sjaj', 'Nabor ispod grudi', 'Manžete s dugmadima', 'Lepršav kroj']],
+  ['laurel', 'Laurel', 'Haljina', 'Starinska roza', '#b26a78', 'Laurel je elegantna haljina s kragnom, dekorativnim dugmetom i finim pliseiranim linijama na grudima. Bogata suknja i dvostruki volani na rukavima daju joj nježan, ženstven izgled.', ['Kragna s dugmetom', 'Pliseirane linije', 'Dvostruki volani na rukavima', 'Bogata suknja']],
+  ['elysee', 'Elysee', 'Haljina', 'Lavanda', '#b8a2dc', 'Elysee je satenska haljina u boji lavande, uz khimar od teksturirane tkanine u istom tonu. Široki kroj, balon rukavi i manžete s dugmadima — mekan, svečan i potpuno pokriven izgled.', ['Haljina i khimar', 'Satenski sjaj', 'Manžete s dugmadima', 'Široki kroj']],
+  ['tia', 'Tia', 'Haljina', 'Bordo', '#6a1a2e', 'Tia je haljina na preklop s vezicom sa strane, u dubokoj bordo boji. Rukavi su na podlaktici nabrani i završavaju malim volanom.', ['Kroj na preklop', 'Vezica sa strane', 'Nabrani rukavi', 'Duboka bordo boja']],
+  ['solene', 'Solene', 'Komplet', 'Maslinasta', '#6f7533', 'Solene je komplet od kimono tunike na preklop s vezicom i duge, široke suknje. Široki rukavi s manžetama i maslinasta boja daju mu moderan, opušten izgled.', ['Tunika i suknja', 'Kimono rukavi', 'Preklop s vezicom', 'Moderan kroj']],
+  ['yass', 'Yass', 'Haljina', 'Smaragdno zelena', '#0d4f4c', 'Yass je haljina na preklop s vezicom sa strane i balon rukavima, u bogatoj smaragdno zelenoj boji. Lijepo pada i prati pokret — elegantna za svaki dan i svečane prilike.', ['Kroj na preklop', 'Vezica sa strane', 'Balon rukavi', 'Mekan pad']],
+  ['elaris', 'Elaris', 'Haljina', 'Starinska roza', '#b8707e', 'Elaris je široka haljina s volanom pri dnu i balon rukavima koji se vežu mašnom. Jednostavna, ženstvena i udobna — u nježnoj starinskoj roza boji.', ['Volan pri dnu', 'Rukavi s mašnom', 'Široki kroj', 'Udobna za svaki dan']],
+  ['tera', 'Tera', 'Haljina', 'Ljubičasta', '#8a5276', 'Tera je lepršava haljina od mekane, teksturirane tkanine, širokog kroja i balon rukava s nabranom manžetom. Topla ljubičasta nijansa i jednostavna linija za svaki dan.', ['Teksturirana tkanina', 'Balon rukavi', 'Nabrane manžete', 'Lepršav kroj']],
+  ['vilma', 'Vilma', 'Haljina', 'Tirkizna', '#1e88a8', 'Vilma je svečani komplet od sjajne, plisirane tkanine — dugi khimar i široka haljina s naboranim rukavima. Bogat tirkizni ton s tamnoplavim detaljima za posebne prilike.', ['Haljina i khimar', 'Tkanina sa sjajem', 'Nabrani rukavi', 'Svečani izgled']],
+  ['evara', 'Evara', 'Haljina', 'Puder roza', '#f4c3b7', 'Evara je nježna haljina u puder roza boji, s volanom pri dnu i rukavima s dvostrukim volanom i manžetom u kontrastnoj bež boji.', ['Volan pri dnu', 'Dvostruki volani na rukavima', 'Kontrastne manžete', 'Nježna boja']],
+  ['tuberose', 'Tuberose', 'Haljina', 'Bijela', '#f1efea', 'Tuberose je bijela haljina s dugmadima cijelom dužinom, volanom pri dnu i balon rukavima s manžetom koja prekriva šaku. Čista, svijetla linija za svečane dane.', ['Dugmad cijelom dužinom', 'Volan pri dnu', 'Manžete preko šake', 'Svečana bijela']],
+  ['noir', 'Noir', 'Komplet', 'Ciklama', '#b51e4e', 'Noir je komplet od široke tunike s nabranom vezicom sa strane i duge suknje, od mekane tkanine sa suede efektom. Zlatna dugmad na manžetama daju mu posebnu notu.', ['Tunika i suknja', 'Nabrana vezica sa strane', 'Zlatna dugmad', 'Suede efekt']],
+  ['dux', 'Dux Oversize', 'Haljina', 'Mocca', '#9a6656', 'Dux je oversize haljina s visokim ovratnikom, velikim prednjim džepovima i balon rukavima. Opušten, moderan kroj za potpunu udobnost.', ['Oversize kroj', 'Visoki ovratnik', 'Veliki džepovi', 'Balon rukavi']],
+  ['classic', 'Classic Oversize', 'Haljina', 'Bež melange', '#a8907e', 'Classic je oversize haljina od tkanine s melange teksturom, s V izrezom, širokim rukavima i vezicom u struku. Bezvremenski, prirodni ton koji se lako kombinuje.', ['Oversize kroj', 'Melange tekstura', 'Vezica u struku', 'Široki rukavi']],
+  ['saly', 'Saly', 'Haljina', 'Baby plava', '#b4cfe0', 'Saly je haljina s tri reda volana i rukavima koji se skupljaju vezicama, uz khimar u bež boji. Nježna baby plava i lepršav kroj za upečatljiv, a skroman izgled.', ['Haljina i khimar', 'Tri reda volana', 'Rukavi s vezicama', 'Lepršav kroj']],
+  ['freya', 'Freya', 'Haljina', 'Limeta', '#c9d32a', 'Freya je lepršava haljina s nabranim donjim dijelom i širokim rukavima s volanom. Živa limeta boja za odvažan, vedar izgled.', ['Široki rukavi s volanom', 'Nabrani donji dio', 'Lepršav kroj', 'Živa boja']],
+  ['cleo', 'Cleo', 'Haljina', 'Koralna', '#e6766d', 'Cleo je haljina s dugmadima na prednjem dijelu, nabranim donjim dijelom i balon rukavima s volanom na manžetni. Topla koralna boja i jednostavan, ženstven kroj.', ['Dugmad sprijeda', 'Nabrani donji dio', 'Balon rukavi', 'Koralna boja']],
+  ['vintage', 'Vintage', 'Haljina', 'Maslinasta', '#6a6b38', 'Vintage je komplet od dugog khimara i široke haljine s rukavima koji se zakopčavaju dugmadima i završavaju volanom. Maslinasta boja i mekan pad za smiren, elegantan izgled.', ['Haljina i khimar', 'Manžete s dugmadima', 'Volan na rukavima', 'Mekan pad']]
+].map(jedan);
+
 export const MODELI = [
   {
     slug: 'zafira',
@@ -291,7 +329,8 @@ export const MODELI = [
       const f = {'Nijansa 01': 'bijela', 'Nijansa 10': 'roza', 'Nijansa 16': 'ljubicasta', 'Nijansa 19': 'crvena', 'Nijansa 29': 'babyplava'}[c.name];
       return f ? {...c, photo: `${vl}/${f}.webp`} : c;
     })
-  }
+  },
+  ...NOVI
 ];
 
 

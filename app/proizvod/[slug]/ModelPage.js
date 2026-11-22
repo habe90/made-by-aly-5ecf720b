@@ -12,7 +12,8 @@ const NAV = {haljine: 'Haljine', khimari: 'Khimari'};
 const CAT = {haljine: 'Haljine', abaye: 'Abaye', khimari: 'Khimari'};
 
 export default function ModelPage({model}) {
-  const [color, setColor] = useState(null);
+  // Model u jednoj boji: boja je odmah odabrana.
+  const [color, setColor] = useState(model.colors.length === 1 ? 0 : null);
   const [view, setView] = useState(0);
   const [zoom, setZoom] = useState(null);
   const c = model.colors[color ?? 0];
